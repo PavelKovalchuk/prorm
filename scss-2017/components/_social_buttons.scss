@@ -1,0 +1,33 @@
+.ssb-share {
+    a {
+        height: auto!important;
+        width: auto!important;
+        &:hover .icon-item{
+            color: $white;
+            background-color: $social-buttons-color-bg;
+            border-color: $social-buttons-color-bg;
+        }
+    }
+    .icon-item {
+        background-image: none!important;
+        border: 1px solid $social-buttons-border;
+        color: $social-buttons-color;
+        text-align: center;
+        font-size: 30px;
+        &:before {
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+    .fb .icon-item:before,
+    .linkedin .icon-item:before{
+        font-size: 44px;
+    }
+    &.flat {
+        margin-bottom: 0!important;
+        a {
+            margin-right: 9px!important;
+        }
+    }
+}
+

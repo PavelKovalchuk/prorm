@@ -1,0 +1,165 @@
+ul, ol, dl, p, h1, h2, h3, h4, h5, h6,  form, table, blockquote, applet, embed, object, iframe, frameset {
+    margin:0 0 $vertical-rhythm;
+}
+
+address{
+    margin: 0;
+    font-style: normal;
+}
+
+blockquote {
+    font-size: 20px;
+    @include media('<desktop') {
+        font-size: 17px;
+    }
+    .quote-frame{
+        padding: 30px 144px 30px 64px; 
+        position: relative;
+        margin: 0 0 10px;
+        @include media('<desktop') {
+            padding: 35px;
+        }
+        @include media('<tablet') {
+            padding: 25px;
+        }
+        &:before,
+            &:after{
+            content:"";
+            position: absolute;
+            right: 72px;
+            top: 6px;
+            width: 37px;
+            height: 26px;
+            background: url(images/img-28.png) no-repeat;
+            background-size: cover;
+            @include media('<desktop') {
+                right: 2px;
+                width: 24px;
+                height: 17px;
+            }
+        }
+        &:after{
+            right: auto;
+            top:auto;
+            left: 0;
+            bottom: 8px;
+            background: url(images/img-29.png) no-repeat;
+            background-size: cover;
+
+        }
+    }
+    .cite-holder{
+        float: right;
+        max-width: 510px;
+        width: 100%;
+        @include media('<tablet') {
+            max-width: 9999px;
+            padding-left: 25px;
+        }
+    }
+    p,q{
+        margin: 0;
+    }
+    a{
+        color: #a3113f;
+        font-size: 18px;
+        @include media('<desktop') {
+            font-size: 16px;
+        }
+    }
+}
+
+cite{
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    color: $black;
+    font-style: normal;
+    margin: 0 0 11px;
+    @include media('<desktop') {
+        font-size: 15px;
+    }
+    span{
+        font-size: 20px;
+        display: block;
+        @include media('<desktop') {
+            font-size: 17px;
+        }
+    }
+}
+
+th, td {
+    border: 1px solid $gray;
+    padding: .3em;
+    text-align: center;
+    vertical-align: top;
+}
+
+th{
+    text-align: center;
+    vertical-align: middle;
+}
+
+ul, ol{ 
+    padding-left:3em; 
+}
+ul ul,
+ul ol,
+ol ul, 
+ol ol {
+    padding-left:3em;
+    margin:0;
+}
+
+ul {
+    padding:0;
+    margin:0;
+    list-style:none;
+    li {
+        position: relative;
+    }
+    .page-post & {
+        margin-bottom: 20px;
+        li{
+            padding-left: 20px;
+            position: relative;
+            text-align: justify;
+            :before{
+                content: ""; 
+                background-color: $black;
+                font-size: 90%;
+                display: block;
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                position: absolute;
+                top: 18px;
+                left: 0;
+            }
+        }
+    }
+
+}
+
+dl {
+    @extend %clearfix;
+    dt {
+        float:left;
+        clear:left;
+        padding-right: .3em;
+        font-weight:bold;
+    }
+    dd {
+        overflow: hidden;
+    }
+}
+
+pre {
+    max-width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 20px;
+    font-family: $base-font-family;
+    white-space: pre-wrap;
+    overflow: hidden;
+}

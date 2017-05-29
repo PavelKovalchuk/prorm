@@ -1,0 +1,74 @@
+.mfp-zoom-out-cur, .mfp-zoom-out {
+    .mfp-close {
+        font-size: 35px;
+        width: 20px;
+        height: 20px;
+        line-height: 15px;
+        top: 15px;
+        right: 0;
+    }
+    .mfp-iframe-scaler .mfp-close {
+        top: -25px;
+    }
+    #wrapper {
+        display: block;
+    }
+    @include media('>hd-screen') {
+        .mfp-content img {
+            max-width: 1200px;
+        }
+    }
+    @include media('>tablet') {
+        .mfp-container {
+            padding-left: 25px!important;
+        padding-right: 25px!important;
+        }
+        
+    }
+    
+}
+.mfp-zoom-out-cur, .mfp-zoom-out-cur .mfp-image-holder .mfp-close {
+    cursor: pointer;
+}
+
+.mfp-zoom-in {
+  
+  /* start state */
+  .mfp-with-anim {
+    opacity: 0;
+    transition: all 0.2s ease-in-out; 
+    transform: scale(0.8); 
+  }
+  
+  &.mfp-bg {
+    opacity: 0;
+	  transition: all 0.3s ease-out;
+  }
+  
+  /* animate in */
+  &.mfp-ready {
+    .mfp-with-anim {
+      opacity: 1;
+      transform: scale(1); 
+    }
+    &.mfp-bg {
+      opacity: 0.8;
+    }
+  }
+  
+  /* animate out */
+  &.mfp-removing {
+    
+    .mfp-with-anim {
+      transform: scale(0.8); 
+      opacity: 0;
+    }
+    &.mfp-bg {
+      opacity: 0;
+    }
+    
+  }
+  
+}
+
+

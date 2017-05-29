@@ -1,0 +1,16 @@
+.page_not_found {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-direction: column;
+    img {
+        display: block;
+        margin: 25px auto;
+        @include media('>desktop') {
+            margin-top: 117px;
+            margin-bottom: 51px;
+        }
+    }
+}

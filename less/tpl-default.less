@@ -1,0 +1,290 @@
+/**
+ * Default template. Common styles.
+ */
+
+.breadcrumbs {
+    font-style: italic;
+    margin-top: 35px;
+}
+
+.menu {
+    padding-left: 0;
+}
+.menu.horizontal {
+    overflow: hidden;
+}
+.menu.horizontal .menu-item {
+    float: left;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+.bordered {
+    border: 1px solid #000;
+    padding: 0 35px;
+    margin: 0 3% 25px 0;
+    float: left;
+    width: 30%;
+}
+
+article, .wp-editor {
+    h1, h2, h3 {
+        clear: both;
+    }
+    ul, ol {
+        margin-top: 0;
+        margin-bottom: 35px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 10px;
+        position: relative;
+        left: 30px;
+        margin-right: 30px;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 35px;
+    }
+}
+.subscribe-form {
+    .btn-row {
+        text-align: right;
+        margin:20px 0;
+    }
+}
+.news-item {
+    .media {
+        margin-top: 0
+    }
+    .media-body {
+        overflow: visible;
+    }
+    time {
+        color: @colorTextRed;
+        display: block;
+        font-size: 0.889em;
+        margin: 0 0 10px;
+    }
+    .more-link {
+        font-style: italic;
+        display: block;
+    }
+}
+.content-nav {
+    margin: 30px 0;
+    .nav-previous {
+        text-align: right;
+    }
+    @media (max-width: 768px) {
+        .nav-previous, .nav-next {
+            text-align: center;
+        }
+    }
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.778em;
+    font-family: @fontStandard;
+    margin-bottom: 35px;
+}
+td, th {
+    background-color: #fff;
+    border-left: 1px solid @colorLightGrey;
+    padding: .5em;
+}
+td:first-child, th:first-child {
+    border-left: 0 none;
+}
+th {
+    border-bottom: 1px solid @colorLightGrey;
+    color: @colorTextRed;
+    text-align: center;
+    .font-weight-normal;
+}
+.even td {
+    background-color: #f5f5f5;
+}
+.circle {
+    box-sizing: border-box;
+    text-align: center;
+    color: @colorTextRed;
+    border: 1px solid @colorRed;
+    border-radius: 50%;
+    display: inline-block;
+    width: 2.2em;
+    height: 2.2em;
+    line-height: 1em;
+    padding: .6em 0;
+    font-size: 0.778em;
+}
+.kaufen .circle {
+    font-size: 1em;
+}
+.kaufen td:first-child a {
+    margin-top: 5px;
+    display: inline-block;
+}
+.kaufen td a img {
+    margin-top: -3px;
+}
+.kaufen .pro-btn {
+    margin-top: 10px;
+}
+.pro-form {
+    background-color: #f0f0f0;
+    margin-bottom: 50px;
+
+    >.row {
+        margin: 0;
+    }
+    .form-col {
+        padding: 40px 50px 50px;
+    }
+    // Desktop, md
+    @media (min-width: 992px) {
+        .form-col.col-md-5 {
+            width: 45%;
+        }
+        .form-col.col-md-7 {
+            width: 55%;
+        }
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-comment {
+        font-size: 0.722em;
+    }
+}
+.pdf-link {
+    padding: 6px 35px 6px 0;
+    margin-right: 10px;
+    background: url(../images/pdf-icon.png) no-repeat scroll right center transparent;
+}
+.sidebar-offices {
+    .office {
+        border: 1px solid @colorRed;
+        padding: 0 35px;
+    }
+}
+.sidebar-contact-info {
+    border-top: 1px solid @colorUltraLightGrey;
+
+    .contact-info .textwidget {
+        background-color: @colorRed;
+        color: @colorTextInv;
+        padding: 40px 30px 30px;
+
+        a {
+            color: @colorTextInv;
+        }
+    }
+}
+.sidebar-partners {
+    border-left: 1px solid @colorUltraLightGrey;
+    border-top: 1px solid @colorUltraLightGrey;
+    margin-bottom: 50px;
+
+    .partner {
+        float: left;
+        width: 25%;
+//        height: 180px;
+        border-collapse: collapse;
+        border-right: 1px solid @colorUltraLightGrey;
+        border-bottom: 1px solid @colorUltraLightGrey;
+
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+//            padding-top: 50px;
+        }
+    }
+}
+/**
+ * Anwendungen (Apps)
+ */
+.app-header {
+    position: relative;
+    h1 {
+        float: left;
+        width:90%;
+    }
+    .overview-link {
+        text-decoration: none;
+        position: absolute;
+        top: 15px;
+        right: -27px;
+        width: 100px;
+        text-align: center;
+        font-size: 1em;
+        padding-bottom: 50px;
+        background: url(../images/overview.png) no-repeat scroll center bottom transparent;
+    }
+    @media (min-height: 1000px) {
+        .overview-link {
+            top: 50px;
+        }
+    }
+}
+.app-side-link {
+    position: fixed;
+    display: none;
+    a {
+        display: block;
+        width: 130px;
+        padding-bottom: 100px;
+        text-align: center;
+        background: none no-repeat scroll center bottom transparent;
+        word-wrap: break-word;
+    }
+}
+.app-side-link.app-prev {
+    left: 0;
+    a {
+        background-image: url(../images/app-side-link-left.png);
+    }
+}
+.app-side-link.app-next {
+    right: 0;
+    a {
+        background-image: url(../images/app-side-link-right.png);
+    }
+}
+/**
+ * Testimonials
+ */
+.testimonials-list {
+    .testimonial {
+        border-top: 1px solid @colorUltraLightGrey;
+        margin-top: 50px;
+        padding-top: 60px;
+
+        .col-left {
+            padding-left: 50px;
+        }
+        .col-right {
+            padding-left: 60px;
+            padding-right: 40px;
+        }
+        blockquote {
+            margin:0 -40px 20px -60px;
+            padding-bottom: 10px;
+        }
+        blockquote:before {
+            bottom: -40px;
+        }
+    }
+}
+/**
+ * Erleben page fixes
+ */
+.erleben-list {
+    margin-top: 30px;
+    border-bottom: 1px solid @colorLightGrey;
+    h3 {
+        margin: 0;
+    }
+}

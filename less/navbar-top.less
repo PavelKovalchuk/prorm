@@ -1,0 +1,294 @@
+/**
+ * Top Navigation Bar
+ */
+
+@barHeight: 80px;
+@barBorderHeight: 6px;
+
+body.fixed-top-bar {
+    /** Padding for fixed top panel */
+    padding-top: @barHeight + @barBorderHeight;
+}
+
+.navbar-top {
+    min-height: 0;
+    height: @barHeight + @barBorderHeight;
+    margin-bottom: 0;
+    border: 0 none;
+    border-radius: 0;
+    border-bottom: @barBorderHeight solid @colorRed;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0.35, #EDEDED),
+        color-stop(1, #D7D7D7)
+    );
+    background-image: -o-linear-gradient(bottom, #EDEDED 35%, #D7D7D7 100%);
+    background-image: -moz-linear-gradient(bottom, #EDEDED 35%, #D7D7D7 100%);
+    background-image: -webkit-linear-gradient(bottom, #EDEDED 35%, #D7D7D7 100%);
+    background-image: -ms-linear-gradient(bottom, #EDEDED 35%, #D7D7D7 100%);
+    background-image: linear-gradient(to bottom, #EDEDED 35%, #D7D7D7 100%);
+}
+.navbar-top-row {
+    height: @barHeight;
+    border-top: 1px solid @colorLightGrey;
+    border-bottom: 1px solid @colorLightGrey;
+}
+.navbar-top-item {
+    border-right: 1px solid @colorLightGrey;
+    height: @barHeight;
+    position: relative;
+    top: -1px;
+    float: left;
+}
+.menu-switcher {
+    width: @barHeight;
+    margin-left: -15px;
+    cursor: pointer;
+    background: url("../images/menu-icon.png") no-repeat scroll center center transparent;
+}
+.logo {
+    padding: 18px 40px 0;
+
+    a, img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+.lang-switcher {
+    float: right;
+    margin-top: 27px;
+    background-color: #736f6e;
+    border-radius: 3px;
+
+    a {
+        font-size: 1.2em;
+        padding: 4px 12px;
+        text-decoration: none;
+        color: #333;
+        float: left;
+        line-height: 1em;
+        border-radius: 3px;
+        text-transform: uppercase;
+    }
+    .other {
+        background-color: #736f70;
+        .font-weight-light;
+//        border: 1px solid #736f70;
+    }
+    .current {
+        border-top: 1px solid #9e9e9e;
+        border-left: 1px solid #666565;
+        border-bottom: 1px solid #666565;
+        border-right: 1px solid #666565;
+        position: relative;
+        top: -1px;
+        background-color: #ebebeb;
+        font-style: italic;
+        .font-weight-bold;
+        cursor: default;
+    }
+
+}
+
+/**
+ * Side Menu
+ */
+
+.menu-grey-gradient {
+
+    background-image: -webkit-gradient(
+        linear,
+        right bottom,
+        left bottom,
+        color-stop(0, #525254),
+        color-stop(1, #2B292E)
+    );
+    background-image: -o-linear-gradient(left, #525254 0%, #2B292E 100%);
+    background-image: -moz-linear-gradient(left, #525254 0%, #2B292E 100%);
+    background-image: -webkit-linear-gradient(left, #525254 0%, #2B292E 100%);
+    background-image: -ms-linear-gradient(left, #525254 0%, #2B292E 100%);
+    background-image: linear-gradient(to left, #525254 0%, #2B292E 100%);
+}
+
+@submenuPaddingWidth: 1em;
+@menuItemPaddingTop: .8em;
+@menuItemPaddingRight: 1em;
+@menuItemPaddingBottom: .57em;
+@menuItemPaddingLeft: 1em;
+@menuItemPadding: @menuItemPaddingTop @menuItemPaddingRight @menuItemPaddingBottom @menuItemPaddingLeft;
+
+.side-menu {
+    .font-weight-light;
+    position: fixed;
+    padding-top: @barBorderHeight;
+    top: @barHeight;
+    left: -230px;
+    width: 220px;
+    z-index: 1000;
+    box-shadow: 4px @barBorderHeight #17151a;
+    .menu-grey-gradient;
+
+    .menu {
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style-type: none;
+            font-size: 1.278em;
+            letter-spacing: 1px;
+
+            a {
+                border-top: 2px solid #555;
+                display: block;
+                padding: @menuItemPadding;
+                color: @colorLightGrey;
+                text-decoration: none;
+            }
+            @media (max-height: 770px) {
+                a {
+                    font-size: 0.778em;
+                    padding-top: @menuItemPaddingTop * 0.66;
+                    padding-bottom: @menuItemPaddingBottom * 0.66;
+                }
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+        li:first-child a {
+            border-top: 0 none;
+        }
+        .current-menu-item>a {
+            border-top-color: #9c254f;
+            background-color: #701236;
+            background-image: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                color-stop(0.2, #941043),
+                color-stop(1, #701236)
+            );
+            background-image: -o-linear-gradient(bottom, #941043 20%, #701236 100%);
+            background-image: -moz-linear-gradient(bottom, #941043 20%, #701236 100%);
+            background-image: -webkit-linear-gradient(bottom, #941043 20%, #701236 100%);
+            background-image: -ms-linear-gradient(bottom, #941043 20%, #701236 100%);
+            background-image: linear-gradient(to bottom, #941043 20%, #701236 100%);
+        }
+        .sub-menu {
+            padding-left: 0;
+            li {
+                font-size: 0.870em;
+                border-top: 2px solid #555;
+                padding-left: @submenuPaddingWidth;
+                a {
+                    border-top: 0 none;
+                    border-bottom: 0 none;
+                    position: relative;
+                }
+                a:before {
+                    content: "";
+                    position: absolute;
+                    left: -@submenuPaddingWidth;
+                    top: 0;
+                    width:@submenuPaddingWidth;
+                    height: 100%;
+                    background-color: #1b1a1c;
+                }
+            }
+        }
+        .custom-stuff {
+            padding: @menuItemPadding;
+            padding-top: 35px;
+            overflow: hidden;
+            border-top: 2px solid #555;
+
+            a {
+                display: block;
+                float: left;
+                width: 32px;
+                height: 32px;
+                margin-right: 30px;
+                border: 0 none !important;
+                padding: 0 !important;
+                background: none no-repeat scroll left top transparent;
+            }
+            a:last-child {
+                margin-right: 0;
+            }
+            .icon-search {
+                background-image: url(../images/menu-icon-search.png);
+            }
+            .icon-comment {
+                background-image: url(../images/menu-icon-comment.png);
+            }
+            .icon-map {
+                background-image: url(../images/menu-icon-map.png);
+            }
+        }
+    }
+}
+.side-menu.shown {
+    left: 0;
+}
+
+// Media adjustments
+
+@media (max-width: 768px) {
+    @xsCoeff: 2;
+
+    body.fixed-top-bar {
+        /** Padding for fixed top panel */
+        padding-top: (@barHeight / @xsCoeff) + @barBorderHeight;
+    }
+    .navbar-top {
+        height: (@barHeight / @xsCoeff) + @barBorderHeight;
+    }
+    .navbar-top-row {
+        height: (@barHeight / @xsCoeff);
+    }
+    .navbar-top-item {
+        height: (@barHeight / @xsCoeff);
+    }
+    .menu-switcher {
+        width: (@barHeight / @xsCoeff);
+        background-size: 100% / @xsCoeff;
+    }
+    .logo {
+        padding: 8px (40px / @xsCoeff);
+        height: 100%;
+        img {
+            max-height: 100%;
+            width: auto;
+        }
+    }
+    .lang-switcher-holder {
+        margin-left: -15px;
+        margin-right: -15px;
+        text-align: center;
+    }
+    .lang-switcher {
+        margin: 6px auto 0;
+        float: none;
+        display: inline-block;
+        a {
+            font-size: 1em;
+            padding: 4px 8px;
+        }
+    }
+    .side-menu {
+        top: @barHeight / @xsCoeff;
+    }
+}
+@media (min-width: 768px) {
+}
+// Desktop, md
+@media (min-width: 992px) {
+}
+// Large Desktop, lg
+@media (min-width: 1200px) {
+}
+// Very large Desktop
+@media (min-width: 1600px) {
+}

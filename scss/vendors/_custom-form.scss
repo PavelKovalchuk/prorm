@@ -1,0 +1,320 @@
+/* custom select styles */
+.jcf-select {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    border: 1px solid #c2bebf;
+    color: #c2bebf;
+    background: #fff;
+    min-width: 370px;
+    height: 46px;
+    @include media('<tablet') {
+        min-width: 100px;
+    }
+    @include media('<phone') {
+    }
+}
+
+#pro_dynamics_version + .jcf-select,
+#pro_prorm_product + .jcf-select{
+     width: 100%;
+}
+
+.jcf-select select {
+    z-index: 1;
+    left: 0;
+    top: 0;
+}
+
+.input-holder .invalid .jcf-select{
+    border: 1px #a1113f solid;
+} 
+
+.jcf-select .jcf-select-text {
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: default;
+    display: block;
+    font-size: 25px;
+    line-height: 1.6;
+    margin: 0 48px 0 10px;
+    @include media('<tablet') {
+        font-size: 22px;
+        line-height: 1.8;
+    }
+}
+.jcf-select .jcf-select-opener {
+    position: absolute;
+    text-align: center;
+    width: 48px;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    &:before{
+        content:"";
+        position: absolute;
+        border-color:  #c2bebf transparent transparent transparent;
+        border-width: 7px 7px 0 7px;
+        border-style: solid;
+        top: 50%;
+        left: 50%;	
+        transform: translate(-50%,-50%);
+    }
+}
+#software-button-opener {
+    position: absolute;
+    text-align: center;
+    width: 48px;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    &:before{
+        content:"";
+        position: absolute;
+/*        border-color:  #c2bebf transparent transparent transparent;
+        border-width: 7px 7px 0 7px;*/
+        border-style: solid;
+        top: 50%;
+        left: 50%;	
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(20px, -10px);
+        border-width: 20px 11px 0 11px;
+        border-color: #fff transparent transparent transparent;
+        margin-top: 6px;
+    }
+    @include media('<phone') {
+        width: 28px;
+    }
+}
+#links{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 0 48px 0 10px;
+    position: relative;
+    margin: 0 20px 0 0;
+    @include media('<phone') {
+        padding: 0 28px 0 5px;
+    }
+}
+#software-button{
+    position: initial;
+}
+.software-hidden{
+    opacity: 0;
+    transition: all 1s linear;
+    height: 0;
+}
+.software-visible{
+    opacity: 1;
+    transition: all 1s linear;
+}
+.software-block-outer{
+    position: relative;
+}
+#software-block{
+    position: absolute;
+    left: 28%;
+    top: 70px;
+    width: 400px;
+    
+    li.jcf-option{
+        a{
+            text-decoration: none;
+        }
+    }
+    @include media('<desktop') {
+        top: 105px;
+        left: 0;
+        width: 100%;
+    }
+    @include media('<tablet') {
+        position: relative;
+        top: 0;
+    }
+    @include media('<phone') {
+        
+    }
+}
+.homepage .jcf-list#software-block ul li:first-child{
+    border-bottom: 1px solid #fff;
+}
+
+body > .jcf-select-drop {
+    position: absolute;
+    margin: -1px 0 0;
+    z-index: 9999;
+}
+body > .jcf-select-drop.jcf-drop-flipped {
+    margin: 1px 0 0;
+}
+.jcf-select .jcf-select-drop {
+    position: absolute;
+    margin-top: 0px;
+    z-index: 9999;
+    top: 100%;
+    left: -1px;
+    right: -1px;
+}
+.jcf-select .jcf-drop-flipped {
+    bottom: 100%;
+    top: auto;
+}
+.jcf-select-drop .jcf-select-drop-content {
+    border: 1px solid #c2bebf;
+}
+/* multiple select styles */
+.jcf-list-box {
+    overflow: hidden;
+    display: inline-block;
+    border: 1px solid #b8c3c9;
+    min-width: 200px;
+    margin: 0 15px;
+}
+/* select options styles */
+.jcf-list {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    background: #fff;
+    line-height: 14px;
+    font-size: 25px;
+    width: 100%;
+}
+.jcf-list .jcf-list-content {
+    vertical-align: top;
+    display: inline-block;
+    overflow: auto;
+    width: 100%;
+}
+.jcf-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.jcf-list ul li {
+    overflow: hidden;
+    display: block;
+}
+.jcf-list .jcf-overflow {
+    overflow: auto;
+}
+.jcf-list .jcf-option {
+    overflow: hidden;
+    cursor: default;
+    display: block;
+    padding: 16px 9px;
+    color: #a5a3a3;
+    height: 1%;
+    transition: all 0.2s;
+}
+.jcf-list .jcf-disabled {
+    background: #fff !important;
+    color: #aaa !important;
+}
+.jcf-select-drop .jcf-hover,
+.jcf-list-box .jcf-selected {
+    background: #e6e6e6;
+    color: #000;
+}
+.jcf-list .jcf-optgroup-caption {
+    white-space: nowrap;
+    font-weight: bold;
+    display: block;
+    padding: 5px 9px;
+    cursor: default;
+    color: #000;
+}
+.jcf-list .jcf-optgroup .jcf-option {
+    padding-left: 30px;
+}
+
+
+
+/* custom checkbox styles */
+.jcf-checkbox {
+    vertical-align: middle;
+    display: inline-block;
+    position: absolute;
+    cursor: pointer;
+    overflow: hidden;
+    border: 3px solid #c2bebf;
+    height: 18px;
+    width: 18px;
+    transition: all 0.2s;
+
+}
+.jcf-checkbox span{
+    position:absolute;
+    display:none;
+    height:100%;
+    width:100%;
+    top:50%;
+    left:50%;
+    margin:-7px 0 0 -6px;
+    border:3px solid #777;
+    border-width:0 0 3px 3px;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865483, M12=0.7071067811865467, M21=-0.7071067811865467, M22=0.7071067811865483, SizingMethod='auto expand')";
+}
+:root .jcf-checkbox span {display: none;}
+.jcf-checkbox input[type="checkbox"] {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+}
+.jcf-checkbox.jcf-checked{
+    border-color: #9b0c46;
+    background: #9b0c46;
+    span{
+        // display: block;
+    }
+}
+/* custom radio styles */
+.jcf-radio {
+    vertical-align: middle;
+    display: inline-block;
+    border: 3px solid #c2bebf;
+    height: 18px;
+    width: 18px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+    span{
+        display:none;
+        position:absolute;
+        top:0px;
+        left:0px;
+        right:0px;
+        bottom:0px;
+        background:#9b0c46;
+    }
+    input[type="radio"] {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border: 0;
+        margin: 0;
+        left: 0;
+        top: 0;
+    }
+    &.jcf-checked {
+        border-color: #9b0c46;
+        background: #9b0c46;
+        span {
+            display:block;
+        }
+    }
+    .input-error & {
+        border-color: #9b0c46;
+    }
+}
+
+

@@ -1,0 +1,13 @@
+.prormform-settings input[type="text"],
+.prorm-settings input[type="text"] {
+    width: 70%;
+}
+.prormform-settings textarea,
+.prorm-settings textarea {
+    width: 70%;
+}
+
+.prormform-settings textarea {
+    height: 200px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkbWluLXN0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7SUFFSSxXQUFXO0NBQ2Q7QUFDRDs7SUFFSSxXQUFXO0NBQ2Q7O0FBRUQ7SUFDSSxjQUFjO0NBQ2pCIiwiZmlsZSI6ImFkbWluLXN0eWxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wcm9ybWZvcm0tc2V0dGluZ3MgaW5wdXRbdHlwZT1cInRleHRcIl0sXHJcbi5wcm9ybS1zZXR0aW5ncyBpbnB1dFt0eXBlPVwidGV4dFwiXSB7XHJcbiAgICB3aWR0aDogNzAlO1xyXG59XHJcbi5wcm9ybWZvcm0tc2V0dGluZ3MgdGV4dGFyZWEsXHJcbi5wcm9ybS1zZXR0aW5ncyB0ZXh0YXJlYSB7XHJcbiAgICB3aWR0aDogNzAlO1xyXG59XHJcblxyXG4ucHJvcm1mb3JtLXNldHRpbmdzIHRleHRhcmVhIHtcclxuICAgIGhlaWdodDogMjAwcHg7XHJcbn0iXX0= */

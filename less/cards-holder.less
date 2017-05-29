@@ -1,0 +1,188 @@
+/**
+ * Cards Holder
+ */
+
+@cardTransformWidth: 600px;
+
+.cards-holder {
+    box-sizing: content-box;
+    border-bottom: 25px solid @colorRed;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #940f46;
+
+    .card {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        display: none;
+        font-size: 1em;
+
+        .card-bg-small {
+            background: none no-repeat scroll center top transparent;
+            background-size: cover;
+            width: 100%;
+        }
+        .card-bg {
+            background: none no-repeat scroll center top transparent;
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            box-shadow: 0 0 50px #000;
+
+            .container {
+                max-width: 100%;
+            }
+        }
+        .card-bg.no-bg {
+            left: 0;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .pro-btn {
+            font-size: 1.333em;
+        }
+    }
+    .container, .row, .card-col {
+        height: 100%;
+    }
+    .card.active {
+        display: block;
+    }
+    h1 {
+        font-size: 4em;
+    }
+    .text-holder {
+        font-size: 1.556em;
+        .font-weight-thin;
+        font-style: italic;
+    }
+    strong, b {
+        .font-weight-normal;
+    }
+    .cards-switcher {
+        position: absolute;
+        right: 15%;
+        bottom: 33px;
+
+        .card-point {
+            background-color: #fff;
+            opacity: .5;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+            box-shadow: 0px 1px 4px #555;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .cards-switcher {
+            right: 20%;
+        }
+    }
+    @media (min-width: 1700px) {
+        .cards-switcher {
+            right: 23%;
+        }
+    }
+}
+
+// Image should be 540x1600
+
+// Extra small and Tablet, sm
+// @media (min-height: 400px) {
+@media (min-height: 0) {
+    .cards-holder { height: 250px; font-size: .6em !important; }
+    @media (min-width: (@cardTransformWidth + 1px)) {
+        .text-holder { display: none; }
+    }
+}
+@media (min-height: 500px) {
+    .cards-holder { height: 300px; font-size: .55em !important; }
+    .text-holder { display: block; }
+//    .text-holder p { display: none; }
+//    .text-holder p:first-child { display: block; }
+}
+@media (min-height: 600px) {
+    .cards-holder { height: 350px; font-size: .63em !important; }
+//    .text-holder p { display: block; }
+}
+@media (min-height: 700px) {
+    .cards-holder { height: 440px; font-size: .8em !important; }
+}
+@media (min-height: 800px) {
+    .cards-holder { height: 540px; font-size: .85em !important; }
+}
+@media (min-height: 900px) {
+    .cards-holder { height: 540px; font-size: .85em !important; }
+}
+
+
+
+@media (max-width: @cardTransformWidth) {
+    .cards-holder {
+        height: auto;
+        background-color: transparent;
+        border-bottom: 0;
+        .card {
+            height: auto    ;
+        }
+    }
+    .card-bg {
+        background: none transparent !important;
+        position: relative !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        left: 0 !important;
+        box-shadow: 0 0 0 transparent !important;
+    }
+}
+
+/**
+ * Customizing cards depending on class name from admin
+ */
+.cards-holder {
+    @media (min-width: (@cardTransformWidth + 1px)) {
+        .card-1 {
+            h1 {
+                color: #fff;
+                margin: .8em 0 .5em;
+                width: 62%;
+            }
+            .text-holder {
+                color: #fff;
+                width: 45%;
+            }
+            .text-holder {
+                p, h2, h3, h4 {
+                    margin: 0 0 .8em;
+                }
+            }
+        }
+    }
+    @media (min-width: (@cardTransformWidth + 1px)) {
+        .card-2 {
+            h1 {
+                margin: .5em 0 .4em;
+            }
+            .text-holder {
+                width: 800px;
+            }
+            .text-holder p {
+                margin: 0 0 .8em;
+            }
+            .pro-btn {
+                position: absolute;
+                bottom: 2em;
+            }
+        }
+    }
+}

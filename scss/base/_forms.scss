@@ -1,0 +1,1024 @@
+// forms
+
+form,
+fieldset {
+	margin: 0;
+	padding: 0;
+	border-style: none;
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+//input[type='url'],
+// input[type='date'],
+textarea {
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	box-sizing: border-box;
+	border: none;
+	border: 1px solid $form-element-border-color;
+	padding: $form-element-padding;
+	margin: 0;
+	box-shadow: none;
+	display: block;
+	width: 100%;
+	height: 46px;
+	font-size: 25px;
+	font-weight: 300;
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover, 
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill{
+            -webkit-text-fill-color: #ссс;
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+            background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);  
+        }
+	@include media('<tablet') {
+		font-size: 16px;
+	}
+	&:focus {
+		border-color: $form-element-focus-border-color;
+		outline: none !important;
+	}
+        .valid & {
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover, 
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill{
+                -webkit-text-fill-color: #ссс;
+                -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+                transition: background-color 5000s ease-in-out 0s;
+                /*background:url(images/check.png) no-repeat 98% 15px!important;*/ 
+                background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,174,255,0.04) 50%,rgba(255,255,255,0) 51%,rgba(0,174,255,0.03) 100%);  
+            }
+        }
+
+	@include placeholder {
+		color: $placeholder-color;
+	}
+}
+
+select {
+	-webkit-border-radius: 0;
+	width: 100%;
+	max-width: 370px;
+	color: $light-gray;
+	font-size: 25px;
+	font-weight: 300;
+	height: 46px;
+	padding: 5px 4px;
+	border: 1px solid $form-element-border-color;
+	&:focus {
+		border-color: $form-element-focus-border-color;
+		outline: none !important;
+	}
+	option{
+		font-weight: 300;
+		color: $black;
+	}
+}
+
+textarea {
+	resize: none;
+	vertical-align: top;
+	height: 120px;
+}
+
+button,
+input[type='button'],
+input[type='reset'],
+input[type='file'],
+input[type='submit'] {
+	-webkit-appearance: none;
+	// -webkit-border-radius: 0;
+	cursor: pointer;
+}
+
+button[type='submit'],
+input[type='submit']{
+	background: none;
+	letter-spacing: 2px;
+	padding: 7px 10px 9px;
+	margin: 0;
+	font-weight: 300;
+	@extend %transition;
+}
+
+.input-error{
+	position: relative;
+	input{
+		border-color: $vinous;
+	}
+}
+
+input[type="checkbox"],
+input[type="radio"]{
+	cursor: pointer;
+}
+
+
+.ph-move{
+    
+/*    input{
+        text-indent: 0px;
+    }
+    
+    input[type='text']:focus{
+        text-indent: 0px;
+    }*/
+    
+    input[placeholder]          {text-overflow:ellipsis;}
+    input::-moz-placeholder     {text-overflow:ellipsis;} 
+    input:-moz-placeholder      {text-overflow:ellipsis;} 
+    input:-ms-input-placeholder {text-overflow:ellipsis;}
+    
+    textarea:focus::-webkit-input-placeholder {color: transparent}
+    textarea:focus::-moz-placeholder          {color: transparent}
+    textarea:focus:-moz-placeholder           {color: transparent}
+    textarea:focus:-ms-input-placeholder      {color: transparent}
+    
+    input:focus::-webkit-input-placeholder {color: transparent}
+    input:focus::-moz-placeholder          {color: transparent}
+    input:focus:-moz-placeholder           {color: transparent}
+    input:focus:-ms-input-placeholder      {color: transparent}
+    
+/*    input::-webkit-input-placeholder       {text-indent: 0px;   transition: text-indent 0.3s ease;}
+    input::-moz-placeholder                {text-indent: 0px;   transition: text-indent 0.3s ease;}
+    input:-moz-placeholder                 {text-indent: 0px;   transition: text-indent 0.3s ease;}
+    input:-ms-input-placeholder            {text-indent: 0px;   transition: text-indent 0.3s ease;}
+    
+    input[placeholder]:focus {text-indent: -200px; transition: text-indent 0.7s ease;}
+
+    input:focus::-webkit-input-placeholder {text-indent: -200px; transition: text-indent 0.7s ease;}
+    input:focus::-moz-placeholder          {text-indent: -200px; transition: text-indent 0.7s ease;}
+    input:focus:-moz-placeholder           {text-indent: -200px; transition: text-indent 0.7s ease;}
+    input:focus:-ms-input-placeholder      {text-indent: -200px; transition: text-indent 0.7s ease;}*/
+    
+    .input-col ::-webkit-input-placeholder {color:$gray; opacity: 0.7;}
+    .input-col ::-moz-placeholder          {color:$gray; opacity: 0.7;}/* Firefox 19+ */
+    .input-col :-moz-placeholder           {color:$gray; opacity: 0.7;}/* Firefox 18- */
+    .input-col :-ms-input-placeholder      {color:$gray; opacity: 0.7;}
+    
+}
+
+
+
+
+
+
+
+.form-block{
+    .form-holder{
+        @include media('<tablet') {
+            max-width: 100%;
+            
+        }
+        
+    }
+}
+
+
+#contact-client {
+    
+    float: left;
+    width: 100%;
+    position: relative;
+    display: block;
+    
+    .left-f-block, .right-f-block{
+        display: block;
+        float: left;
+        width: 50%;
+        @include media('<tablet') {
+             width: 100%;
+
+        }
+    }
+    
+    .left-f-block{
+        padding-right: 15px;
+        @include media('<tablet') {
+            padding-right: 0px;
+
+        }
+    }
+    
+    .right-f-block{
+        
+        padding-left: 15px;
+        
+        @include media('<tablet') {
+            padding-left: 0px;
+
+        }
+    }
+    
+    
+    .textarea-holder {
+        padding: 0px 0 15px;
+    }
+    
+    textarea.contact_notes{
+        height: 110px;
+    }
+    
+    
+    .field-holder{
+        
+        margin: 0 0 0 0;
+        float: left;
+        width: 100%;
+        
+        .input-col{
+            margin: 35px 0 0 00px;
+            position: relative;
+            @include media('<tablet') {
+/*                margin: 10px 20px 0 0px;*/
+
+            }
+        }
+        
+                
+        .select-group{
+           
+            margin: 35px 0 0 00px;
+            position: relative;
+            @include media('<tablet') {
+                /*padding: 10px 20px 0 20px;*/
+
+            }
+            
+            .jcf-option-hideme{
+                font-size: 0.8em;
+            }
+            
+            .jcf-option{
+                font-size: 0.7em;
+                line-height: 1.1em;
+                
+                &.jcf-hover{
+                    font-size: 0.7em;
+                }
+            }
+            
+            .jcf-select{
+/*                padding: 0;
+                font-size: 1em;
+                height: 1.2em;*/
+                min-width: auto;
+                .jcf-select-text{
+                    /*line-height: 1.2;*/
+                    margin: 0 50px 0 10px;
+                    span{
+                        font-size: 0.8em;
+                        color: #999;
+                    }
+                }
+                
+            }
+                  
+        }
+        
+        .radio-block{
+            padding: 10px 0 0 30px;
+            .error-message{
+                padding-left: 30px;
+            }
+            @include media('<tablet') {
+                padding: 10px 20px 0 20px;
+
+            }
+        }
+     
+    }
+    
+    label.floated, label[for].floated{
+        position: absolute;
+        left: 35px;
+        top: 0px;
+        color: #999;
+        font-size: 20px;
+        line-height: 42px;
+        display: inline-block;
+        padding: 0px 10px;
+        font-weight: 400;
+        background-color: rgba(255,255,255,0);
+        pointer-events: none;
+        -moz-transition: color 0.3s, top 0.3s, background-color 0.8s;
+        -o-transition: color 0.3s, top 0.3s, background-color 0.8s;
+        -webkit-transition: color 0.3s, top 0.3s, background-color 0.8s;
+        transition: color 0.3s, top 0.3s, background-color 0.8s, font-size 0.3s, line-height 0.3s;
+        &.active{
+                top: -9px;
+                color: #555;
+                background-color: rgba(255,255,255,1);
+                font-size: 14px;
+                line-height: 1;
+                /*background-color: transparent;*/
+        }
+    }
+    
+    .check-row.check-variant{
+        display: inline-block;
+        margin: 0 0 0 10px;
+        /*width: 100px;*/
+        text-align: right;
+        padding: 0 0 0px 40px;
+        
+        @include media('<hd-screen') {
+            font-size: 1.3em;
+        }
+        
+        @include media('<tablet') {
+            display: block;
+            text-align: left;
+            margin: 0 0 25px 0;
+        }
+        
+        label{
+            position: static;
+        }
+        
+        p{
+            font-size: 23px;
+        }
+        
+        .jcf-radio{
+            top: 5px;
+            left: 0px;
+            height: 20px;
+            width: 20px;
+        }
+        
+        &:first-of-type{
+            margin: 0 0 0 0px;
+            padding: 0 0 0px 40px;
+            .jcf-radio{
+                left: 0px;
+                
+            }
+            
+            @include media('<tablet') {
+                margin: 0 0 25px 0;
+            }
+        }
+        
+        p{
+            @include media('<tablet') {
+                font-weight: 400;
+                font-size: 0.8em;
+
+            }
+        }
+        
+    }
+    
+    .form-info.input-col{
+        margin: 0;
+        p{
+            font-size: 0.7em;
+            margin: 0px 0 20px;
+        }
+    
+    } 
+    label[for]{
+        font-weight: 400;
+        font-size: 0.9em;
+    }
+    
+    label[for = 'before']{
+       
+    }
+    
+    input[type=text], input[type=email], textarea, .jcf-select{
+/*        width: 80%;
+        transition: all 0.30s ease-in-out;
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;*/
+        outline: none;
+        padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;
+        font-size: 1.2em;
+        
+        @include media('<tablet') {
+/*            width: 100%;
+            transition: none;
+            -webkit-transition: none;
+            -moz-transition: none;
+            -ms-transition: none;
+            -o-transition: none;*/
+        }
+    }
+    
+    input[type=text], input[type=email], .jcf-select{
+        height: 46px;
+    }
+    
+    input[type=text]:focus, input[type=email]:focus, textarea:focus 
+     {
+        width: 100%;
+        box-shadow: 0 0 7px #454444;
+        padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;
+    }
+    
+    .jcf-select.jcf-drop-active.jcf-focus{
+        width: 100%;
+        box-shadow: 0 0 7px #454444;
+        
+        @include media('<tablet') {
+/*            transition: none;
+            -webkit-transition: none;
+            -moz-transition: none;
+            -ms-transition: none;
+            -o-transition: none;*/
+        }
+        
+        .jcf-select-drop-content{
+/*            width: calc(120% + 18px);
+            
+             transition: all 0.30s ease-in-out;
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;*/
+            
+            @include media('<tablet') {
+/*                width: 100%;
+                transition: none;
+                -webkit-transition: none;
+                -moz-transition: none;
+                -ms-transition: none;
+                -o-transition: none;*/
+
+            }
+        }
+    }
+    
+    .jcf-select-drop-content{
+        width: 100%;
+        box-shadow: 0 0 7px #454444;
+        padding: 0;
+        margin: 5px 0 0 0;
+         transition: all 0.30s ease-in-out;
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+    }
+    
+    .recaptcha-outer{
+        .error-message{
+            bottom: 5px;
+            right: 0;
+            top: auto;
+        }
+        &.recaptcha-outer-left{
+            text-align: left;
+        }
+        &.recaptcha-outer-right{
+            text-align: right;
+            @include media('<phone') {
+                text-align: left;
+            } 
+        }
+    }
+    
+    .field-holder-recaptcha{
+        display: none;
+    }
+    
+    .error-message{
+        bottom: -20px;
+        top: auto;
+        font-size: 14px;
+    }
+    
+    .valid{
+        .jcf-select-text:after{
+            content: "";
+            width: 17px;
+            height: 19px;
+            background: url(images/check.png) no-repeat;
+            top: 5px;
+            right: 36px;
+            position: absolute;
+            display: inline-block;
+        }
+    }  
+    
+    .valid{
+        input[type=text]:focus + label, 
+        input[type=email]:focus + label, 
+        textarea:focus + label{
+            right: 10px;
+            bottom: 15px;
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+        }
+        
+    }
+    
+    .valid{
+        input[type=text] + label, 
+        input[type=email] + label, 
+        textarea + label{
+            right: 0;
+            top: 0;
+            bottom: 0;
+/*             -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;*/
+        }
+        
+    }
+    
+    .invalid{
+        input[type=text], input[type=email], textarea,
+        .g-recaptcha iframe, .jcf-select{
+            box-shadow: 0 0 7px $vinous;
+            width: 100%;
+        }
+        
+        .jcf-select{
+            border-color: $vinous;
+        }
+        
+        .jcf-radio{
+            box-shadow: 0 0 7px $vinous;
+            border: 1px solid $vinous;
+        }
+        
+    }
+    
+    .btn-holder{
+        padding: 0;
+        text-align: right;
+        float: left;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        
+        button{
+            margin-right: 0;
+        }
+        @include media('<tablet') {
+            padding: 0px 10% 0 10%;
+            text-align: center;
+
+        }
+    }
+    
+    
+    
+    .row-f-block{
+        float: left;
+        width: 100%;
+        
+        display: flex;
+        align-items: baseline;
+    }
+    
+    .button-prorm.disabled, .button-prorm[disabled] {
+        cursor: default;
+        background-image: none;
+        opacity: 0.65;
+        filter: alpha(opacity=65);
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        color: #333;
+        background-color: #E6E6E6;
+    }
+    
+    
+    
+   
+}
+
+#register-webinar{
+    
+   @extend #contact-client;
+    
+    input[type=text], input[type=email], textarea{
+        width: 100%;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        outline: none;
+
+    }
+    
+    .field-holder{
+        
+        .input-col{
+           /*padding: 10px 0 0 0px;*/
+           position: relative;
+           @include media('<tablet') {
+                /*padding: 10px 0px 0 0px;*/
+
+            }
+        }
+        
+        .radio-block{
+            /*padding: 10px 0 0 0px;*/
+        }
+    }
+    
+    
+    .btn-holder{
+        padding: 0;
+        text-align: right;
+       
+    }
+    
+    .loader{
+        right: 0;
+        top: -35px;
+    }
+    
+    .recaptcha-outer{
+        .error-message{
+            right: 0;
+            
+        }
+    }
+    
+    .valid{
+        input[type=text] + label, 
+        input[type=email] + label, 
+        textarea + label{
+            right: 0%;
+            bottom: 15px;
+             -webkit-transition: none;
+            -moz-transition: none;
+            -ms-transition: none;
+            -o-transition: none;
+        }
+        
+        input[type=text]:focus + label, 
+        input[type=email]:focus + label, 
+        textarea:focus + label{
+            -webkit-transition: none;
+            -moz-transition: none;
+            -ms-transition: none;
+            -o-transition: none;
+        }
+        
+    }
+}
+
+
+
+.subscribe-outer{
+    position: relative;
+    float: left;
+    width: 100%;
+    
+    @include media('<desktop') {
+        /*float: left;*/
+        width: 80%;
+        margin: 0 10%;
+    }
+    @include media('<tablet') {
+        /*width: 100%;*/
+        
+    }
+    
+    @include media('<phone') {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+#subscribe-news{
+    
+    @extend #contact-client;
+    
+    &.line-type{
+        height: 145px;
+        display: table;
+        
+        @include media('<desktop') {
+            display: block;
+            height: 100%;
+        }
+        
+        .recaptcha-outer{
+            .error-message{
+                right: 0;
+                
+                @include media('<desktop') {
+                    right: auto;
+                    text-align: left;
+                    left: 30px;
+                }
+                
+                @include media('<tablet') {
+                    
+                    left: 0px;
+                }
+            }
+        }
+        
+       
+     
+    }
+    
+    @include media('<desktop') {
+        float: none;
+    }
+   
+    .field-holder{
+        margin: 20px 0 0 0;
+        
+        
+        .input-col{
+           padding: 0px;
+           margin: 0px 0 0 0px;
+        }
+        
+        &.line-type{
+          
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0 0 0 0;
+            float: none; 
+            
+            @include media('<desktop') {
+                display: block;
+                margin: 15px 0 0 0;
+            }
+            
+            &.field-holder-name{
+                width: 35%;
+                @include media('<desktop') {
+                    width: 100%;
+                }
+            }
+            &.field-holder-email{
+                width: 40%;
+                @include media('<desktop') {
+                    width: 100%;
+                }
+            }
+            &.field-holder-recaptcha{
+                display: none;
+            }
+            
+            .error-message{
+                color: $white;
+                text-align: right;
+            }
+            
+            input[type=text], input[type=email]{
+                 
+                height: 34px;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            
+            input[type=text]:focus, input[type=email]:focus, textarea:focus {
+                width: 100%;
+                box-shadow: 0 0 11px $white;
+               
+            }
+            
+            label.floated{
+                line-height: 34px;
+                
+                &.active{
+                    line-height: 1;
+                }
+            }
+            
+            .input-col{
+                padding: 0px;
+                margin: 0 5px 0;
+            }
+            
+           
+        }
+    }
+   
+    .btn-holder{
+        margin: 20px 0 0 0;
+        
+        &.line-type{
+            
+            width: 25%;
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0 0 0 0;
+            text-align: left;
+            padding: 0;
+            float: none; 
+            
+            @include media('<desktop') {
+                width: 100%;
+                display: block;
+                margin: 15px 0px 15px 0px;
+                padding: 0px 5px 0px 5px;
+                
+               
+            }
+            
+            
+            
+            
+            
+            button{
+                border-radius: 0;
+                height: 34px;
+                font-size: 18px;
+                font-weight: 300;
+                border: 1px solid #fff;
+                padding: 0.3em 2em;
+                margin: 0 5px 0;
+                
+                @include media('<desktop') {
+                    width: 100%;
+                    margin: 0;
+                }
+                
+                @include media('<tablet') {
+                    
+                    width: 100%;
+                    
+                }
+            }
+            
+            &.button-move-down{
+                display: block; 
+                height: auto;
+                margin: -25px 0 0 5px;
+                position: relative;
+                transition: margin-top ease 0.3s, height ease 0.1s;
+                width: 100%;
+                
+                @include media('<desktop') {
+                    margin: -33px 0 0px 5px;
+                }
+                
+                @include media('<phone') {
+                     margin: -33px 0 0px 0px;
+                }
+            }
+            
+            .loader{
+                right: 20%;
+                top: 0;
+                @include media('<desktop') {
+                    top: -10px;
+                }
+                @include media('<tablet') {
+                    right: 0;
+                }
+            }
+            
+        }
+        
+        .loader{
+            right: 5%;
+            top: 0;
+            @include media('<desktop') {
+                top: 0;
+                right: 5%;
+            }
+            @include media('<tablet') {
+                top: -35px;
+                right: 20%;
+            }
+        }
+
+    }
+   
+   .subscribe-outer{
+        position: relative;
+        /*float: left;*/
+   }
+   
+}
+
+
+
+
+
+#get-demo{
+    
+   @extend #register-webinar;
+   
+}
+
+#meeting{
+    
+   @extend #contact-client;
+   
+   .events-holder{
+       
+       margin-bottom: 30px;
+       
+       .check-row.check-variant{
+            text-align: left;
+            margin-left: 0;
+
+            p{
+                margin: 0 0 20px;
+                font-weight: 300;
+                text-align: justify;
+            }
+            .jcf-radio{
+                top: 10px;
+            }
+            
+            .highlight{
+                @include media('<hd-screen') {
+                    font-size: inherit;
+                }
+            }
+       }
+    
+       
+   }
+   
+    .field-holder .radio-block{
+         padding: 0;  
+    }
+      
+       
+       
+ 
+}
+
+#support{
+    
+    @extend #contact-client;
+    
+    .products-holder{
+        /*padding: 10px 0 5px;*/
+    }
+    
+    .field-holder{
+        
+        .radio-block{
+            margin-top: 35px;
+            padding: 0px 0 0 30px;
+        }
+        
+        
+        &:first-of-type{
+            .select-group{
+                margin-top: 0;
+            }
+        }
+        
+    } 
+    
+    
+    
+    
+    .fastviewer-outer{
+        
+        @include media('<tablet') {
+            padding-top: 25px;
+        }
+        
+        
+        .fastviewer-inner{
+            margin: 0;
+        }
+        
+        .fastviewer-link{
+            display: block;
+            text-decoration: none;
+            @include media('<tablet') {
+                text-align: center;
+            }
+        }
+        
+        .fastviewer-text{
+            text-decoration: underline;
+            display: inline-block;
+            vertical-align: bottom;
+            margin: 0;
+        }
+        
+    }
+    
+    #support-button{
+        margin-top: 15px;
+    }
+   
+    
+    
+}

@@ -1,0 +1,99 @@
+// Modal window when we submit success form
+.window-overlay {
+    display: none;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    background-color: white(.6);
+    height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    left: 0;
+    overflow-y: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    @media only screen and (min-width: 1281px), only screen and (max-width: 1280px) and (min-width: 901px) {
+        overflow-x: hidden;
+    }
+    @include media('>tablet') {
+        align-items: center;
+    }
+    &.show-modal {
+        display: flex;
+    }
+    .window {
+        background-color: $modal-window-bg;
+        border: 1px solid $modal-window-border;
+        border-radius: 11px;
+        box-shadow: 0 0 10px rgba($black,0.2);
+        display: block;
+        padding: 25px 15px;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        margin-top: 30px;
+        @include media('>tablet') {
+            max-width: 914px;
+            width: auto;
+            margin-top: 0;
+            padding: 62px 96px;
+        }
+        .btn {
+            background: $white;
+            &:hover {
+                background: $btn-border;
+            }
+        }
+        .icon-close {
+            position: absolute;
+            background: $white;
+            padding: 10px;
+            min-width: 0;
+            border-radius: 50%;
+            color: $modal-window-close-color;
+            border-color: $modal-window-close-border;
+            border-width: 1px;
+            box-shadow: 2px 0px 6px rgba($black, 0.2);
+            top: -1px;
+            right: -1px;
+            border-radius: 0 11px 0 0;
+            padding: 9px;
+            font-size: 31px;
+            @include media('>desktop') {
+                top: -27px;
+                right: -25px;
+                border-radius: 50%;
+            }
+            &:hover {
+                background: $modal-window-close-color;
+                color: $white;
+            }
+        }
+        h4 {
+            margin: 0 0 15px;
+            color: $vinius2;
+            @include media('>tablet') {
+                margin-bottom: 26px;
+            }
+        }  
+        img {
+            margin-bottom: 15px;
+            @include media('>tablet') {
+                margin-bottom: 34px;
+            }
+        }
+        p {
+            margin-bottom: 15px;
+            @include media('>tablet') {
+                margin-bottom: 45px;
+            }
+        }
+        .btn-big {
+            padding: 3px 10px 7px;
+        }
+    }
+}

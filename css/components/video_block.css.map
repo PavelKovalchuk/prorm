@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "video_block.css",
+	"sources": [
+		"../../scss/components/video_block.scss"
+	],
+	"mappings": "AAAA,AACI,YADQ,CACR,aAAa,CAAC;EACV,MAAM,EAAE,WAAY;EACpB,SAAS,EAAE,KAAM;EACjB,cAAc,EAAE,IAAK;EACrB,UAAU,EAAE,MAAO,GACtB;;AANL,AAOI,YAPQ,CAOR,SAAS,CAAC;EACN,QAAQ,EAAE,QAAS;EACnB,GAAG,EAAE,GAAI;EACT,SAAS,EAAE,IAAK;EAChB,UAAU,EAAE,IAAK;EACjB,IAAI,EAAE,GAAI;EACV,gBAAgB,EAAE,OAAQ;EAC1B,aAAa,EAAE,CAAE,GACpB",
+	"names": []
+}

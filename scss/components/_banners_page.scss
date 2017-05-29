@@ -1,0 +1,1313 @@
+
+/* 
+    Created on : 20.04.2017, 13:00:02
+    Author     : pkovalchuk
+*/
+
+
+
+
+
+
+/*
+$Banners
+*/
+
+
+
+.banner-block{
+    position: relative;
+    color: #fff;
+    box-shadow: 0 7px 32px 0 rgba(0, 0, 0, .4);
+    min-height: 450px;
+    overflow: hidden;
+    max-width: 2500px;
+    margin: auto;
+    
+    background: url(images/bg/rock-bg.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    
+    @include media('<hd-screen') {
+        min-height: 350px;
+    }
+    @include media('<desktop') {
+        /*min-height: 300px;*/
+    }
+    @include media('<tablet') {
+        
+    }
+    @include media('<phone') {
+        min-height: 350px;
+    }
+    
+       
+    .banner-planet{
+        @extend %banner_el;
+        bottom: 0%;
+               
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        
+        @include media('<hd-screen') {
+            margin-left: 20%;
+            margin-right: 20%;
+            width: 60%;
+        }
+       
+    }
+    
+    .banner-header{
+        @extend %headers_white_left_style;
+                
+        &h1{
+            font-size: 1.6em;
+            font-weight: 400;
+        }
+        
+        &h2{
+            font-size: 1.4em;
+            font-weight: 300;
+        }
+        
+        @include media('<tablet') {
+            font-size: 1.2em;;
+            text-align: center;
+        }
+    }
+    
+    .banner-text{
+        @extend %headers_white_left_style;
+        font-weight: 300;
+        font-size: 1.1em;
+        @include media('<tablet') {
+            font-size: 1.0em;;
+            text-align: center;
+        }
+    }
+    
+    .banner-object{
+        @extend %banner_el;
+        bottom: 0;
+        left: 70%;
+        z-index: 2;
+        
+        @include media('<hdx-screen') {
+            width: 25%;
+            
+        }
+        
+        @include media('<hd-screen') {
+            width: 25%;
+            
+        }
+        
+        @include media('<widescreen') {
+            
+        }
+        
+        @include media('<tablet') {
+/*            width: 50%;*/
+        }
+        @include media('<xs-phone'){
+            display: none;
+        }
+    }
+    
+    .banner-clouds{
+           @extend %banner_el;
+           bottom: 0%;
+           left: 0;
+           right: 0;
+           margin-left: auto;
+           margin-right: auto;
+           opacity: 1;
+           z-index: 2;
+           
+           @include media('<hd-screen') {
+               width: 60%;
+           }
+
+           @include media('<widescreen') {
+   /*                right: 3%;*/
+           }
+
+           @include media('<tablet') {
+               width: 50%;
+           }
+    }
+    
+    .banner-text-block{
+        position: absolute;
+        display: block;
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        width: 70%;
+        padding: 4% 20px 0px 8%;
+        z-index: 2;
+         
+        @include media('<hd-screen') {
+            padding: 1% 20px 0px 8%;
+        }
+        
+        @include media('<tablet') {
+            width: 100%;
+            padding: 10px 5px 0px 5px;
+        }
+        @include media('<phone'){
+            
+        }
+    }
+    
+    .banner-button-outer{
+        position: absolute;
+        height: auto;
+        bottom: 40px;
+        
+        @include media('<tablet') {
+            left: 4%;
+        }
+        
+        @include media('<phone') {
+            bottom: 0px;
+            left: 0;
+            position: relative;
+        }
+        @include media('<xs-phone'){
+            display: none;
+        }
+    }
+    
+    .banner-header-outer{
+        
+        @include media('<tablet') {
+            padding-top: 10px;
+        }
+        @include media('<phone') {
+           
+        }
+    }
+    
+   
+    
+    
+    
+}
+
+.field-service-automation-page{
+    
+     .banner-block{
+        background: url(images/bg/fsa_banner_bg-min.png);
+        background-size: cover;
+        
+/*        .banner_clouds{
+            @extend %banner_el;
+            bottom: 0%;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 1;
+            @include media('<hd-screen') {
+                width: 60%;
+            }
+
+            @include media('<widescreen') {
+                right: 3%;
+            }
+
+            @include media('<tablet') {
+                width: 50%;
+            }
+        }*/
+        
+/*        .banner_object{
+            @include media('<hd-screen') {
+                width: auto;
+            }
+            @include media('<widescreen') {
+                width: 25%;
+            }
+            @include media('<tablet') {
+                width: 30%;
+            }
+        }*/
+   }
+    
+}
+.enterprise-solution-page{
+    .banner-block{
+        background: url(images/bg/es_banner_bg-min.png);
+        background-size: cover;
+        background-attachment: fixed;
+  
+        .banner-clouds-top{
+            @extend %banner_el;
+            top: 0%;
+            margin-left: 0;
+            margin-right: 0;
+            right: 7%;
+            z-index: 2;
+            
+            @include media('<hd-screen') {
+                width: 270px;
+                right: 17%;
+            }
+            @include media('<widescreen') {
+                right: 0%;
+            }
+            @include media('<tablet') {
+               display: none;
+            }
+            
+        }
+        
+        .banner-clouds{
+            @extend %banner_el;
+            bottom: 0%;
+            margin-left: 0;
+            margin-right: 0;
+            right: 0;
+            left: auto;
+            z-index: 4;
+           
+            @include media('<hd-screen') {
+                width: 50%;
+            }
+            @include media('<tablet') {
+                /*width: 50%;*/
+            }
+        }
+        
+        .banner-object{
+            z-index: 3;
+            right: 15%;
+            left: auto;
+            width: 106px;
+            @include media('<hd-screen') {
+                width: 90px;
+            }
+            @include media('<widescreen') {
+                /*width: 70px;*/
+            }
+            
+            @include media('<tablet') {
+                width: 60px;
+            }
+            @include media('<sm-tablet') {
+                display: none;
+            }
+            @include media('<phone') {
+                /*display: none;*/
+            }
+        }
+   }
+   
+   
+}
+
+.fast-start-page{
+    
+    .banner-block{
+        .banner-object{
+            width: 28%;
+        }
+    } 
+    
+}
+
+/*.enterprise-solution-page{
+    .header-page-block{
+        background: url(images/bg/es_banner_bg-min.png);
+        background-size: cover;
+        
+        .banner_clouds_top{
+            @extend %banner_el;
+            top: 0%;
+            margin-left: 0;
+            margin-right: 0;
+            right: 7%;
+            z-index: 2;
+            
+            @include media('<hd-screen') {
+                width: 270px;
+                right: 17%;
+            }
+            @include media('<widescreen') {
+                right: 0%;
+            }
+            @include media('<tablet') {
+                width: 50%;
+            }
+            @include media('<sm-tablet') {
+                display: none;
+            }
+        }
+        
+        .banner_clouds_down{
+            @extend %banner_el;
+            bottom: 0%;
+            margin-left: 0;
+            margin-right: 0;
+            right: 0;
+            z-index: 4;
+           
+            @include media('<hd-screen') {
+                width: 50%;
+            }
+            @include media('<tablet') {
+                width: 50%;
+            }
+        }
+        
+        .banner_object{
+            z-index: 3;
+            right: 15%;
+            width: 106px;
+            @include media('<hd-screen') {
+                width: 90px;
+            }
+            @include media('<widescreen') {
+                width: 70px;
+            }
+            
+            @include media('<tablet') {
+                width: 55px;
+            }
+            @include media('<sm-tablet') {
+                width: 100px;
+            }
+            @include media('<phone') {
+                display: none;
+            }
+        }
+   }
+   
+   
+}*/
+
+
+
+
+.partners-page{
+   
+    .banner-block{
+        background: url(images/bg/partners-banner-bg-min.png);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+}
+
+.meet-us-page{
+   
+    .banner-block{
+        background: url(images/bg/meet-us-banner-bg-min.png);
+        background-size: cover;
+        background-attachment: fixed;
+        
+        .banner-object{
+           
+            left: 55%;
+        }
+        
+        .banner-text-block{
+            @include media('>tablet') {
+                width: 55%;
+            }
+            
+        }
+    }
+   
+}
+
+.contact-us-page{
+   
+    .banner-block{
+        background: url(images/bg/contact-us-banner-bg-min.png);
+        background-size: cover;
+        background-attachment: fixed;
+        
+        .banner-object{
+           
+            left: 55%;
+            
+             @include media('<hdx-screen') {
+                width: auto;
+
+            }
+
+            @include media('<hd-screen') {
+                width: auto;
+                height: 80%;
+            }
+            
+            @include media('<tablet') {
+                width: 15%;
+                height: auto;
+                
+            }
+        }
+        
+        .banner-text-block{
+            @include media('>tablet') {
+                width: 55%;
+            }
+            
+        }
+    }
+   
+}
+
+
+.support-page{
+   
+    .banner-block{
+        background: url(images/bg/support-banner-bg-min.png);
+        background-size: cover;
+        background-attachment: fixed;
+        
+        .banner-object{
+           
+            left: 62%;
+            
+             @include media('<hdx-screen') {
+                width: auto;
+
+            }
+
+            @include media('<hd-screen') {
+                width: auto;
+                height: 65%;
+            }
+            
+            @include media('<tablet') {
+                width: 15%;
+                height: auto;
+                
+            }
+        }
+        
+        .banner-text-block{
+            @include media('>tablet') {
+                width: 55%;
+            }
+            
+        }
+    }
+   
+}
+
+.latest-news-page{
+   
+    .banner-block{
+        background: url(images/bg/news-banner-bg-min.png);
+        background-size: cover;
+        background-attachment: fixed;
+        
+        .banner-object{
+           
+            left: 55%;
+            
+             @include media('<hdx-screen') {
+                width: auto;
+
+            }
+
+            @include media('<hd-screen') {
+                width: auto;
+                height: 80%;
+            }
+            
+            @include media('<tablet') {
+                width: 15%;
+                height: auto;
+                
+            }
+        }
+        
+        .banner-text-block{
+            @include media('>tablet') {
+                width: 55%;
+            }
+            
+        }
+    }
+   
+}
+
+
+.references-page{
+    
+    .banner-block{
+        background: url(images/bg/references-banner-bg-min.png);
+        background-size: cover;
+        background-attachment: fixed;
+        
+        .banner-object{
+           
+            left: 55%;
+            
+             @include media('<hdx-screen') {
+                width: auto;
+
+            }
+
+            @include media('<hd-screen') {
+                width: auto;
+                height: 80%;
+            }
+            
+            @include media('<tablet') {
+                width: 15%;
+                height: auto;
+                
+            }
+        }
+        
+        .banner-text-block{
+            @include media('>tablet') {
+                width: 55%;
+            }
+            
+        }
+    }
+   
+}
+
+
+
+.stars-in{
+     -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0 !important;    
+    -webkit-transition: transform 5s ease-in-out, opacity 5s ease-in-out !important;
+    transition: transform 5s ease-in-out, opacity 5s ease-in-out !important;
+   
+    
+}
+
+.stars-out{
+    opacity: 1 !important;
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+$effect_blinking_stars START
+*/
+
+
+.star-eff-shine {
+    position: absolute;
+    background: url(images/simple-star.png) no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    
+    @include media('<tablet') {
+        display: none;
+
+    }
+    
+    &.star-1 {
+        width: 30px;
+        height: 24px;
+        top:10%;
+        left:20%;	
+    }
+    
+    &.star-2 {
+        width: 43px;
+        height: 57px;
+        top:25%;
+        left:50%;
+
+    }
+    
+    &.star-3 {
+        width: 24px;
+        height: 20px;
+        top:30%;
+        left:70%;
+    }
+    
+    &.star-4 {
+        width: 48px;
+        height: 50px;
+        top:65%;
+        left:90%;
+    }
+    
+    &.star-5 {
+        width: 68px;
+        height: 70px;
+        top:85%;
+        left:10%;
+    }
+    
+    &.star-6 {
+        width: 83px;
+        height: 77px;
+        top:50%;
+        left:50%;
+    }
+    
+}
+
+
+/*
+$effect_blinking_stars END
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+$effect_flying_stars START
+*/
+
+.space-area-fly{
+    &, .stars-fly {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        @include media('<tablet') {
+            display: none;
+
+        }
+    }
+    
+    .stars-fly {
+        background-image: 
+            radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+        background-repeat: repeat;
+        background-size: 200px 200px;
+        animation: zoom 5s infinite;
+        opacity: 0;
+        position: absolute;
+        
+        @include media('<tablet') {
+            animation: none;
+
+        }
+        /*z-index: 7000;*/
+    
+        &:nth-child(1) {
+            background-position: 50% 50%;
+            animation-delay: 0s;
+        }
+        &:nth-child(2) {
+          background-position: 20% 60%;
+          animation-delay: 1s;
+        }
+        &:nth-child(3) {
+          background-position: -20% -30%;
+          animation-delay: 2s;
+        }
+        &:nth-child(4) {
+          background-position: 40% -80%;
+          animation-delay: 3s;
+        }
+        &:nth-child(5) {
+          background-position: -20% 30%;
+          animation-delay: 4s;
+        }
+    }
+}
+
+
+
+
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+    animation-timing-function: ease-in;
+  } 
+  85% {
+    opacity: 1;
+    transform: scale(2.8);
+    animation-timing-function: linear;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3.5);
+  }
+}
+/*
+$effect_flying_stars END
+*/
+
+
+
+
+
+
+
+
+/*
+$effect_meteor START
+*/
+
+#meteors {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    width: 80%;
+    
+    @include media('<tablet') {
+        display: none;
+
+    }
+
+
+    .meteor-head {
+        position: relative;
+        width: 0; 
+        height: 0; 
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 9px solid #fff;
+        transform: rotate(-45deg);
+    }
+
+    .meteor-trail {
+        position: relative;
+        width: 185px;
+        height: 5px;
+        margin-top: -73px;
+        margin-left: -22px;
+        background: linear-gradient(310deg, rgba(0,0,0,0), rgba(255,255,255,0.3));
+        transform: rotate(-45deg);
+    }
+
+    .meteor{
+        &:first-of-type {
+            margin-top: -35px;
+            margin-left: 40px;
+            animation: shoot 1.5s linear infinite;
+            animation-delay: 0.2s;
+        }
+
+        &:nth-of-type(2) {
+            margin-top: 10px;
+            margin-left: 80%;
+            animation: shoot 2s linear infinite;
+            animation-delay: 0.4s;
+        }
+
+        &:nth-of-type(3) {
+            margin-top: 70px;
+            margin-left: 20%;
+            animation: shoot 2s linear infinite;
+            animation-delay: 0.6s;
+        }
+
+        &:nth-of-type(4) {
+            margin-top: 70px;
+            margin-left: 70%;
+            animation: shoot 1.5s linear infinite;
+            animation-delay: 0.8s;
+        }
+
+        &:nth-of-type(5) {
+            margin-top: -160px;
+            margin-left: 50%;
+            animation: shoot 1s linear infinite;
+            animation-delay: 0.9s;
+        }
+
+        &:nth-of-type(6) {
+            margin-top: 60px;
+            margin-left: 30%;
+            animation: shoot 3s linear infinite;
+            animation-delay: 1.1s;
+        }
+
+        &:nth-of-type(7) {
+            margin-top: 220px;
+            margin-left: 60%;
+            animation: shoot 1.5s linear infinite;
+            animation-delay: 1.2s;
+        }
+
+        &:nth-of-type(8) {
+            margin-top: 40px;
+            margin-left: 40%;
+            animation: shoot 3s linear infinite;
+            animation-delay: 1.1s;
+        }
+
+        &:nth-of-type(9) {
+            margin-top: -140px;
+            margin-left: 60%;
+            animation: shoot 2s linear infinite;
+            animation-delay: 0.7s;
+        }
+
+        &:nth-of-type(10) {
+            margin-top: 30px;
+            margin-left: 10%;
+            animation: shoot 1.5s linear infinite;
+            animation-delay: 0.6s;
+        }
+        
+        &:nth-of-type(odd), &:nth-of-type(even){
+            @include media('<tablet') {
+                animation: none;
+
+            }
+        }
+        
+       
+    }
+}
+
+
+@keyframes shoot {
+  0% {transform: translate(500px, -500px);}
+  100% {transform: translate(-500px, 500px);}
+}
+
+/*
+$effect_meteor END
+*/
+
+
+
+
+
+
+
+
+
+
+/*
+$effect_birds START
+*/
+.birds_area{
+    z-index:99;
+    position:absolute;
+    top:0;
+    left: 10%;
+    bottom:0;
+    right:0;
+    width: 140%;
+    height: 100%;
+    
+    @include media('<tablet') {
+        display: none;
+
+    }
+    
+}
+
+
+@keyframes anim {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes anime {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+.c1, .c2 {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+ 
+    z-index:999;
+}
+.c1.one, .c2.one {
+  top: -260px;
+  left: 0px;
+}
+.c1.two, .c2.two {
+    top: -5%;
+    left: 5%;
+}
+.c1.three, .c2.three {
+  top: -5%;
+  right: 5%;
+}
+.c1.four, .c22.four {
+  top: -180px;
+  right: 0px;
+}
+
+.c2 .one {
+    top: -209px;
+}
+@media (max-width: 1023px) {
+    .c2.one {left: -80px;}
+    .c2.two {left: -120px;}
+    .c2.three {right: 220px;}
+    .c2.four {right: 220px;}
+}
+
+.c1 {
+    animation: anime 1000s linear infinite forwards;
+    @include media('<tablet') {
+        animation: none;
+
+    }
+}
+
+.c2 {
+    transform: translateX(200%);
+    animation: anim 1000s linear infinite forwards;
+  
+    @include media('<tablet') {
+        animation: none;
+
+    }
+}
+
+/*
+$effect_birds END
+*/
+
+
+
+
+
+
+
+
+/*
+$effect_flying_clouds STARTT
+*/
+.flying-clouds{
+    position:absolute;
+    
+    left: 0%;
+    bottom:0;
+    right:0;
+    width: 100%;
+    height: 50%;
+    
+    background-image:
+    url(images/effects/cloud-4-min.png),   
+    url(images/effects/cloud-5-min.png),
+    url(images/effects/cloud-6-min.png);
+	
+    animation:stars 52s linear infinite, fade 24s steps(2) 4s forwards;
+    
+    @include media('<tablet') {
+        animation: none;
+        display: none;
+    }
+}
+
+
+/*      shorthand:
+
+-webkit-animation:myfirst 5s linear 2s infinite alternate;
+
+*/
+
+/*img {-webkit-animation:zora 13s linear .5s infinite alternate;
+position: absolute;
+top: 100px;}*/
+
+/* make copy of webkit version as non webkit*/
+
+/*@-webkit-keyframes zora  Safari and Chrome 
+{
+0%   { left:0px; top:100px;}
+
+25%  { left:120px; top:125px;}
+
+50%  {left:200px; top:110px;}
+67% {left:160px; top:150px;}
+85%  { left:300px; top:127px;}
+100% {left:420px; top:110px;}
+}*/
+
+
+   
+
+@-webkit-keyframes stars {
+
+	100% { 
+            background-position:
+            -2090px 0px,
+            -4096px 0px,
+            -8192px 0px; 
+        }
+}
+
+/*
+$effect_flying_clouds END
+*/
+
+
+
+
+
+
+/*
+$effect_lightning START
+*/
+
+
+
+/* First lets set a background */
+.bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+/*  background: url('https://images.unsplash.com/photo-1431352832634-845fad190fbd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=ec80c41e488dc2b99ed543df2f3f0919');
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+  background-attachment: fixed;*/
+  z-index: 1;
+}
+
+/* Now the same background, but with brightness filters*/
+.lightning{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+  background-attachment: fixed;
+  -webkit-filter: brightness(3);
+  filter: brightness(3);
+  -o-filter: brightness(3);
+  -moz-filter: brightness(3);
+  z-index: 2;
+  
+  @include media('<tablet') {
+        
+        display: none;
+    }
+  
+  
+}
+
+/*Now just a opacity animation*/
+.flashit{
+    -webkit-animation: flash ease-out 7s infinite;
+    -moz-animation: flash ease-out 7s infinite;
+    animation: flash ease-out 7s infinite;
+    animation-delay: 3s;
+    
+    @include media('<tablet') {
+        animation: none;
+        
+    }
+}
+
+@-webkit-keyframes flash {
+	from { opacity: 0; } 
+  92% { opacity: 0; }
+	93% { opacity: 0.6; }
+  94% { opacity: 0.2; }
+  96% { opacity: 0.9; } 
+	to { opacity: 0; }
+}
+
+@keyframes flash {
+	from { opacity: 0; } 
+    60% { opacity: 0.2; }
+    70% { opacity: 0.3; }
+    80% { opacity: 0.5; }
+    92% { opacity: 0.5; }
+    93% { opacity: 0.6; }
+    94% { opacity: 0.2; }
+    96% { opacity: 1; } 
+	to { opacity: 0; }
+}
+/*End! is that simple! */
+
+
+
+
+
+
+
+
+
+/*
+$effect_lightning END
+*/
+
+
+.part_sentence{
+    display: inline-block;
+    opacity: 0;
+    transition: 2s;
+}
+
+
+
+
+
+
+
+/*
+$effect_galaxy START
+*/
+
+
+/*Here is for color rainbow =P */
+
+
+/*From here everything is for clouds and stars*/
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-webkit-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-moz-keyframes move-clouds-back {
+    from {background-position:0 0;}
+    to {background-position:10000px 0;}
+}
+@-ms-keyframes move-clouds-back {
+    from {background-position: 0;}
+    to {background-position:10000px 0;}
+}
+
+.stars, .twinkling, .clouds {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.stars {
+  background:#000 url(images/effects/galaxy-1-min.png) repeat top center;
+  z-index:0;
+}
+
+.twinkling{
+  background:transparent url(images/effects/galaxy-2-min.png) repeat top center;
+  z-index:1;
+
+  -moz-animation:move-twink-back 200s linear infinite;
+  -ms-animation:move-twink-back 200s linear infinite;
+  -o-animation:move-twink-back 200s linear infinite;
+  -webkit-animation:move-twink-back 200s linear infinite;
+  animation:move-twink-back 200s linear infinite;
+}
+
+.clouds{
+    background:transparent url(images/effects/galaxy-3-min.png) repeat top center;
+    z-index:3;
+
+  -moz-animation:move-clouds-back 200s linear infinite;
+  -ms-animation:move-clouds-back 200s linear infinite;
+  -o-animation:move-clouds-back 200s linear infinite;
+  -webkit-animation:move-clouds-back 200s linear infinite;
+  animation:move-clouds-back 200s linear infinite;
+}
+
+/*
+$effect_galaxy END
+*/
+
+
+
+
+
+
+/*
+$effect_galaxy END
+*/
+
+.banner-block{
+    position: relative;
+    color: #fff;
+    box-shadow: 0 7px 32px 0 rgba(0, 0, 0, .4);
+    min-height: 450px;
+    overflow: hidden;
+    max-width: 2500px;
+    margin: auto;
+    
+    background: url(images/bg/rock-bg.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    
+    @include media('<hd-screen') {
+        min-height: 350px;
+    }
+    
+}

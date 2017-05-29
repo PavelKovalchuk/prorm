@@ -1,0 +1,65 @@
+$breakpoints: (
+'xs-phone': 320px,
+'phone': 480px,
+'sm-tablet': 640px,
+'tablet': 768px,
+'desktop': 1024px,
+'widescreen': 1200px,
+'hd-screen': 1400px,
+'hdx-screen': 1615px,
+
+);
+
+// keywords
+$media-expressions: (
+'screen': 'screen',
+'print': 'print',
+'handheld': 'handheld',
+'landscape': '(orientation: landscape)',
+'portrait': '(orientation: portrait)',
+'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// ligatured operators ≥ ≤
+
+@import 'vendors/include-media';
+@import 'vendors/normalize';
+@import 'vendors/icomoon';
+@import 'vendors/font-face';
+@import 'vendors/custom-form';
+
+@import 'base/variables';
+@import 'base/functions';
+@import 'base/mixins';
+@import 'base/helpers';
+@import 'base/reset';
+@import 'base/cms-reset';
+@import 'base/forms';
+@import 'base/wp-reset';
+@import 'base/typography';
+// Components
+@import 'components/modal_window';
+@import 'components/carousel';
+@import 'components/video_block';
+@import 'components/social_buttons';
+@import 'components/magnific_popup';
+@import 'components/not_found';
+// languages
+@import 'components/deuth';
+
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    display: table;
+    font-weight: 300;
+    table-layout: fixed;
+    // &.nav-active{
+    // 	overflow: hidden;
+    // }
+}

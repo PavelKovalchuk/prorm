@@ -1,0 +1,92 @@
+// Typography
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.h, .header-section, .second-header-section, 
+.third-header-section,.six-header-section {
+  font-family: $headings-font-family;
+  font-weight: 400;
+  margin: 0 0 0.5em;
+  color: $headings-color;
+}
+
+h1, .h1, .header-section {
+  font-size: $h1-font-size;
+  text-transform: uppercase;
+  text-align: center;
+  @include media('<hd-screen') {
+    font-size: 40px;
+  }
+  @include media('<widescreen') {
+    font-size: 31px;
+  }
+  @include media('<phone') {
+    font-size: 20px;
+  }
+}
+
+.text-noupper {
+    text-transform: none!important;
+}
+
+h2, .h2, .second-header-section {
+  font-size: $h2-font-size;
+  @include media('<hd-screen') {
+    font-size: 38px;
+  }
+  @include media('<widescreen') {
+    font-size: 26px;
+  }
+  @include media('<phone') {
+    font-size: 21px;
+  }
+}
+
+h3, .h3, .third-header-section {
+  font-size: $h3-font-size;
+  @include media('<desktop') {
+    font-size: 30px;
+  }
+  @include media('<phone') {
+    font-size: 18px;
+  }
+}
+
+h4, .h4 {
+  font-size: $h4-font-size;
+  @include media('<desktop') {
+    font-size: 25px;
+  }
+  @include media('<phone') {
+    font-size: 18px;
+  }
+}
+
+h5, .h5 {
+  font-size: $h5-font-size;
+}
+
+h6, .h6, .six-header-section {
+  font-size: $h6-font-size;
+  color: $black;
+  @include media('<desktop') {
+    font-size: 29px;
+  }
+}
+
+p {
+  margin: 0 0 40px;
+}
+
+a {
+  color: $base-link-color;
+  text-decoration: underline;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}

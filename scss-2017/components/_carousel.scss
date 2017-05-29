@@ -1,0 +1,96 @@
+.cycle-gallery{
+    max-width: 1300px;
+    position: relative;
+    .video-block & {
+        max-width: 1400px;
+        margin: 0 auto 25px;
+        @include media('>tablet') {
+            margin-bottom: 84px;
+        }
+    }
+    .mask{
+        overflow: hidden;
+    }
+    .video-block & .slideset { 
+        margin: auto;
+        @include media('>desktop' , '<=hdx-screen') {
+            width: calc(100% - 160px);
+        }
+        @include media('<=desktop') {
+            width: calc(100% - 120px);
+        }
+    }
+    .btn-prev,
+    .btn-next{
+        position: absolute;
+        text-decoration: none;
+        font-size: 57px;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -64px;
+        color: $gray3;
+        z-index: 1;
+        .video-block & {
+            left: 0;
+            @include media('>hdx-screen') {
+                left: -100px;
+            }
+            @include media('>desktop') {
+                font-size: 73px;
+            }
+        }
+        &:hover{
+            color: $vinous;
+            cursor: pointer;
+        }
+    }
+    .btn-next{
+        left: auto;
+        right: -64px;
+        .video-block & {
+            right: 0;
+            left: auto;
+            @include media('>hdx-screen') {
+                right: -105px;
+            }
+        }
+    }
+    .video-block & .owl-item {
+        border: 1px solid #ccc;
+    }
+    
+    .reviews-block.video-block & .owl-item {
+        border: none;
+    }
+    
+    
+      
+}
+
+.owl-carousel.review{
+        margin-top: 40px;
+}
+
+.owl-carousel-video .item {
+        display: block;
+        position: relative;
+        text-decoration: none;
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -36px 0 0 -47px;
+            width: 70px;
+            height: 70px;
+            font-size: 37px;
+            line-height: 70px;
+            text-align: center;
+            color: #fff;
+            border-radius: 0;
+            padding-left: 11px;
+            z-index: 5;
+            background-color: #8f0e3b;
+        }
+}  
+
+

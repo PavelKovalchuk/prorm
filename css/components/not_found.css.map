@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "not_found.css",
+	"sources": [
+		"../../scss/components/not_found.scss"
+	],
+	"mappings": "AAAA;;;;EAIE;AACF;;;EAGE",
+	"names": []
+}
