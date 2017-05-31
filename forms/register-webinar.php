@@ -26,7 +26,7 @@ if($form){
     <input type="hidden" class="fetcher_name" name="fetcher-name" value="<?php echo $fetcher; ?>">
     
         <div class="field-holder radio-holder">
-                <?php ProRMForms::radioField('salutation', array(__('Mr.' , ProRMTheme::TEXTDOMAIN) => __('Mr.' , ProRMTheme::TEXTDOMAIN), __('Ms.' , ProRMTheme::TEXTDOMAIN) => __('Ms.' , ProRMTheme::TEXTDOMAIN)), true); ?>
+                <?php ProRMForms::radioField('salutation', array(__('Mr.' , ProRMTheme::TEXTDOMAIN) => __('Mr.' , ProRMTheme::TEXTDOMAIN), __('Ms.' , ProRMTheme::TEXTDOMAIN) => __('Ms' , ProRMTheme::TEXTDOMAIN)), true); ?>
         </div>
     
         <div class="field-holder">

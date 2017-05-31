@@ -1,0 +1,14 @@
+.video-block .header-block {
+  margin: 0 auto 41px;
+  max-width: 830px;
+  text-transform: none;
+  text-align: center; }
+
+.video-block .btn-play {
+  position: absolute;
+  top: 50%;
+  min-width: 67px;
+  min-height: 67px;
+  left: 43%;
+  background-color: #8e0e3b;
+  border-radius: 0; }

@@ -23,7 +23,7 @@ class Fetcher_ServiceRequest extends ProRMFormFetcher
         
         $this->fieldsMap['prorm_product'] = __('Product', ProRMTheme::TEXTDOMAIN);
         $this->required['prorm_product'] = __('Product', ProRMTheme::TEXTDOMAIN);
-        
+
         $this->required['first_name'] = __('First Name', ProRMTheme::TEXTDOMAIN);
         $this->required['email'] = __('E-Mail', ProRMTheme::TEXTDOMAIN);
         $this->required['company'] = __('Company', ProRMTheme::TEXTDOMAIN);

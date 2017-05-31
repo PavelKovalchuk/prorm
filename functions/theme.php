@@ -146,9 +146,9 @@ abstract class ProRMTheme
             ?>
             <ul class="lang">
                 <?php foreach ($languages as $language) { ?>
-                <?php //if($language['slug'] == 'es'){ continue;} // for developing on live site purpose ?>
+                 <?php // if($language['slug'] == 'es'){ continue;} // for developing on live site purpose ?>
                     <li class="<?php echo $language['current_lang'] ? 'active' : '' ?>">
-                        
+                          
                         <?php if(!$language['current_lang']){ ?>
                         
                         <a href="<?php echo $language['url'] ?>">
@@ -198,7 +198,7 @@ abstract class ProRMTheme
             'container' => false,
             'menu_class' => 'legal-pages',
             'items_wrap' => '%3$s',
-            'walker'         => new Header_Walker_Nav_Menu(),
+            'walker' => new Header_Walker_Nav_Menu(),
             'fallback_cb' => false
         );
 
@@ -211,7 +211,7 @@ abstract class ProRMTheme
             $menu_id = 3209;
         } elseif (pll_current_language() == 'de') {
             $menu_id = 3210;
-        } elseif (pll_current_language() == 'es') {
+        }elseif (pll_current_language() == 'es') {
             $menu_id = get_current_element_id_wp(3233, 3234);
         }
 
@@ -220,7 +220,7 @@ abstract class ProRMTheme
             echo '<option value="'.$item->url.'">'.$item->post_title.'</option>';
         }
     }
-    
+        
     public static function showDropDownMenuLinks()
     {
         if (pll_current_language() == 'en') {
@@ -238,6 +238,7 @@ abstract class ProRMTheme
         }
         echo '</ul>';
     }
+
 
     public static function showBottomMenu()
     {
@@ -415,20 +416,20 @@ abstract class ProRMTheme
     public static function checkLanguageCode()
     {
         if (function_exists('pll_current_language')) {
-            $slug = pll_current_language('slug'); 
+            $slug = pll_current_language('slug');
             
-//            var_dump($_SERVER['SERVER_NAME']);
             if($slug == 'de'){
                 return;
             }
+            
             if ($slug && !is_admin()) {
-                $url = $_SERVER['REQUEST_URI'];          
+                $url = $_SERVER['REQUEST_URI'];
                 if ($url === '/' . $slug) {
-                    wp_redirect($url . '/', 301);  
+                    wp_redirect($url . '/', 301);
                     exit;
                 }
                 if (strpos($url, '/' . $slug . '/') !== 0) {
-                    wp_redirect('/' . $slug . $url, 301); 
+                    wp_redirect('/' . $slug . $url, 301);
                     exit;
                 }
             }

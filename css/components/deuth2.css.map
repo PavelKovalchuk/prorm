@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "deuth2.css",
+	"sources": [
+		"../../scss/components/deuth2.scss"
+	],
+	"mappings": "AAAA,AACI,GADD,CAAC,eAAe,CAAC,iBAAiB,CAAC,aAAa,CAC/C,SAAS,CAAC;EACN,SAAS,EAAE,KAAK,CAAA,UAAU,GAC7B",
+	"names": []
+}

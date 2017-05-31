@@ -35,6 +35,7 @@ $header_image_alt = get_cfc_meta( 'support', 'header_image_alt' )[0]["header_ima
                     <p class="second-header-section"><?php echo the_cfc_field( 'support', 'headline' ); ?></p>
                     <p><?php echo the_cfc_field( 'support', 'form_title' ); ?></p>
                     <div class="form-holder">
+
                         <?php echo do_shortcode('[form name=service-request]'); ?>
 
                     </div>

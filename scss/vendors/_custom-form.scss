@@ -101,13 +101,15 @@
 #software-button{
     position: initial;
 }
-.software-hidden{
+.jcf-list.software-hidden{
     opacity: 0;
+    display: none;
     transition: all 1s linear;
     height: 0;
 }
-.software-visible{
+ .jcf-list.software-visible{
     opacity: 1;
+    display: inline-block;
     transition: all 1s linear;
 }
 .software-block-outer{
@@ -118,6 +120,7 @@
     left: 28%;
     top: 70px;
     width: 400px;
+    
     
     li.jcf-option{
         a{

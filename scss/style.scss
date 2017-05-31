@@ -7461,6 +7461,10 @@ p{
 
 .our-team-page{
     @extend %main-style;
+    
+    .optimize-block{
+        text-align: justify;
+    }
 }
 
 
@@ -7552,6 +7556,10 @@ p{
     
     @extend %main-style;
     
+    &.info-block{
+        padding-top: 0px;
+    }
+    
     %min-h-art{
         min-height: 300px;
         
@@ -7575,7 +7583,7 @@ p{
     }
     
     .our-team-img-outer{
-        min-width: 500px;
+        min-width: 300px;
         text-align: center;
         display: table-cell;
         vertical-align: middle;
@@ -7595,7 +7603,7 @@ p{
         img{
             display: block;
             margin: auto;
-            max-width: 500px;
+            max-width: 300px;
 
             @include media('<tablet') {
                 max-width: 100%;
@@ -7608,7 +7616,8 @@ p{
         padding: 0 0 0 25px;
         display: table-cell;
         vertical-align: top;
-        width: calc(100% - 500px);
+        width: calc(100% - 300px);
+        text-align: justify;
         @extend %min-h-art;
         
         @include media('<desktop') {
@@ -7628,16 +7637,18 @@ p{
 #carouselTeam{
         
         &.owl-carousel{
-            /*margin: 80px 0;*/
+            
             
             @include media('<desktop') {
-                /*margin: 40px 0 80px 0;*/
+                
             }
-
+            
             
             .owl-dots{
                 position: static;
                 height: 75px;
+                overflow: hidden;
+                
                 @include media('<tablet') {
                     /*bottom: -60px;*/
                 }
@@ -7676,6 +7687,76 @@ p{
                 }
             }
             
+            
+            .owl-nav{
+            
+                position: absolute;
+                width: 114%;
+                max-width: 1800px;
+                top: 0;
+                bottom: 50px;
+                left: -7%;
+                z-index: -1;
+
+                @include media('<hd-screen') {
+/*                    width: 110%;
+                    left: -5%;*/
+                }
+
+                .owl-prev{
+
+                    background: url(images/help_img/arrow-left-red-min.png) no-repeat;
+                    background-size: contain;
+                    width: 18px;
+                    height: 35px;
+                    display: inline-block;
+                    cursor: pointer;
+
+                    position: absolute;
+                    top: 50%;
+                    left: 0%;
+                    transform: translate(0%, -50%);
+
+                    @include media('<desktop') {
+/*                        width: 24px;
+                        height: 48px;*/
+                    }
+
+                    @include media('<sm-tablet') {
+                        display: none;
+                    }
+
+                }
+
+                .owl-next{
+
+                    background: url(images/help_img/arrow-right-red-min.png) no-repeat;
+                    background-size: contain;
+                    width: 18px;
+                    height: 35px;
+                    display: inline-block;
+                    cursor: pointer;
+
+                    position: absolute;
+                    top: 50%;
+                    right: 0%;
+                    transform: translate(0%, -50%);
+
+                    @include media('<desktop') {
+/*                        width: 24px;
+                        height: 48px;*/
+                    }
+
+                    @include media('<sm-tablet') {
+                        display: none;
+                    }
+
+                }
+            
+            }
+            
+            
+            
         }
         
 }
@@ -7691,8 +7772,69 @@ p{
     
     
     .team-slider-photo-outer{
-        @extend %container-inner-padding;
+        /*@extend %container-inner-padding;*/
+        max-width: 70%;
+        margin: auto;
+        padding: 2% 0 0 0;
+        
+        @include media('<sm-tablet') {
+            max-width: 100%;
+            padding: 2% 5% 0 5%;
+        }
+        
+        .owl-img-outer{
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+            
+            
+            
+            .team-item-big{
+                transform: scale(1);
+                -webkit-transition: all 1s ease;
+                -moz-transition: all 1s ease;
+                -o-transition: all 1s ease;
+                -ms-transition: all 1s ease;
+                transition: all 1s ease;
+                
+                width: 100%;
+                height: 100%;
+                display: block;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                
+                
+            
+                &:hover{
+                    transform: scale(1.8);
+                    -webkit-transition: all 1s ease;
+                    -moz-transition: all 1s ease;
+                    -o-transition: all 1s ease;
+                    -ms-transition: all 1s ease;
+                    transition: all 1s ease;
+                }
+            }
+        }
+        
+/*        &.owl-carousel{
+            
+            .owl-item img{
+                display: block;
+                width: auto;
+                height: 100%;
+                max-width: 150%;
+                
+                
+                @include media('<tablet') {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            
+        } */
     }
+    
     
 }
 
@@ -9000,7 +9142,177 @@ p{
 }
 
 
+.experts-block{
+    
+}
+    
+.experts-preview-container{
 
+
+    @extend %container-inner-padding;
+
+    @include media('<hd-screen') {
+
+    }
+    @include media('<desktop') {
+
+    }
+    @include media('<tablet') {
+        width: 100%;
+    }
+
+    & > .experts-preview-outer{
+        background-color: $white;
+
+    }
+
+    .experts-preview {
+        /*height: 232px;*/
+/*        padding: 1px;*/
+
+        @include media('<widescreen') {
+            width: 30%;
+            margin-bottom: 25px;
+        }
+        @include media('<desktop') {
+            width: 50%;
+        }
+        @include media('<tablet') {
+            width: 100%;
+        }
+
+
+    }
+    
+    .experts-container{
+        max-width: 1420px;
+        width: 100%;
+        margin: auto;
+        min-height: 10px;
+    }
+    
+
+    .experts-preview-img{
+
+    }
+
+    .experts-header{
+        color: $white;
+        margin: 0 0 15px 0;
+        padding: 0 5% 0;
+    }
+
+
+    [class*=' imghvr-'], [class^=imghvr-]{
+        width: 97%;
+        height: 100%;
+        margin: auto;
+        background-color: $white;
+        
+        @include media('<widescreen') {
+            width: 100%;
+        }
+
+    }
+
+
+    [class*=' imghvr-'] figcaption, [class^=imghvr-] figcaption{
+        font-size: 15px;
+        padding: 0px;
+        color: $white;
+        margin: auto;
+        max-width: 232px;
+        
+
+        @include media('<desktop') {
+
+        }
+        @include media('<tablet') {
+
+        }
+    }
+
+    [class*=' imghvr-'] a, [class^=imghvr-] a{
+        position: relative;
+        text-align: center;
+
+    }
+
+    .experts-bottom{
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+        display: block;
+
+        top: auto;
+        bottom: 5%;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .experts-body{
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-overflow: clip;
+        padding: 0 5% 0;
+
+        @include media('<tablet') {
+            /*height: calc(100% - 75px - 15%);*/
+        }
+
+    }
+
+    .experts-text{
+        margin: 0;
+        overflow: hidden;
+        text-overflow: clip;
+        width: 100%;
+        display: flex;
+
+
+        @include media('<tablet') {
+
+        }
+    }
+
+    [class*=' imghvr-'] figcaption, [class^=imghvr-] figcaption{
+        background-color: #484848;
+    }
+
+    [class*=' imghvr-']>img, [class^=imghvr-]>img{
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        margin: auto;
+    }
+
+    .imghvr-push-down:hover>img{
+        top: 100% !important;
+    }
+
+}
+
+
+.awards-block{
+    
+    .reference-preview-container{
+        
+        @extend %container-inner-padding;
+    }
+    
+    &.our-partners-preview-block.info-block{
+        padding: 2% 0 2% 0;
+    }
+    
+}
 
 
 

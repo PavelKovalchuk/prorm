@@ -2182,8 +2182,7 @@ function get_team_slider_block($args, $general_alt, $bg){
     <section class="team-slider-block carousel-block <?php echo $bg; ?> info-block text-bigger-block">
             <div class="container">
                 
-                <!--<div class="team-slider-photo-outer">-->
-                    
+             
                     <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
 
                     <div class="owl-carousel owl-theme team-slider-photo-outer" id="carouselTeam">
@@ -2193,24 +2192,20 @@ function get_team_slider_block($args, $general_alt, $bg){
                         foreach ($items as $item) {
 
                         ?>
-                            <div class="bw bigger owl-img-outer"> 
+                        <div class="bw bigger owl-img-outer " > 
 
-                                <a class="team-item-big" href="<?php echo $item['photo_item']['url']; ?>" 
+                                <a class="team-item-big magnifier-cursor" href="<?php echo $item['photo_item']['url']; ?>" 
                                     data-effect="mfp-3d-unfold"
                                     data-group="2"
-                                    title="<?php echo $item['photo_item_title'] ?>" >
-                                        <img src="<?php echo $item['photo_item']['sizes']['preview-max']; ?>"
-                                             class="team-img owl-img magnifier-cursor"
-                                            alt="<?php echo $item['photo_item_alt'] ? $item['photo_item_alt'] : $general_alt; ?>"
-                                        />
+                                    title="<?php echo $item['photo_item_title'] ?>" 
+                                    style="background-image: url(<?php echo $item['photo_item']['sizes']['preview-max']; ?>)">
+                                  
                                 </a>
 
                             </div>
 
                         <?php  } ?>
                     </div>
-                    
-                <!--</div>-->
                 
             </div>
             
@@ -2782,7 +2777,7 @@ function get_clients_page_block($args, $general_alt, $bg){
                                     </div>
                                     <div class="customer-person">
                                         <p>
-                                            <span class="person-name"><?php echo $item['quote_person'] . ',<br>'; ?></span>
+                                            <span class="person-name"><?php echo $item['quote_person'] . '<br>'; ?></span>
                                             <span class="person-position"><?php echo $item['quote_person_position']; ?></span>
                                         </p>
 
@@ -2879,9 +2874,118 @@ function get_homepage_slider_block($args, $general_alt, $bg){
 <?php }
 
 
+function get_experts_block($args, $img_placeholder, $general_alt, $section_bg ){
+    extract($args);
+    
+   
+    ?>
+        <section class="experts-block info-block text-bigger-block <?php echo $section_bg; ?>">
+            <div class="container">
+                
+                <?php if($items){ ?>    
+                
+                <div class="experts-preview-container">
+                    
+                    <h2 class="black-style-center center text-bigger experts-block-title"><?php echo $section_header; ?></h2>     
+
+                    <p class="experts-block-text center"><?php echo $section_text; ?></p>
+                    
+                    <div class="experts-container">
+
+                    <div class="row-12 experts-preview-outer">
+                    
+                
+                
+                <?php foreach( $items as $item ){ ?>
+                
+                    <div class="experts-preview col-2">
+                        <figure class="imghvr-zoom-in ">
+
+                                <img class="experts-preview-img" src="<?php echo $item["expert_photo"] ? $item["expert_photo"] : $img_placeholder; ?>" alt="<?php echo $item["expert_name"]; ?>">
+                           
+                            <figcaption>
+
+                                <div class="experts-body">
+                                    
+                                    <h3 class="experts-header">
+                                        <?php echo $item["expert_name"]; ?>
+                                    </h3>
+                                    
+                                    <p class="experts-text"><?php echo '&#8222;' . $item["expert_info"] . '&#8221;' ; ?></p>
+                                </div>
+                               
+                            </figcaption>
+
+                            
+                        </figure>
+
+                        
+                    </div>
+                
+                <?php } ?>
+                    
+               </div>
+                    
+                </div>
+                
+            </div>
+                
+                <?php } ?> 
+            </div>
+            
+       </section>
+          
+    
+<?php }
 
 
 
+function get_awards_block($args, $general_alt, $section_bg ){
+    extract($args);
+   
+    ?>
+        <section class="awards-block our-partners-preview-block info-block text-bigger-block <?php echo $section_bg; ?>">
+            <div class="container">
+                
+                <?php if($items){ ?>    
+                
+                <h2 class="black-style-center center text-bigger experts-block-title"><?php echo $section_header; ?></h2> 
+                        
+                <div class="reference-preview-container">
+                    
+                <div class="row-12 reference-preview-outer box-shadow">
+                    
+                
+                
+                <?php foreach( $items as $item ){ ?>
+                
+                    <div class="reference-preview col-4">
+                        <figure class="imghvr-zoom-in box-shadow partner-block ">
+                            
+                                <img class="reference-preview-img partner-img" src="<?php echo $item['awards_photo']; ?>" 
+                                     alt="<?php echo $item['awards_alt'] ? $item['awards_alt'] : $general_alt ; ?>">
+                                
+                        </figure>
+
+
+                    </div>
+                
+                <?php } ?>
+                    
+               
+                    
+                </div>
+                
+            </div>
+                
+                <?php } ?> 
+            </div>
+            
+       </section>
+          
+          
+    
+<?php }
 
 
 

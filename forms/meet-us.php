@@ -20,6 +20,7 @@ if (!$formSubmitted) {
             <br>
             <br>
             <?php get_template_part('forms/common/right-col') ?>
+            
         </div>
     </div>
 </form>

@@ -56,9 +56,9 @@ abstract class ProRMHelper
     {
         /** @var ProRMSettings $settings */
         $settings = Registry::get('settings');
-        $doRedirect = $settings->getOption('general_redirect_by_lang'); 
-        
-        if ($doRedirect) {  
+        $doRedirect = $settings->getOption('general_redirect_by_lang');
+    
+        if ($doRedirect) {
             $locale = ProRMHelper::getDefaultLanguage();
             $lang = substr($locale, 0, 2);
             if ($lang != 'de') {

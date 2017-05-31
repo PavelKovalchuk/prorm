@@ -19,7 +19,7 @@ if (pll_current_language() == 'de') {
     Tpl::set('form_3_anchor', 'buy_now');
 }
 
-$pr_service_page = get_post(pll_get_post(5379));
+$pr_service_page = get_post(pll_get_post(8123));
 
 $settings = Registry::get('settings');
         
@@ -71,7 +71,6 @@ $header_image_alt = get_cfc_meta( 'fast_start')[0]["header_image_alt"];
                 <?php endforeach; ?>
 
             </div>
-          
         </section>
         <!-- video block -->
         <?php

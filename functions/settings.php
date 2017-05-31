@@ -41,10 +41,6 @@ class ProRMSettings
                     'label' => __('Help Text: Enable', ProRMTheme::TEXTDOMAIN),
                 ),
                 array(
-                    'name' => 'angular_mode_news_enable',
-                    'label' => __('Angular mode for news: Enable', ProRMTheme::TEXTDOMAIN),
-                ),
-                array(
                     'name' => 'general_help_text_interval',
                     'label' => __('Help Text: Interval (milliseconds)', ProRMTheme::TEXTDOMAIN),
                 ),
@@ -56,7 +52,6 @@ class ProRMSettings
                     'name' => 'header_alt_text_for_image',
                     'label' => __('HEADER ALT text for image', ProRMTheme::TEXTDOMAIN),
                 ),
-              
             ),
             'prorm-section-social' => array(
                 array(
@@ -105,7 +100,6 @@ class ProRMSettings
                     'name' => 'social_youtube_video_en',
                     'label' => __('Youtube video EN', ProRMTheme::TEXTDOMAIN),
                 ),
-                
                 array(
                     'name' => 'social_youtube_video_es',
                     'label' => __('Youtube video ES', ProRMTheme::TEXTDOMAIN),
@@ -132,6 +126,7 @@ class ProRMSettings
                     'name' => 'forms_crm_to_email_support',
                     'label' => __('E-Mail for support requests', ProRMTheme::TEXTDOMAIN),
                 ),
+                
                 array(
                     'name' => 'forms_crm_to_email_support_test',
                     'label' => __('E-Mail Test for support requests', ProRMTheme::TEXTDOMAIN),
@@ -144,6 +139,7 @@ class ProRMSettings
                     'name' => 'secret_sitekey_recaptcha',
                     'label' => __('SECRET Sitekey for Google recaptcha', ProRMTheme::TEXTDOMAIN),
                 ),
+                
 // Commented because From name and email are managed via wp-smtp plugin.
 //                array(
 //                    'name' => 'forms_crm_from_email',
@@ -283,11 +279,6 @@ class ProRMSettings
                     isset($this->options[$field]) && $this->options[$field] ? 'checked' : '');
                 break;
             case 'general_help_text_enable':
-                printf('<input type="checkbox" id="%s" name="%s[%s]" value="1" %s/>',
-                    $field, self::OPTION_NAME, $field,
-                    isset($this->options[$field]) && $this->options[$field] ? 'checked' : '');
-                break;
-            case 'angular_mode_news_enable':
                 printf('<input type="checkbox" id="%s" name="%s[%s]" value="1" %s/>',
                     $field, self::OPTION_NAME, $field,
                     isset($this->options[$field]) && $this->options[$field] ? 'checked' : '');

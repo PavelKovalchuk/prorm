@@ -14,7 +14,8 @@ class Fetcher_Request extends ProRMFormFetcher
 	$this->fieldsMap['edition'] = 'edition';
         
         $this->fieldsMap['stock_remark'] = __('Stock remark', ProRMTheme::TEXTDOMAIN);
-        
+
+
 
         $this->required['first_name'] = __('First Name', ProRMTheme::TEXTDOMAIN);
         $this->required['email'] = __('E-Mail', ProRMTheme::TEXTDOMAIN);

@@ -4,7 +4,6 @@ class Fetcher_SupportRequest extends ProRMFormFetcher
     protected $formSubject = array(
         'de' => 'proMX Support-DE',
         'en' => 'proMX Support-EN',
-        
     );
 
     public function __construct($source)
@@ -13,7 +12,7 @@ class Fetcher_SupportRequest extends ProRMFormFetcher
 
         /** @var ProRMSettings $settings */
         $settings = Registry::get('settings');
-        
+
         $this->toEmail = $settings->getOption('forms_crm_to_email_support');
 
         $this->fieldsMap['topic'] = 'Interesse Thema';

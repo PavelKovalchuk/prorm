@@ -80,7 +80,7 @@ function http_status_version ($status, $location) {
 add_filter( 'wp_redirect_status', 'http_status_version');
 
 
-add_filter ('wp_redirect_status', 'modify_status', 10, 2);
+//add_filter ('wp_redirect_status', 'modify_status', 10, 2);
 function modify_status($status, $location) {
   $homepages = array(
     'http://promx.webdev.acceptic.com/de',

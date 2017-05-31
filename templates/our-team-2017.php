@@ -11,6 +11,7 @@ $settings = Registry::get('settings');
 
 //global $post;
 $general_alt =  $settings->getOption('general_alt_text_for_images');
+$img_placeholder =  $settings->getOption('image_placeholder');
 
 $fields = get_fields();
 
@@ -34,21 +35,19 @@ $header_block_1_args = array(
 
 $header_block_2_args = array(
     'section_header' => $fields['second_block_header'],
-    'description' => $fields['second_block_text'],
-    'img' => $fields['second_block_image']['sizes']['news-photo'],
-    'img_alt' =>  $fields['second_block_image_alt'],
-    'h' => 'h2',
-    'img_left_pos' => false
+    'section_text' => $fields['second_block_text']
+    
 );
 
-$our_team_block_args = array(
-    'meet_our_team_ID' => $post->ID,
-    'section_header' => $fields['team_block_header']
+$experts_block_args = array(
+    'section_header' => $fields['experts_block_header'],
+    'section_text' => $fields['experts_block_text'],
+    'items' => $fields['experts_items_block']
 );
 
 $awards_args = array(
-    'section_header' => $fields['awards_slider_header'],
-    'items' => $fields['awards_photos']
+    'section_header' => $fields['awards_block_header'],
+    'items' => $fields['awards_items']
 );
 
 $banner_args = array(
@@ -79,15 +78,15 @@ $banner_args = array(
         
         <?php get_our_team_header_block( $header_block_1_args, $general_alt, 'bg-white'); ?>
         
-        <?php get_our_team_header_block( $header_block_2_args , $general_alt, 'bg-grey'); ?>
+        <?php get_simple_block($header_block_2_args, 'bg-grey'); ?>
         
-        <?php get_team_slider_block($slider_args, $general_alt, 'bg-white'); ?>
+        <?php get_team_slider_block($slider_args, $general_alt, 'bg-grey'); ?>
         
-         <?php get_our_team_block($our_team_block_args, $general_alt, 'bg-grey'); ?>
+        <?php get_experts_block($experts_block_args, $img_placeholder, $general_alt, 'bg-white' ) ?>
         
-        <?php get_awards_slider_block($awards_args, $general_alt, 'bg-white'); ?>
+        <?php get_awards_block($awards_args, $general_alt, 'bg-white');?>
         
-        <?php get_form_block($form_block_args, 'contact-client', 'bg-grey'); ?>
+        <?php get_form_block($form_block_args, 'contact-client', 'bg-white'); ?>
         
        
     </div>
