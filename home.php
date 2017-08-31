@@ -15,16 +15,15 @@ $current_page_id = get_option( 'page_for_posts' );
 
 $fields = get_fields($current_page_id);
 
+
+
 $banner_args = array(
-    'banner_planet' => $fields['banner_planet_page']["url"],
     'banner_object' => $fields['banner_object_page']["url"],
-    'banner_clouds' => $fields['banner_clouds_page']["url"],
-    'banner_clouds_top' => $fields['banner_clouds_page_top']["url"],
     'banner_header' => $fields['banner_header_page'],
     'banner_header_tag' => $fields['banner_header_tag'],
     'banner_text' => $fields['banner_text_page'],
-    'banner_buttons' => $fields['banner_buttons_page'],
-    'stars_effect' => $fields['stars_effect'],
+    'banner_buttons' => $fields['banner_buttons_page']
+    
    
 );
 
@@ -32,7 +31,7 @@ $banner_args = array(
 
 ?>
 <?php get_header(); ?>
-    <main id="main" role="main" class="latest-news-page">
+    <main id="main" class="latest-news-page">
         <div id="content">
             <?php // get_prorm_banner_page($banner_args, $general_alt ); ?>
             

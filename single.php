@@ -13,7 +13,7 @@ if(!$angular_mode){
     
     get_header();
 ?>
-<main id="main" role="main" class="single-post">
+<main id="main" class="single-post">
     <div id="content" class="news-content info-block">
         
         <div class="container-breadcrumbs">

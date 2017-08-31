@@ -257,3 +257,44 @@ $animation-speed: .3s !default;
     font-size: $pxSize;
     font-size: ($pxSize / 10px) + rem;
 }
+
+@mixin transition($property, $speed, $timing, $delay) {
+    -webkit-transition: $property $speed $timing $delay;
+    -moz-transition: $property $speed $timing $delay;
+    -ms-transition: $property $speed $timing $delay;
+    transition: $property $speed $timing $delay;
+}
+
+@mixin transitionAll($value) {
+    -webkit-transition: $value;
+    -moz-transition: $value;
+    -ms-transition: $value;
+    transition: $value;
+}
+
+@mixin transform($value...) {
+    -webkit-transform: $value;
+    -moz-transform: $value;
+    -ms-transform: $value;
+    transform: $value;
+}
+
+@mixin transformRotate($value) {
+    -moz-transform: rotate($value);  //Для Firefox 
+    -ms-transform: rotate($value);  //Для IE 
+    -webkit-transform: rotate($value);  //Для Safari, Chrome, iOS 
+    -o-transform: rotate($value);  //Для Opera 
+    transform: rotate($value);
+}
+
+@mixin transForm($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+  @include transForm(rotate(#{$deg}deg));
+}

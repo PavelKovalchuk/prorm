@@ -8,7 +8,7 @@ $stock_remark = $stock_remark_db ? $stock_remark_db : 'none';
 ?>
 <form id="<?php echo $anchor ?>" action="" method="post" role="form" class="contact-form form-validation">
     <input type="hidden" name="request" value="request">
-     <input type="hidden" name="pro[stock_remark]" value="<?php echo $stock_remark; ?>">
+    <input type="hidden" name="pro[stock_remark]" value="<?php echo $stock_remark; ?>">
     <div class="input-holder">
         <?php ProRMForms::input('first_name', __('Name', ProRMTheme::TEXTDOMAIN), true); ?>
         <?php ProRMForms::inputMail('email', __('E-Mail', ProRMTheme::TEXTDOMAIN), true); ?>

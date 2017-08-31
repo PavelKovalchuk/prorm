@@ -44,7 +44,7 @@ $simple_block_args= array(
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="meet-us-page">
+<main id="main" class="meet-us-page">
     <div id="content">
     
     <?php // get_prorm_banner_page($banner_args, $general_alt ); ?>

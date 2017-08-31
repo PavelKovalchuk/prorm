@@ -1,0 +1,488 @@
+
+%owl-dot-style{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 12.5px;
+    margin-left: 12.5px;
+    margin-top: 25px;
+    cursor: pointer;
+    
+    transform: scale(1.0);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+     -ms-transition: all 1s ease;
+         transition: all 1s ease;
+         
+    &:not(.active):hover{
+                   
+        transform: scale(1.1);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+          -o-transition: all 1s ease;
+         -ms-transition: all 1s ease;
+             transition: all 1s ease;
+    }
+    
+    @include media('<tablet') {
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+        margin-left: 4px;
+        margin-top: 16px;
+    }
+    
+}
+
+%owl-dot-img-white{
+    background: url(images/help_img/dot-simple.png) no-repeat;
+    background-size: contain;
+    
+    &.active{
+        background: url(images/help_img/dot-active.png) no-repeat;
+        background-size: contain;
+    }
+    
+}
+
+%owl-dot-img-red{
+    
+    background: url(images/help_img/dot-red-simple-min.png) no-repeat;
+    background-size: contain;
+    
+    &.active{
+        background: url(images/help_img/dot-red-active-min.png) no-repeat;
+        background-size: contain;
+    }
+    
+}
+
+%owl-dots-row{
+    
+    width: 100%;
+    text-align: center;
+    position: static;
+    height: 75px;
+    overflow: hidden;
+    
+    @include media('<desktop') {
+        
+    }
+    
+    @include media('<tablet') {
+        bottom: 0px;
+        height: 48px;
+    }
+    
+}
+
+
+%owl-nav{
+
+    position: absolute;
+    width: 114%;
+    max-width: 1800px;
+    top: 0;
+    bottom: 50px;
+    left: -7%;
+    z-index: -1;
+
+}   
+    
+%owl-prev{
+
+    background: url(images/help_img/arrow-left-red-min.png) no-repeat;
+    background-size: contain;
+    width: 18px;
+    height: 35px;
+    display: inline-block;
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+
+    @include media('<sm-tablet') {
+        display: none;
+    }
+
+}
+
+%owl-next{
+
+    background: url(images/help_img/arrow-right-red-min.png) no-repeat;
+    background-size: contain;
+    width: 18px;
+    height: 35px;
+    display: inline-block;
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%);
+
+    @include media('<sm-tablet') {
+        display: none;
+    }
+
+}
+
+
+
+%owl-mobile-carousel{
+    
+    .owl-nav{
+        
+        @extend %owl-nav;
+        
+        @include media('<tablet') {
+            width: 110%;
+            left: -5%;
+
+            bottom: 0;
+        }
+
+    }   
+    
+    .owl-prev{
+
+        @extend %owl-prev;
+        
+        @include media('<tablet') {
+            display: inline-block;
+        }
+
+    }
+
+    .owl-next{
+
+        @extend %owl-next;
+        
+        @include media('<tablet') {
+            display: inline-block;
+        }
+
+    }
+    
+    .owl-dot{
+        @extend %owl-dot-img-red;
+    }
+
+    .owl-dots{
+
+        @include media('<tablet') {
+            height: 0;
+        }
+    }
+
+    
+}
+
+
+
+
+
+
+
+.owl-carousel{
+    
+    .owl-dots{
+        @extend %owl-dots-row;
+    }
+    
+    .owl-dot{
+        @extend %owl-dot-style;
+        @extend %owl-dot-img-white;
+
+    } 
+}
+
+
+.carousel-block{
+    
+    
+}
+
+
+#carousel_clients{
+       
+   @extend %container-inner-padding;
+
+   .customer-img{
+        width: auto;
+        @include media('<hd-screen') {
+            width: 70%;
+        }
+        @include media('<desktop') {
+             width: 85%;
+        }
+        @include media('<tablet') {
+            width: auto;
+            max-width: 250px;
+            margin: auto;
+        }
+
+    }
+    
+    .customer-person{
+        width: 75%;
+        float: left;
+        text-align: left;
+        padding-left: 15%;
+        display: inline-block;
+        font-weight: 500;
+        @include media('<hd-screen') {
+            padding-left: 5%;
+        }
+        @include media('<desktop') {
+            width: 69%;
+        }
+        @include media('<tablet') {
+            width: 100%;
+            text-align: center;
+
+        }
+
+
+    }
+    
+    .owl-dot{
+        @extend %owl-dot-img-red;
+    }
+    
+    
+    
+    .customer-description{
+        padding: 40px 50px;
+        margin: 30px 40px 20px;
+        position: relative;
+        text-align: left;
+        min-height: 240px;
+        @include media('<hd-screen') {
+            min-height: 130px;
+            padding: 40px 30px 10px 30px;
+            margin: 20px 30px 10px;
+        }
+        @include media('<tablet') {
+            min-height: 100px;
+            padding: 20px 15px 20px 15px;
+            margin: 20px 20px 10px;
+        }
+        
+        &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 53px;
+            height: 34px;
+            background: url(images/help_img/quote-open-black-min.png) no-repeat;
+            background-size: contain;
+            @include media('<hd-screen') {
+                width: 33px;
+                height: 24px;
+            }
+            @include media('<tablet') {
+                width: 20px;
+                height: 15px;
+            }
+        }
+        
+        &::after{
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 53px;
+            height: 34px;
+            background: url(images/help_img/quote-close-black-min.png) no-repeat;
+            background-size: contain;
+            @include media('<hd-screen') {
+                width: 33px;
+                height: 24px;
+            }
+            @include media('<tablet') {
+                width: 20px;
+                height: 15px;
+            }
+        }
+    }
+    
+    .customer-person-outer{
+        
+        min-height: 120px;
+        padding: 0 7% 0 13%;
+        @include media('<desktop') {
+            padding: 0 7% 0 7%;
+        }
+        
+        
+    }
+    
+    .customer-img-outer{
+        width: 25%;
+        height: 100%;
+        float: left;
+        vertical-align: baseline;
+        display: inline-block;
+        @include media('<tablet') {
+            width: 100%;
+        }
+       
+    }
+    
+}
+
+
+
+.videos-block{
+    
+    .videos-item{
+        position: relative;
+        .icon-play{
+            &:before{
+                position: absolute;
+                top: 50%; 
+                left: 50%;
+                transform: translate(-50%, -50%); 
+                width: 67px;
+                height: 54px;
+                z-index: 5;
+                background: url(images/help_img/play-min.png) no-repeat;
+                background-size: contain;
+                content: '';
+            }
+        }
+
+        img.video-item-img{
+            width: auto;
+            margin: auto;
+            @include media('<tablet') {
+                bottom: -33px;
+            }
+        }
+
+    }
+
+    .owl-dot{
+        @extend %owl-dot-img-red;
+    }
+       
+     
+    
+}
+
+
+
+#carouselTeam{
+    
+    .owl-nav{
+        
+        @extend %owl-nav;
+
+    }   
+    
+    .owl-prev{
+
+        @extend %owl-prev;
+
+    }
+
+    .owl-next{
+
+        @extend %owl-next;
+
+    }
+    
+    .owl-dot{
+        @extend %owl-dot-img-red;
+    }
+    
+}
+
+
+
+
+
+
+.team-slider-block{
+    
+    
+    .team-slider-photo-outer{
+       
+        max-width: 70%;
+        margin: auto;
+        padding: 2% 0 0 0;
+        
+        @include media('<sm-tablet') {
+            max-width: 100%;
+            padding: 2% 5% 0 5%;
+        }
+        
+        .owl-img-outer{
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+            
+            
+            
+            .team-item-big{
+                transform: scale(1);
+                -webkit-transition: all 1s ease;
+                -moz-transition: all 1s ease;
+                -o-transition: all 1s ease;
+                -ms-transition: all 1s ease;
+                transition: all 1s ease;
+                
+                width: 100%;
+                height: 100%;
+                display: block;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                
+                
+            
+                &:hover{
+                    transform: scale(1.8);
+                    -webkit-transition: all 1s ease;
+                    -moz-transition: all 1s ease;
+                    -o-transition: all 1s ease;
+                    -ms-transition: all 1s ease;
+                    transition: all 1s ease;
+                }
+            }
+        }
+   
+    }
+   
+}
+
+
+
+.experts-block{
+    
+    .owl-mobile-carousel{
+    
+        @extend %owl-mobile-carousel;
+
+    }
+}
+
+
+
+
+
+
+.awards-block{
+    
+    .owl-mobile-carousel{
+    
+        @extend %owl-mobile-carousel;
+
+    }
+   
+}

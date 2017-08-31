@@ -5,7 +5,7 @@ $anchor = Tpl::get('form_anchor');
 $id_form = "subscribe";
 $analitic_name = 'Send_contacts';
 ?>
-<form id="<?php echo $anchor ?>" action="" method="post" role="form" class="contact-form form-validation">
+<form id="<?php echo $anchor ?>" method="post" class="contact-form form-validation">
         <input type="hidden" name="subscribe" value="subscribe">
         <input class="analitic_name" type="hidden" name="<?= $analitic_name; ?>" value="<?= $analitic_name; ?>">
         <div class="input-holder">

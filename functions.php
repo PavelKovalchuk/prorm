@@ -14,18 +14,27 @@ function prorm_scripts() {
         
     }
     
-    if(is_page_template('templates/references-2017.php')){
+    if(is_page_template('templates/references-2017.php') || is_page_template('templates/our-team-2017.php')){
        //https://github.com/ciar4n/imagehover.css
-        wp_enqueue_style('imagehover-css', get_template_directory_uri() . '/css/imagehover.min.css#asyncload', array());
+        wp_enqueue_style('imagehover-css', get_template_directory_uri() . '/css/imagehover.min.css', array());
+    }
+    
+    if(is_page_template('templates/enterprise-solution-2017.php')){
+       //https://daneden.github.io/animate.css/
+//        wp_enqueue_style('animate-css', get_template_directory_uri() . '/css/animate.css#asyncload', array());
+        
+//       wp_enqueue_script('scroll-animated-js', get_template_directory_uri() . '/js/scroll-animated.js', array('jquery'), '2.2.0', true);
     }
     
 
     // Add Magnific, used in the main stylesheet.
-    wp_enqueue_style('magnific-css', get_template_directory_uri() . '/css/magnific-popup.css', array());
+    //wp_enqueue_style('magnific-css', get_template_directory_uri() . '/css/magnific-popup.css', array());
     // Add Magnific, used in the main stylesheet.
-    wp_enqueue_style('owl-style-css', get_template_directory_uri() . '/css/owl.carousel.css', array());
+//    wp_enqueue_style('owl-style-css', get_template_directory_uri() . '/css/owl.carousel.css', array());
     // Load our main stylesheet.
-    wp_enqueue_style('prorm-style', get_stylesheet_uri(), array(), '2.3.0');
+//    wp_enqueue_style('prorm-style', get_stylesheet_uri(), array(), '2.3.2');
+    
+    wp_enqueue_style('prorm-style', get_template_directory_uri() . '/style.min.css', array(), '2.4.3');
     
     wp_enqueue_script("jquery");
     // Add cookie, used in the main script.
@@ -41,8 +50,12 @@ function prorm_scripts() {
 //    
 //    // Add main js, used in the main script.
     wp_enqueue_script('jquery-main-js', get_template_directory_uri() . '/js/jquery.main.js#asyncload"', array('jquery'), false, true);
+//    
+   
+//    
+//    
 //    // Add custom, used in the main script.
-    wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js#asyncload', array('jquery', 'owl.carousel-js'), '2.1.0', true);
+    wp_enqueue_script('custom2017', get_template_directory_uri() . '/js/custom2017.js#asyncload', array('jquery', 'owl.carousel-js'), '2.2.4', true);
 //    // Add main, used in the main script.
 //    wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('jquery'), false, true);
     
@@ -79,6 +92,23 @@ function prorm_scripts() {
         wp_dequeue_style( 'owl-style-css');
         wp_dequeue_style( 'magnific-css');
        
+    }
+    
+    if(is_front_page()){
+        
+        wp_dequeue_script('magnific-popup');
+        wp_dequeue_style( 'magnific-css');
+        wp_dequeue_style( 'owl-style-css');
+        
+    }
+    
+    if(is_page_template('templates/enterprise-solution-2017.php')){
+       //https://github.com/matthieua/WOW
+        // wp_enqueue_script('wow-js', get_template_directory_uri() . '/js/wow.min.js', array(), false, true);
+         
+//         wp_enqueue_script('fractionslider-js', get_template_directory_uri() . '/js/jquery.fractionslider.js', array('jquery'), false, true);
+         
+        // wp_enqueue_script('jquery-ui-effects-js', get_template_directory_uri() . '/js/jquery-ui-effects.min.js#asyncload"', array('jquery'), false, true);
     }
     
     if(is_page_template('templates/nomination-2017.php')){

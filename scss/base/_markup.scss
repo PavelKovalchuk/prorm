@@ -1,0 +1,150 @@
+/* CLEARFIX */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+
+.row-12{
+    @extend %col;
+    width: 100%;
+   
+}
+
+.row-6{
+    @extend %col;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+   
+}
+
+.row-9{
+    @extend %col;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+   
+}
+
+%col{
+    position: relative;
+    min-height: 1px;
+    float: left;
+}
+
+.col-12{
+    @extend %col;
+    width: 100%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+.col-10{
+    @extend %col;
+    width: 83.33%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+
+.col-11{
+    @extend %col;
+    width: 91.66%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+
+.col-9{
+    @extend %col;
+    width: 75%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+.col-6{
+    @extend %col;
+    width: 50%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+.col-4{
+    @extend %col;
+    width: 33.33333333%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+.col-3{
+    @extend %col;
+    width: 25%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+.col-2{
+    @extend %col;
+    width: 16.66666667%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+    
+}
+
+.col-2-4{
+    @extend %col;
+    width: 20%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+}
+
+.col-1{
+    @extend %col;
+    width: 8.33%;
+    @include media('<tablet') {
+            width: 100%;
+    }
+    
+}
+
+.col-offset-left-3{
+    margin-left: 25%;
+}
+
+.col-offset-right-3{
+    margin-right: 25%;
+}
+
+
+.alignment-left{
+    float: left;
+}
+
+.alignment-right{
+    float: right;
+}
+
+p.small{
+    font-size: 0.8em;
+}
+    

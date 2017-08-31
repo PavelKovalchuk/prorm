@@ -4,6 +4,8 @@ $video = Tpl::get('video');
 if ($video) {
     list($imageUrl, $imageWidth, $imageHeight) = ProRmVideo::getImageSrc($video);
     $id_video = ProRmVideo::getVideoSrc($video);
+    
+   
 }
 ?>
 <?php ?>

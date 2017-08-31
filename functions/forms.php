@@ -175,10 +175,11 @@ abstract class ProRMForms
         }
     }
 
-    public static function fieldTpl($tplName, $name, $label, $isRequired = null)
+    public static function fieldTpl($tplName, $name, $label, $isRequired = null, $formName = 'formName')
     {
         Tpl::set('field_label', $label);
         Tpl::set('field_name', $name);
+        Tpl::set('form_name', $formName);
 
         self::field($tplName, $isRequired);
 
@@ -186,12 +187,13 @@ abstract class ProRMForms
         Tpl::unsetVar('field_value');
     }
     
-    public static function fieldTplNew($tplName, $name, $type, $label, $placeholder, $isRequired = null)
+    public static function fieldTplNew($tplName, $name, $type, $label, $placeholder, $isRequired = null, $formName = 'formName')
     {
         Tpl::set('field_label', $label);
         Tpl::set('field_name', $name);
         Tpl::set('placeholder', $placeholder);
         Tpl::set('field_type', $type);
+        Tpl::set('form_name', $formName);
 
         self::field($tplName, $isRequired);
 
@@ -204,17 +206,17 @@ abstract class ProRMForms
         self::fieldTpl('_input.text', $name, $label, $isRequired);
     }
     
-    public static function inputField($name, $type, $label, $placeholder, $isRequired = null)
+    public static function inputField($name, $type, $label, $placeholder, $isRequired = null, $formName = 'formName')
     {
-        self::fieldTplNew('_input.textField', $name, $type, $label, $placeholder, $isRequired);
+        self::fieldTplNew('_input.textField', $name, $type, $label, $placeholder, $isRequired, $formName);
     }
          
-    public static function textareaField($name, $label, $placeholder, $isRequired = null)
+    public static function textareaField($name, $label, $placeholder, $isRequired = null, $formName = 'formName')
     {
-        self::fieldTplNew('_input.textareaField', $name, 'textarea', $label, $placeholder, $isRequired);
+        self::fieldTplNew('_input.textareaField', $name, 'textarea', $label, $placeholder, $isRequired, $formName);
     }
     
-     public static function radioField($name, $options, $isRequired = null, $highlight = false)
+     public static function radioField($name, $options, $isRequired = null, $highlight = false, $formName = 'formName')
     {
         Tpl::set('field_options', $options);
         if(!$highlight){
@@ -222,7 +224,7 @@ abstract class ProRMForms
         }else{
             $input_template = '_input.HighlightRadioField';
         }
-        self::fieldTpl($input_template, $name, null, $isRequired);
+        self::fieldTpl($input_template, $name, null, $isRequired, $formName);
         Tpl::unsetVar('field_options');
     }
     
@@ -467,5 +469,5 @@ abstract class ProRMForms
     public static function getFormsDir()
     {
         return self::$formsDir;
-    }
+    }    
 }

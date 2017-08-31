@@ -16,21 +16,22 @@ $general_alt =  $settings->getOption('general_alt_text_for_images');
 
 $fields = get_fields();
 
+$general_page_id = 'fast-start';
+
+//For buttons on forms
+Tpl::set('general_page_id', $general_page_id);
 
 
 $banner_args = array(
-    'banner_planet' => $fields['banner_planet_page']["url"],
     'banner_object' => $fields['banner_object_page']["url"],
-    'banner_clouds' => $fields['banner_clouds_page']["url"],
-    'banner_clouds_top' => $fields['banner_clouds_page_top']["url"],
     'banner_header' => $fields['banner_header_page'],
     'banner_header_tag' => $fields['banner_header_tag'],
     'banner_text' => $fields['banner_text_page'],
     'banner_buttons' => $fields['banner_buttons_page'],
-    'stars_effect' => $fields['stars_effect'],
+    'button_id' => $general_page_id,
+    
    
 );
-
 
 
 $parent_page_id = $fields['parent_page_id'];
@@ -48,11 +49,39 @@ $expectations_block_args = array(
     
 );
 
-$download_block_args = array(
-    'button_label' => $fields['fourth_block_button_label'],
-    'button_link' => $fields['fourth_block_button_link']
+//$download_block_args = array(
+//    'button_label' => $fields['fourth_block_button_label'],
+//    'button_link' => $fields['fourth_block_button_link'],
+//    'button_id' => 'download-btn-' . $general_page_id . '-1'
+//    
+//);
+
+$get_demo_block_args = array(
+    'check_button' => $fields['cta_button'][0]['call_form'],
+    'classes' => 'button-prorm button-prorm-white-transparent seo-fast-start-download',
+    'form_name' => $fields['cta_button'][0]['form_name']->post_name,
+    'label' => $fields['cta_button'][0]['button_label'],
+    'link' => $fields['cta_button'][0]['button_link'],
+    'headline' => $fields['cta_button'][0]['headline'],
+    'button_id' => 'download-btn-' . $general_page_id . '-1'   
     
 );
+
+$get_demo_2_block_args = array(
+    'check_button' => $fields['cta_button'][1]['call_form'],
+    'classes' => 'button-prorm button-prorm-white-transparent seo-fast-start-download',
+    'form_name' => $fields['cta_button'][1]['form_name']->post_name,
+    'label' => $fields['cta_button'][1]['button_label'],    
+    'link' => $fields['cta_button'][1]['button_link'],
+    'button_id' => 'download-btn-' . $general_page_id . '-2'
+);
+
+//$download_block_2_args = array(
+//    'button_label' => $fields['fourth_block_button_label'],
+//    'button_link' => $fields['fourth_block_button_link'],
+//    'button_id' => 'download-btn-' . $general_page_id . '-2'
+//    
+//);
 
 $our_team_block_args = array(
     'meet_our_team_ID' => $fields['meet_our_team'],
@@ -78,11 +107,11 @@ $videos_block_args = array(
     'section_header' => $fields['video_block_header']
 );
 
-$get_it_block_args = array(
-    'button_label' => $fields['appstore_button_label'],
-    'button_link' => $fields['appstore_button_link']
-    
-);
+//$get_it_block_args = array(
+//    'button_label' => $fields['appstore_button_label'],
+//    'button_link' => $fields['appstore_button_link']
+//    
+//);
 
 $form_block_args = array(
     'section_header' => $fields['form_block_header']
@@ -95,7 +124,7 @@ $form_block_args = array(
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="fast-start-page">
+<main id="main" class="fast-start-page">
     <div id="content">
         
         
@@ -111,8 +140,8 @@ $form_block_args = array(
         
         <?php get_expectations_block($expectations_block_args, $general_alt, 'bg-grey'); ?>
         
-        <?php get_button_block($download_block_args, 'download-bg-1', 'button-prorm-white-transparent'); ?>
-        
+        <?php get_button_form_block($get_demo_block_args, 'download-bg-6-big big-field'); ?>
+                        
         <?php get_our_team_block($our_team_block_args, $general_alt, 'bg-white'); ?>
         
         <?php get_about_us_numbers_block($about_us_numbers_block_args, 'bg-grey'); ?>
@@ -121,7 +150,7 @@ $form_block_args = array(
         
         <?php get_clients_page_block($clients_block_args, $general_alt, 'bg-white'); ?>
         
-        <?php get_button_block($download_block_args, 'download-bg-2', 'button-prorm-white-transparent'); ?>
+        <?php get_button_form_block($get_demo_2_block_args, 'download-bg-2'); ?>
         
         <?php get_bussiness_circle_block($bussiness_circle_block_args, $general_alt, 'bg-white'); ?>
         

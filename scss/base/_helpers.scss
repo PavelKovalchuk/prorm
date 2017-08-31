@@ -57,3 +57,216 @@
   overflow: hidden;
 }
 
+.magnifier-cursor{
+    cursor: url('images/help_img/magnifier.png'), -webkit-zoom-in;
+}
+
+
+.marsala-colour{
+    color: $vinous;
+}
+
+.bg-grey{
+    background-color: $gray4;
+}
+.bg-white{
+    background-color: $white;
+}
+
+
+
+.white-style{
+    color: $white;
+    font-size: 1.4em;
+}
+
+.white-style{
+    color: $white;
+}
+
+h1.white-style-left{
+    @extend %headers_white_left_style;
+    font-size: 1.6em;
+    @include media('<tablet') {
+        font-size: 1.3em;;
+    }
+    
+}
+
+.font-small{
+    font-size: 0.7em;
+    @include media('<tablet') {
+        font-size: 0.9em;;
+    }
+    
+}
+
+.font-medium{
+    font-size: 0.8em;
+    
+    @include media('<tablet') {
+        font-size: 1em;;
+    }
+}
+    
+h2.white-style-left{
+    @extend %headers_white_left_style;
+    font-size: 1.2em;
+    @include media('<tablet') {
+        font-size: 1.1em;;
+    }
+}
+
+h2.black-style-center,
+h1.black-style-center{
+    @extend %headers_black_style;
+    font-size: 1.4em;
+    @include media('<tablet') {
+        font-size: 1.3em;;
+    }
+}
+
+h3{
+    font-size: 1.2em;
+    @include media('<tablet') {
+        font-size: 1.1em;;
+    }
+}
+
+h5{
+    font-size: 1.0em;
+    @include media('<tablet') {
+        font-size: 1.1em;;
+    }
+}
+
+p{
+    margin: 0 0 20px;
+    font-size: 1em;
+    @include media('<tablet') {
+        font-size: 1.0em;;
+    }
+}
+
+
+.center{
+    text-align: center;
+}
+
+.bold-text{
+    font-weight: 600;
+}
+
+
+.magnifier-link{
+    text-transform: lowercase;
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    padding: 0 30px 0;
+    &:before {
+            content: "";
+            width: 17px;
+            height: 20px;
+            background: url(images/help_img/magnifier.png) no-repeat;
+            bottom: 0px;
+            left: 0;
+            position: absolute;
+            display: inline-block;
+    }
+    @include media('<desktop') {
+        font-size: 15px;
+    }
+    
+}
+
+
+
+
+.box-shadow{
+    box-shadow: 2px 0 0 0 $gray3, 0 2px 0 0 $gray3, 2px 2px 0 0 $gray3, 2px 0 0 0 $gray3 inset, 0 2px 0 0 $gray3 inset;
+}
+
+
+
+
+ 
+
+.text-bigger-block{
+    
+    .text-bigger{
+/*        transform: scale(1);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+        @include media('<desktop') {
+            transform: none;
+        }*/
+    }
+    
+    &:hover{
+        .text-bigger{
+/*            transform: scale(1.1);
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            transition: all 1s ease;
+            @include media('<desktop') {
+                transform: none;
+            }*/
+        }
+    }
+} 
+
+
+
+.info-block{
+    float: left;
+    padding: 2% 0 2% 0;
+    width: 100%;
+    
+    h2{
+        padding: 0 10px;
+        margin: 0;
+    }
+    
+   
+    @include media('<tablet') {
+               
+        h2{
+            padding: 0 10px;
+        }
+    }
+    
+    
+}
+
+%section-outer-padding{
+    padding: 25px 5% 0;
+}
+
+
+
+
+
+
+%main-style{
+    #content:only-child{
+        float: left;
+    }
+    &#main{
+        padding: 96px 0 0 0;
+        @include media('<1530px') {
+            padding: 64px 0 0 0;
+        }
+        @include media('<widescreen') {
+            padding: 88px 0 0 0;
+        }
+        @include media('<desktop') {
+            padding: 60px 0 0 0;
+        }
+    }
+}

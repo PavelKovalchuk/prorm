@@ -10,9 +10,12 @@ jQuery(document).ready(function () {
     
     calculationPageNotFound();
     cookie();
-    transferFromHomePage();
+    
+  
+    
+//    transferFromHomePage();
 //    movePlanet();
-    aboutUsMoveNumbers();
+    initAboutUsMoveNumbers();
     initCustomerSlider();
     initVideoSlider();
     initModalWindow();
@@ -22,6 +25,15 @@ jQuery(document).ready(function () {
     initAwardsSlider();
     initHomepageSlider();
     
+    initPageSideNav();
+    
+//    initAnimatedPageSideNav();
+    
+    initGraphES();
+    initGraphFS();
+    initUsersReport();
+    
+//    initWowJS();
 //    initShiningStars();
 //    
 //    initFlyingBirds();
@@ -29,7 +41,8 @@ jQuery(document).ready(function () {
    
     initEventSlider();
     initOurPartnerSlider();
-   
+    
+    initMobileSlider();
     
     magnific_popup();
 //    playCube();
@@ -216,8 +229,13 @@ function noscroll_map() {
 function magnific_popup() {
     $gallery = jQuery('.gallery-item');
     $gallery_video = jQuery('.popup-youtube');
-    init_magnific_popup($gallery, false);
-    init_magnific_popup($gallery_video, true);
+    
+    if($gallery.length > 0 || $gallery_video.length > 0){
+        init_magnific_popup($gallery, false);
+        init_magnific_popup($gallery_video, true);
+    }
+    
+    
 }
 
 function init_magnific_popup(magnific, video) {
@@ -383,34 +401,29 @@ function movePlanet(){
     }
 }
 
-function aboutUsMoveNumbers(){
+function initAboutUsMoveNumbers(){
     
     if(jQuery('.about-us-numbers-block').length > 0){
-        var height = $(window).height() ;
-        var block =  jQuery('.about-us-numbers-block');
-        var blockPos =  block.position().top - height;
-        var status = block.attr('data-status');
-//    console.log('height', height);
-//    console.log('blockPos', blockPos);
-//        if(status === 'ready'){
-            waitCounter(blockPos);
-//        }
-        
-      
+        var height = jQuery(window).height(),
+        block =  jQuery('.about-us-numbers-block'),
+        blockPos =  block.position().top - height,
+        status = block.attr('data-status');
+
+        waitCounter(blockPos, block, status);
+     
     }
     
     
 }
 
-function waitCounter(pos){
+function waitCounter(pos, block, status){
     
     jQuery(document).scroll(function(){
-        var status = jQuery('.about-us-numbers-block').attr('data-status');
-        
+       
         if(jQuery(window).scrollTop() > pos && status === 'ready'){
             
             startCounter();
-            jQuery('.about-us-numbers-block').attr('data-status', 'done');
+            block.attr('data-status', 'done');
         }
         
     });
@@ -419,8 +432,12 @@ function waitCounter(pos){
 
 function startCounter(){
     jQuery('.counter').each(function() {
-        var $this = jQuery(this),
-            countTo = $this.attr('data-count'),
+        var $this = jQuery(this);
+        if($this.attr('data-complete') == 'finished'){
+            return;
+        } 
+        
+        var countTo = $this.attr('data-count'),
             addSign = $this.attr('data-sign') ? $this.attr('data-sign') : false;
 
         jQuery({ countNum: $this.text()}).animate({
@@ -437,6 +454,7 @@ function startCounter(){
           complete: function() {
               
             $this.text(this.countNum + addSign);
+            $this.attr('data-complete', 'finished');
             //alert('finished');
           }
 
@@ -447,9 +465,11 @@ function startCounter(){
 
 function initCustomerSlider(){
     
-    if(jQuery('#carousel_clients').length > 0 ){
+    var carouselClients = jQuery('#carousel_clients');
+    
+    if(carouselClients.length > 0 ){
         
-        jQuery('#carousel_clients').owlCarousel({
+        carouselClients.owlCarousel({
             loop:true,
             margin:0,
             navText: [ '', ''],
@@ -489,7 +509,7 @@ function initHomepageSlider(){
             loop:true,
             margin: 20,
             navText: [ '', ''],
-    //        autoplay: true,
+    
 //            animateInClass: 'flipInX',
 //            animateOut: 'bounceIn',
             
@@ -545,7 +565,7 @@ function initTeamSlider(){
                 0:{
                     items:1
                 },
-                480:{
+                640:{
                     items:1
                 },
                 768:{
@@ -647,14 +667,16 @@ function initAwardsSlider(){
 
 function initVideoSlider(){
     
-    if(jQuery('#video-carousel')){
+    var videoCarousel = jQuery('#video-carousel');
+    
+    if(videoCarousel.length > 0){
         
         
-        jQuery('#video-carousel').owlCarousel({
+        videoCarousel.owlCarousel({
             loop:true,
             margin: 30,
             navText: [ '', ''],
-    //        autoplay: true,
+            autoplay: true,
 //            animateInClass: 'flipInX',
 //            animateOut: 'bounceIn',
             nav: true,
@@ -737,6 +759,42 @@ function initModalWindow(){
     
 
 }
+
+function initWowJS(){
+    
+            
+        var wowBlock = jQuery('.js-wow');
+    
+        if(wowBlock.length > 0){
+
+            wow = new WOW(
+                {
+                    boxClass:     'wow',      // animated element css class (default is wow)
+                    animateClass: 'animated', // animation css class (default is animated)
+                    offset:       0,          // distance to the element when triggering the animation (default is 0)
+                    mobile:       true,       // trigger animations on mobile devices (default is true)
+                    live:         true,       // act on asynchronously loaded content (default is true)
+    //                callback:     function(box) {
+    //                  // the callback is fired every time an animation is started
+    //                  // the argument that is passed in is the DOM node being animated
+    //                },
+                    scrollContainer: null // optional scroll container selector, otherwise use window
+                }
+            );
+            wow.init();
+
+        }
+   
+    
+}
+
+
+
+
+
+
+
+
 
 function initNewsSlider(){
     
@@ -1057,12 +1115,954 @@ function transformTextInit(){
     
 }
 
+function runMobileSlider(slider){
+    
+    slider.addClass('owl-theme owl-carousel ');
+    
+    slider.owlCarousel({
+            loop:false,
+            margin:0,
+            navText: [ '', ''],
+            autoplay: true,
+            nav: true,
+            dots: false,
+            lazyLoad:true,
+            rewind:true,
+            autoplayTimeout: 1500,
+           
+            responsive:{
+                0:{
+                    items:1
+                },
+                768:{
+                    items:1
+                }
+            }
+    });
+    
+}
+
+function sweepMobileSlider(slider){
+    
+    if(slider.hasClass('owl-carousel')){
+        
+        slider.removeClass('owl-theme owl-carousel ');
+        slider.trigger('destroy.owl.carousel');
+        slider.on('resized.owl.carousel', function(event) {
+            
+            if(jQuery(window).width() > 767){
+                console.log('sweepMobileSlider');
+                slider.find('.owl-stage').removeAttr("style");
+            }
+        });
+        
+        slider.find('.owl-stage').removeAttr("style");
+    }
+    
+    
+}
+
+
+function initMobileSlider(){
+    
+     
+    var slider = jQuery('.owl-mobile-carousel');
+    
+    if(slider.length > 0){ 
+        
+        if(jQuery(window).width() > 767){
+                
+           sweepMobileSlider(slider);
+
+        }else{
+            
+            runMobileSlider(slider);
+
+        }
+        
+        jQuery(window).resize(function() {
+            
+            if(jQuery(window).width() > 767){
+                
+               sweepMobileSlider(slider);
+               
+            }else{
+                console.log('runMobileSlider 2');
+                runMobileSlider(slider);
+                
+            }
+            
+        });
+        
+    }
+
+}
+
+//Displays on the Enterprise Solution page/ Animataed graph
+function initGraphES(){
+        
+    var block = jQuery('.js-graph-es');
+
+    if(block.length > 0){
+        
+        var circle_1 = jQuery('.circle-1'),
+        circle_2 = jQuery('.circle-2'),
+        half_circle = jQuery('.half-circle'),
+        text_1 = jQuery('.graph-item-text-outer.gi-1'),
+        text_2 = jQuery('.graph-item-text-outer.gi-2'),
+        text_3 = jQuery('.graph-item-text-outer.gi-3'),
+        outer = jQuery('.graph-img-inner');
+             
+        if(circle_1.length > 0 && circle_2.length > 0 && half_circle.length > 0){
+            
+           
+            circle_1.on('mouseenter', function(){
+                
+                circle_2.removeClass('circle-hover');
+                half_circle.removeClass('half-moved');
+                circle_1.addClass('circle-hover');
+                
+                text_2.removeClass('visible');
+                text_3.removeClass('visible');
+
+                                
+            });
+            
+            circle_1.on('click', function(){
+                                
+                text_1.addClass('visible');
+                
+                text_2.removeClass('visible');
+                text_3.removeClass('visible');
+                
+                outer.removeClass('moved-left');
+                outer.addClass('moved-right');
+                
+            });
+           
+        
+            circle_2.on('mouseenter', function(){
+                
+                circle_1.removeClass('circle-hover');
+                circle_2.addClass('circle-hover');
+                half_circle.addClass('half-moved');
+                
+                text_1.removeClass('visible');
+                
+                
+            });
+            
+            circle_2.on('click', function(){
+                
+                text_1.removeClass('visible');
+                text_2.addClass('visible');
+                text_3.addClass('visible');
+                
+                outer.removeClass('moved-right');
+                outer.addClass('moved-left');
+                
+            });
+     
+            outer.parent().on('mouseleave', function(){
+                
+                outer.removeClass('moved-left');
+                outer.removeClass('moved-right');
+                
+                circle_2.removeClass('circle-hover');
+                
+                text_1.removeClass('visible');
+                text_2.removeClass('visible');
+                text_3.removeClass('visible');
+                
+                half_circle.removeClass('half-moved');
+                
+            });
+        
+        }
+
+    }
+        
+    
+       
+}
+
+
+//Displays on the Field Service Automatization page/ Animataed graph
+function initGraphFS(){
+        
+    var block = jQuery('.js-graph-fs');
+
+    if(block.length > 0){
+        
+        var circle = jQuery('.circle-fsa'),
+            rectOuter = jQuery('.rect-outer'),
+            canvasHTML = jQuery('#canvas-fsa'),
+            rect = jQuery('.rect'),
+            rectText = jQuery('.rect-descr'),
+            canvas = document.getElementById('canvas-fsa'),
+            mistakes = [],
+            contextData = [],
+            rectangleActive = 'passive';
+        
+        var addMistake = function (mistake){
+            
+            if(mistake){
+                mistakes.push(mistake);
+                return true;
+            }
+            return false;
+        };
+        
+        
+        if(!canvas){
+            addMistake('NO canvas with ID canvas-fsa');
+            checkMistakes();
+            return;
+            
+        }
+            //For Canvas animation
+
+        var finish = 100,
+            x = canvas.width / 2,
+            y = canvas.height / 2,
+            radius = 150,
+            counterClockwise = false,
+            lineWidth = 90,
+            speed = 4,
+            speedBack = 6,
+            maxWidth = 100,
+            lineHeight = 14;
+            
+       
+       // Enables browser-decided smooth animation (60fps)
+        var raf =
+            window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame;
+            window.requestAnimationFrame = raf;
+            
+        
+        
+        var ctx_1 = new Object();
+            ctx_1.context = canvas.getContext('2d');
+            ctx_1.startAngle = 1.25 * Math.PI;
+            ctx_1.endAngle = 1.5 * Math.PI;
+            ctx_1.color = '#351417';
+            ctx_1.curr = 0;
+            ctx_1.top = 0;
+            ctx_1.left = 100;
+            ctx_1.text = "Optimized scheduling";
+            ctx_1.textX = 140;
+            ctx_1.textY = 60;
+
+        var ctx_2 = new Object();
+            ctx_2.context = canvas.getContext('2d');
+            ctx_2.startAngle = 1.5 * Math.PI;
+            ctx_2.endAngle = 1.75 * Math.PI;
+            ctx_2.color = '#491423';
+            ctx_2.curr = 0;
+            ctx_2.top = 105;
+            ctx_2.left = 100;
+            ctx_2.text = "Contract management";
+            ctx_2.textX = 255;
+            ctx_2.textY = 55;
+
+        var ctx_3 = new Object();
+            ctx_3.context = canvas.getContext('2d');
+            ctx_3.startAngle = 1.75 * Math.PI;
+            ctx_3.endAngle = 2.00 * Math.PI;
+            ctx_3.color = '#72122f';
+            ctx_3.curr = 0;
+            ctx_3.top = 200;
+            ctx_3.left = 200;
+            ctx_3.text = "Inventory management";
+            ctx_3.textX = 340;
+            ctx_3.textY = 140;
+
+        var ctx_4 = new Object();
+            ctx_4.context = canvas.getContext('2d');
+            ctx_4.startAngle = 2.00 * Math.PI;
+            ctx_4.endAngle = 2.25 * Math.PI;
+            ctx_4.color = '#99183e';
+            ctx_4.curr = 0;
+            ctx_4.top = 300;
+            ctx_4.left = 300;
+            ctx_4.text = "Mobile productivity";
+            ctx_4.textX = 335;
+            ctx_4.textY = 250;
+
+        var ctx_5 = new Object();
+            ctx_5.context = canvas.getContext('2d');
+            ctx_5.startAngle = 2.25 * Math.PI;
+            ctx_5.endAngle = 2.50 * Math.PI;
+            ctx_5.color = '#ac4665';
+            ctx_5.curr = 0;
+            ctx_5.top = 400;
+            ctx_5.left = 400;
+            ctx_5.text = "Connected Field Service";
+            ctx_5.textX = 260;
+            ctx_5.textY = 330;
+
+
+        var ctx_6 = new Object();
+            ctx_6.context = canvas.getContext('2d');
+            ctx_6.startAngle = 2.50 * Math.PI;
+            ctx_6.endAngle = 2.75 * Math.PI;
+            ctx_6.color = '#c2748c';
+            ctx_6.curr = 0;
+            ctx_6.top = 500;
+            ctx_6.left = 300;
+            ctx_6.text = "Customer communications";
+            ctx_6.textX = 135;
+            ctx_6.textY = 330;
+
+
+        
+    
+        contextData.push(ctx_1);
+        contextData.push(ctx_2);
+        contextData.push(ctx_3);
+        contextData.push(ctx_4);
+        contextData.push(ctx_5);
+        contextData.push(ctx_6);
+         
+
+        function checkMistakes(){
+            
+            
+            if(!rect.length > 0){
+                mistakes.push('NO rectangles');
+                
+            }
+
+            if(!contextData.length > 0){
+                mistakes.push('NO contextData');
+            }
+            
+            if(!canvasHTML.length > 0){
+                mistakes.push('NO canvasHTML');
+            }
+            
+            if(!circle.length > 0){
+                mistakes.push('NO circle');
+            }
+            
+            if(!rectOuter.length > 0){
+                mistakes.push('NO rectOuter');
+            }
+            
+            
+            if(mistakes.length > 0){
+                
+                console.log('____________Mistakes start_______________________');
+                
+                mistakes.forEach(function(item, index, array) {
+
+                    console.log('WARNING! function initGraphFS() has problem: ', item);
+
+                });
+                
+                console.log('____________Mistakes end_______________________');
+                mistakes.splice(0,mistakes.length+1);
+                return;
+            }
+           
+        };
+        
+        
+        var drawText = function(item, maxWidth, lineHeight) {
+            var words = item.text.split(' '),
+            line = '',
+            x = item.textX,
+            y = item.textY;
+
+            for(var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + ' ';
+                var metrics = item.context.measureText(testLine);
+                var testWidth = metrics.width;
+
+                if (testWidth > maxWidth && n > 0) {
+                    
+                  item.context.fillText(line, x, y);
+                  line = words[n] + ' ';
+                  y += lineHeight;
+                  
+                }
+                else {
+                  line = testLine;
+                }
+            }
+            item.context.fillText(line, x, y);
+        };
+
+
+        var createContext = function( data) {
+                
+                if(!data.length > 0 ){
+                    addMistake('NO data passed to the function createContext');
+                    checkMistakes();
+                }
+                
+                console.log('createContext works', data);
+                
+                data.forEach(function(item, index, array) {
+   
+                    item.context.beginPath();
+                    
+                    //Shadow border
+//                        item.context.shadowBlur = 3;
+//                        item.context.shadowOffsetX= 1;
+//                        item.context.shadowOffsetY= 0;
+//                        item.context.shadowColor = "rgba(0,0,0,0.15)";
+                
+                    item.context.arc(x, y, radius, item.startAngle, item.endAngle, counterClockwise);
+                    item.context.lineWidth = lineWidth;
+                    item.context.strokeStyle = item.color;
+                    item.context.stroke(); 
+                    
+                    //Drawing text
+                    item.context.fillStyle = '#ffffff';
+                    item.context.font = "15px Arial";
+                    item.context.textAlign="center"; 
+//                    item.context.fillText(item.text, item.textX, item.textY, 90);
+                    
+                    drawText(item, maxWidth, lineHeight);
+                    
+
+                });
+
+        };
+        
+        var cutCircle = function(context, x, y, radius){
+            context.globalCompositeOperation = 'destination-out';
+            context.clearRect(x, y, canvas.width, canvas.height);
+            context.arc(x, y, radius, 0, Math.PI*2, false);
+            context.fill();
+
+
+            console.log('cutCircle');
+        };
+
+       // Animate Circle function
+
+        var animateSegment  = function(draw_to, item, customCurr ) {
+//                console.log('animateSegment ', draw_to);
+                item.context.beginPath();
+                
+                item.context.arc(x, y, radius, item.endAngle, draw_to, true);
+                //    https://developer.mozilla.org/ru/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+                if(item.context.globalCompositeOperation !== 'destination-out'){
+                    item.context.globalCompositeOperation = 'destination-out';
+                }
+                
+                if(item.context.strokeStyle === item.color){
+                    item.context.strokeStyle = '#ffffff';
+                }
+
+                
+//                    context.shadowBlur = 0;
+//                    context.shadowOffsetX= 0;
+//                    context.shadowColor = "#ffffff";
+            
+
+                item.context.stroke();
+                if ( draw_to === undefined) {
+                    customCurr = 0;
+                }else{
+                    customCurr = customCurr + speed;
+                }
+
+
+                var path =  item.endAngle - (item.endAngle - item.startAngle) * (customCurr) / finish;
+
+                if ( customCurr < finish + 1 ) {
+//console.log('customCurr ', customCurr);
+                    requestAnimationFrame(function () {
+
+                        animateSegment(path, item, customCurr);
+
+                    });
+
+                } 
+                if ( customCurr > finish) {
+                    item.context.closePath();
+                }
+              
+        };
+        
+        
+        var animateSegmentBack = function(draw_to, item, customCurr) {
+//            
+                // Start over
+                item.context.beginPath();
+    
+                item.context.arc(x, y, radius, item.startAngle, draw_to, false);
+                
+                if(item.context.globalCompositeOperation !== 'source-over'){
+                    item.context.globalCompositeOperation = 'source-over';
+                }
+                
+                if(item.context.strokeStyle !== item.color){
+                    item.context.strokeStyle = item.color;
+                }
+                
+//                item.context.strokeStyle = item.color;
+          
+                item.context.stroke();
+                
+                if ( draw_to === undefined) {
+                    customCurr = 0;
+                    
+                }else{
+                    customCurr = customCurr + speedBack;
+                }             
+                
+      
+                var path =  item.startAngle - (item.startAngle - item.endAngle) * (customCurr) / finish;
+             
+                if ( customCurr < finish + speedBack ) {
+
+                    requestAnimationFrame(function () {
+        
+                        animateSegmentBack(path, item, customCurr);
+
+                    });
+
+                } else if(customCurr > finish ){
+                    
+                    item.context.beginPath();
+                  
+                    item.context.fillStyle = '#ffffff';
+                    item.context.font = "15px Arial";
+                    item.context.textAlign="center"; 
+                    drawText(item, maxWidth, lineHeight);
+//                    console.log('drawText b');       
+                    item.context.closePath(); 
+                } 
+                
+               
+
+        };
+      
+      
+        
+        var animateRectangles = function(rect, visible){
+            
+            if(rect.length > 0){
+                
+                if(visible === true){
+                    
+                    rect.each(function(indx, element){
+                       
+                        jQuery(this).addClass('visible');
+
+                        jQuery(this).addClass('rect-clicked');
+
+                    });
+                    
+                }else{
+                    
+                    rect.each(function(indx, element){
+                       
+                        jQuery(this).removeClass('visible');
+
+                        jQuery(this).removeClass('rect-clicked');
+
+                    });
+                    
+                }
+                
+            }
+        
+        };
+        
+        
+        checkMistakes();  
+        
+        //Create context on load
+        createContext(contextData);
+//        debugger;
+        
+          
+        
+        //Create event on click for rectangles
+        rect.each(function(indx, element){
+                       
+            jQuery(this).on('click', function(){
+                
+                var elementId = jQuery(this).attr('data-title-id'),
+                    element = jQuery(rectText).find('[data-text-id=' + elementId + ']'),
+                    elementParent = element.parent(),
+                    showedElement = jQuery(rectOuter).find('.shown');
+                
+                if(!element.length > 0){
+                    addMistake('Cannot find element with attr data-text-id');
+                }
+                
+                if(!showedElement.length > 0 && rectangleActive !== 'passive'){
+                    addMistake('Cannot find showedElement with class .rect-descr and class .shown');
+                }
+                
+                
+                
+                if(rectOuter.hasClass('rect-visible')){
+                    rectangleActive = elementId;
+                
+                    showedElement.removeClass('shown');
+
+                    elementParent.addClass('shown');
+
+                    checkMistakes(); 
+                }
+               
+                
+            });
+
+        });
+        
+    
+          
+           
+        circle.on('mouseenter', function(){
+
+            circle.addClass('circle-hover');
+
+            canvasHTML.addClass('canvas-hover');
+
+
+        });
+
+        circle.on('mouseleave', function(){
+
+            circle.removeClass('circle-hover');
+
+            canvasHTML.removeClass('canvas-hover');
+
+        });
+
+
+        circle.on('click', function(){
+
+
+            if( canvasHTML.hasClass('canvas-clicked') && circle.hasClass('moved-left') && rectOuter.hasClass('rect-visible')){
+                
+//                console.log('___________BAck animateSegment_____________');
+
+                
+                contextData.forEach(function(item, index, array) {
+
+                    animateSegmentBack(undefined,  item, item.curr);   
+
+                });
+                
+                animateRectangles(rect, false);
+
+                canvasHTML.removeClass('canvas-clicked');
+
+                circle.removeClass('moved-left');
+
+                rectOuter.removeClass('rect-visible');
+
+                rectOuter.find('.shown').removeClass('shown');
 
 
 
+            }else{
+//                console.log('___________animateSegment_____________');
+                
+                contextData.forEach(function(item, index, array) {
+                
+                    animateSegment(undefined, item, item.curr);   
+
+                });
+                canvasHTML.addClass('canvas-clicked');
+
+                canvasHTML.addClass('js-canvas-clicked');
+
+                circle.addClass('moved-left');
+
+                rectOuter.addClass('rect-visible');
+
+                animateRectangles(rect, true);
+
+            }
+
+       
+
+        }); 
+       
+    }
+        
+    
+       
+}
+
+function initUsersReport(){
+    
+    var block =  jQuery('.js-circle-animated');
+    
+    if(block.length > 0){
+        var height = jQuery(window).height(),
+        blockPos =  block.position().top - height,
+        status = block.attr('data-status');
+
+        waitUsersReport(blockPos, block, status);
+
+    }
+    
+    
+}
+
+function waitUsersReport(pos, block, status){
+    
+    jQuery(document).scroll(function(){
+   
+        if(jQuery(window).scrollTop() > pos && status === 'ready'){
+            
+            startUsersReport();
+            block.attr('data-status', 'done');
+        }
+        
+        
+    });
+    
+}
+
+function startUsersReport(){
+    jQuery('.js-circle').each(function() {
+        jQuery( this ).addClass( "shown colored" );
+    });
+}
 
 
+function initPageSideNav(){
+    
+    var block =  jQuery('#pageSideNav'),
+        links = jQuery('.js-side-nav-link'),
+        menuLinks = jQuery('.js-side-nav-link');
+    
+    
+    
+    var getTargetTop = function (elem){
+	var id = elem.attr("href");
+	var offset = 60;
+	return jQuery(id).offset().top - offset;
+    };
+    
+    var initSections = function (){
+        var i;
+        
+        for (i = 0; i < links.length; i++) {
+            var link = jQuery(links[i]);
+            
+            if(link.hasClass("red-bg-class")){
+                var id = link.attr("href");
+                jQuery(id).addClass("red-bg-section-class");
+            }
+        }
+        
+    };
 
+    initSections();
+
+    var isSelected = function(scrolledTo){
+
+        var threshold = 50;
+        var i;
+        var k;
+        var activeLink;
+
+        for (i = 0; i < links.length; i++) {
+                var link = jQuery(links[i]);
+                var target = getTargetTop(link);
+          
+                                
+//                                links.each(function(indx, element){
+//                                    if(jQuery(element).hasClass('active')){
+//                                       activeLink = element;  
+//                                    }
+//                                    
+//                                });
+//
+//                                
+//                                if(activeLink){
+//                                    var linkPosition = link.offset().top;
+//                                    var activeSection = jQuery(activeLink).attr("href");
+//                                    
+//                                    jQuery('.activeSection').removeClass("activeSection");
+//                                    jQuery(activeSection).addClass("activeSection");
+//
+//                                    if(jQuery(activeSection).hasClass("red-bg-section-class")){
+//                                        var activeSectionFrom = jQuery(activeSection).offset().top;
+//                                        var activeSectionTo = activeSectionFrom + jQuery(activeSection).outerHeight();
+//                                                                            
+//                                        for (k = 0; k < links.length; k++) {
+//                                            if(linkPosition + 15 > activeSectionFrom && linkPosition + 15 < activeSectionTo){
+//                                                link.addClass("white-color");
+//                                            }else{
+//                                                link.removeClass("white-color");
+//                                            }
+//                                        }
+//                                    }else{
+//                                    
+//                                    }
+//                                }
+                                
+                
+                if (scrolledTo > target - threshold && scrolledTo < target + threshold) {
+                        
+                        links.removeClass("active");
+                        link.addClass("active");
+                      
+                }
+                
+        }
+
+    };
+   
+    
+    
+    
+    
+    if(block.length > 0 && links.length > 0){
+        
+        initPageSideNavLinks(block, false);
+        
+        jQuery(window).scroll(function(e){
+            
+            isSelected(jQuery(window).scrollTop());
+        });
+       
+
+    }
+    
+}
+
+
+function initAnimatedPageSideNav(){
+    
+     var block =  jQuery('#pageSideNav'),
+    hamburger = jQuery('#hamburger'),
+    shadow = jQuery('.js-shadow-side-nav'),
+    footer = jQuery('footer');
+//    banner = jQuery('.plain-banner-block');        
+    
+    var doJob = function(){
+        
+        if(!footer.length  || !block.length || !shadow.length){
+            return ;
+        }
+        
+        footer.toggleClass("moved");
+        block.toggleClass("open");
+        shadow.toggleClass("open");
+    };
+    
+    
+    if(block.length > 0){
+        
+        //prepare footer to move
+        footer.toggleClass("ready-to-move");
+//        banner.toggleClass("ready-to-move");
+        initPageSideNavLinks(block, shadow);
+        
+        hamburger.click(function(e){
+            e.preventDefault();
+            
+            doJob();
+            
+        });
+        
+        shadow.click(function(e){
+            
+            doJob();
+            
+        });
+        
+        jQuery(document).keyup(function(e) {
+                if (e.keyCode == 27 && shadow.hasClass("open")) { // escape key maps to keycode `27`
+                   doJob();
+               }
+        });
+
+    }
+    
+}
+
+
+function smoothScrollTo(target, block, shadow) {
+    target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
+    
+    if (target.length) {
+
+        jQuery('body,html').animate({
+          scrollTop: (target.offset().top + parseInt(target.css('paddingTop')) - 110)
+        }, {
+            duration: 1000,
+            complete: function () {
+                if(jQuery(block).hasClass("open")){
+                    
+                    jQuery(block).removeClass("open");
+                }
+                
+                if(shadow !== false){
+                    if(jQuery(shadow).hasClass("open")){
+                    
+                        jQuery(shadow).removeClass("open");
+                    }
+                }
+            
+            }
+        });
+    }
+}
+
+function initPageSideNavLinks(block, shadow){
+    
+//    setTimeout(function() {
+//        if (location.hash) {
+//            /* we need to scroll to the top of the window first, 
+//             * because the browser will always jump to the anchor first 
+//             * before JavaScript is ready, thanks Stack Overflow: http://stackoverflow.com/a/3659116 */
+//            window.scrollTo(0, 0);
+//            target = location.hash.split('#');
+//            smoothScrollTo(jQuery('#'+target[1]), block, shadow);
+//        }
+//    }, 1);
+    
+    
+    // taken from: https://css-tricks.com/snippets/jquery/smooth-scrolling/
+    var links = jQuery('.js-side-nav-link');
+
+    
+    links.each(function(indx, element){
+        
+        
+        jQuery(this).click(function() {
+
+            if( !(jQuery(this).attr('href').length > 1 ) ){
+               
+                return;
+            }
+
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                                               
+                jQuery(this).siblings('.active').removeClass('active');
+               
+                jQuery(this).addClass('active');
+                
+                smoothScrollTo(jQuery(this.hash), block, shadow);
+                                                
+                return false;
+            }
+            
+        });
+        
+    });
+    
+    
+}
 
 
 

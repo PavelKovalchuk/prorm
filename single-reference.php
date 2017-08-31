@@ -6,6 +6,11 @@ $settings_references = Registry::get('settings-references');
 
 $general_alt =  $settings->getOption('general_alt_text_for_images');
 
+$general_page_id = 'references';
+
+//For buttons on forms
+Tpl::set('general_page_id', $general_page_id);
+
 $parent_page_ID = $settings_references->getOption('parent_page_' . $current_lang);
 $customer_profile_header = $settings_references->getOption('customer_profile_header_' . $current_lang);
 
@@ -26,13 +31,9 @@ $software_img_ID = $settings_references->getOption('software_img');
 
     get_header();
 ?>
-<main id="main" role="main" class="single-reference">
+<main id="main" class="single-reference">
     <div id="content">
        
-            
-            
-                   
-                    <!--<div class="refer-inner">-->
                         <?php
                         if (have_posts()) {
                             while (have_posts()) {

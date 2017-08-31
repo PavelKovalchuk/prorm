@@ -217,5 +217,11 @@ abstract class ProRMForms_Abstract
     }
     
     
+    /**
+     * @return formName
+     */
+    public function getFormName(){
+        return $this->formName;
+    }
 
 }

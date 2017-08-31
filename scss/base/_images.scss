@@ -1,0 +1,113 @@
+
+.bw {
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.bw:hover {
+  -webkit-filter: grayscale(100%);
+}
+
+.bigger{
+    overflow: hidden;
+    position: relative;
+   
+}
+
+.bigger img{
+     transform: scale(1);
+      -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+.bigger img:hover{
+    transform: scale(1.7);
+     -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+
+.focus {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease 1s;
+    &:hover img{
+        border: 3px solid $vinous;
+        border-radius: 50%;
+        /*transform: scale(1.1);*/
+        
+    }
+    
+    &:hover .focus-el{
+        border: 3px solid $vinous;
+        border-radius: 50%;
+        transform: scale(1.1);
+        
+    }
+}
+
+
+.rotate-photos{
+
+       img:first-of-type{
+           display:block;
+           position:absolute;
+           top:0;
+           left:0;
+           z-index:10;
+
+           backface-visibility:hidden;
+/*           -webkit-transition:all .5s;
+           -moz-transition:all .5s;
+           transition:all .5s*/
+       }
+
+       img:last-of-type{
+           display:block;
+           position:absolute;
+           z-index:5;
+           -webkit-box-sizing:border-box;
+           -moz-box-sizing:border-box;
+           box-sizing:border-box;
+           top:0;
+           left:0;
+           background-color:rgba(26,76,110,0.5);
+           backface-visibility:hidden;
+/*           -webkit-transform:rotateY(-180deg);
+           -moz-transform:rotateY(-180deg);
+           transform:rotateY(-180deg);
+           -webkit-transition:all .5s;
+           -moz-transition:all .5s;
+           transition:all .5s*/
+       }
+
+   /*    &:hover{
+
+           img:first-of-type{
+               -webkit-transform:rotateY(180deg);
+               -moz-transform:rotateY(180deg);
+               transform:rotateY(180deg);
+
+           }
+
+           img:last-of-type{
+               -webkit-transform:rotateY(0);
+               -moz-transform:rotateY(0);
+               transform:rotateY(0);
+
+           }
+
+       }*/
+
+}

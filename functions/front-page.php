@@ -4,7 +4,7 @@ abstract class ProRMFrontPage
 {
     const FRONT_PAGE_ID_DE = 2;
     const FRONT_PAGE_ID_EN = 832;
-    const FRONT_PAGE_ID_ES = 6710;
+    const FRONT_PAGE_ID_ES = 6701;
 
     /**
      * Init Front Page

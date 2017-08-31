@@ -16,18 +16,19 @@ $general_alt =  $settings->getOption('general_alt_text_for_images');
 
 $fields = get_fields();
 
+$general_page_id = 'field-s-a';
+
+//For buttons on forms
+Tpl::set('general_page_id', $general_page_id);
 
 $banner_args = array(
-    'banner_planet' => $fields['banner_planet_page']["url"],
     'banner_object' => $fields['banner_object_page']["url"],
-    'banner_clouds' => $fields['banner_clouds_page']["url"],
-    'banner_clouds_top' => $fields['banner_clouds_page_top']["url"],
     'banner_header' => $fields['banner_header_page'],
     'banner_header_tag' => $fields['banner_header_tag'],
     'banner_text' => $fields['banner_text_page'],
     'banner_buttons' => $fields['banner_buttons_page'],
-    'stars_effect' => $fields['stars_effect'],
-   
+    'button_id' => $general_page_id,
+       
 );
 
 
@@ -46,6 +47,13 @@ $simple_graph_block_args = array(
     
 );
 
+$graph_anime_block_args = array(
+    'section_header' => $fields['optimize_block_header'],
+    'block_text' => $fields['optimize_block_text'],
+    'circle_text' => $fields['products_graph_img_1'],
+    'items' => $fields['graph_items'],
+);
+
 $what_get_block_args = array(
     'section_header' => $fields['what_you_get_block_header'],
     'items' => $fields['what_you_get_block_items']
@@ -62,28 +70,31 @@ $focus_block_args = array(
 
 $get_demo_block_args = array(
     'check_button' => $fields['cta_button'][0]['call_form'],
-    'classes' => 'button-prorm button-prorm-white-transparent',
+    'classes' => 'button-prorm button-prorm-white-transparent  seo-field-s-a-get-demo',
     'form_name' => $fields['cta_button'][0]['form_name']->post_name,
     'label' => $fields['cta_button'][0]['button_label'],
-    'link' => $fields['cta_button'][0]['button_link']    
+    'link' => $fields['cta_button'][0]['button_link'],
+    'button_id' => 'getdemo-btn-' . $general_page_id . '-1'
     
 );
 
-$get_demo_2_block_args = array(
-    'check_button' => $fields['cta_button'][2]['call_form'],
-    'classes' => 'button-prorm button-prorm-white-transparent',
-    'form_name' => $fields['cta_button'][2]['form_name']->post_name,
-    'label' => $fields['cta_button'][2]['button_label'],
-    'link' => $fields['cta_button'][2]['button_link']      
-    
-);
+//$get_demo_2_block_args = array(
+//    'check_button' => $fields['cta_button'][2]['call_form'],
+//    'classes' => 'button-prorm button-prorm-white-transparent',
+//    'form_name' => $fields['cta_button'][2]['form_name']->post_name,
+//    'label' => $fields['cta_button'][2]['button_label'],
+//    'link' => $fields['cta_button'][2]['button_link'],
+//    'button_id' => 'getdemo-btn-' . $general_page_id . '-2'    
+//    
+//);
 
 $register_block_args= array(
     'check_button' => $fields['cta_button'][1]['call_form'],
-    'classes' => 'button-prorm button-prorm-white-transparent',
+    'classes' => 'button-prorm button-prorm-white-transparent seo-field-s-a-webinar',
     'form_name' => $fields['cta_button'][1]['form_name']->post_name,
     'label' => $fields['cta_button'][1]['button_label'],
-    'link' => $fields['cta_button'][1]['button_link']   
+    'link' => $fields['cta_button'][1]['button_link'],
+    'button_id' => 'register-btn-' . $general_page_id . '-1'
 );
 
 
@@ -113,58 +124,48 @@ $form_block_args = array(
     'section_header' => $fields['form_block_header']
 );
 
-//var_dump($banner_button_1['form_name']->post_name);
 
 ?>
 
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="field-service-automation-page">
+<main id="main" class="field-service-automation-page">
     <div id="content">
         
-              
-        <?php // get_prorm_banner_page($banner_args, $general_alt ); ?>
+        <?php 
         
-        <?php get_prorm_banner_block($banner_args, $general_alt ); ?>
+        get_prorm_banner_block($banner_args, $general_alt ); 
         
-        <?php get_modal_form( 'register-webinar', 'bg-white', $fields['webinar_header']); ?>
+        get_modal_form( 'register-webinar', 'bg-white', $fields['webinar_header']); 
+
+        get_modal_form( 'get-demo', 'bg-white', $fields['get_demo_header']); 
         
-        <?php get_modal_form( 'get-demo', 'bg-white', $fields['get_demo_header']); ?>
+        get_parent_breadcrumbs(get_the_title(), false); 
+             
+        get_graph_fs_animated($graph_anime_block_args, $general_alt, 'bg-white', array('id' => 'graph_fs_animated')); 
+//
+        get_users_report_block($what_get_block_args, 'bg-white'); 
+
+        get_button_form_block($get_demo_block_args, 'download-bg-1'); 
+
+        get_focus_block($focus_block_args, $general_alt, 'bg-white'); 
         
-        <?php get_parent_breadcrumbs(get_the_title(), false); ?>
-        
-        <?php //get_optimized_fs_block($optimized_fs_block_args, $general_alt, 'bg-white'); ?>
-        
-        <?php  get_simple_graph_block($simple_graph_block_args, $general_alt, 'bg-white'); ?>
-               
-        
-        <?php //get_what_you_get_block($what_get_block_args, 'bg-grey'); ?>
-        
-        <?php get_users_report_block($what_get_block_args, 'bg-white'); ?>
-        
-        <?php get_button_form_block($get_demo_block_args, 'download-bg-1'); ?>
-        
-        <?php get_focus_block($focus_block_args, $general_alt, 'bg-white'); ?>
-        
-        <?php //get_clients_block($clients_block_args ); ?>
-        
-        <?php get_clients_page_block($clients_block_args, $general_alt, 'bg-white'); ?>
+        get_clients_page_block($clients_block_args, $general_alt, 'bg-white'); 
+
+        get_our_team_block($our_team_block_args, $general_alt, 'bg-white'); 
+
+        get_about_us_numbers_block($about_us_numbers_block_args, 'bg-grey'); 
+
+        get_button_form_block($register_block_args, 'download-bg-2'); 
+
+        get_service_delivery_block($service_delivery_block_args, $general_alt, 'bg-white'); 
          
-        <?php get_our_team_block($our_team_block_args, $general_alt, 'bg-white'); ?>
-        
-        <?php get_about_us_numbers_block($about_us_numbers_block_args, 'bg-grey'); ?>
-        
-        
-        
-         <?php get_button_form_block($register_block_args, 'download-bg-2'); ?>
-        
-        <?php get_service_delivery_block($service_delivery_block_args, $general_alt, 'bg-white'); ?>
-                
-      
-        <?php // get_button_form_block($get_demo_2_block_args, 'download-bg-3'); ?>
+// get_button_form_block($get_demo_2_block_args, 'download-bg-3'); 
        
-        <?php get_form_block($form_block_args, 'contact-client', 'bg-white'); ?>
+        get_form_block($form_block_args, 'contact-client', 'bg-white'); 
+        
+        ?>
         
      
         
@@ -173,4 +174,4 @@ $form_block_args = array(
 
 
 
-<?php get_footer('2017'); ?>
+<?php get_footer('2017'); 

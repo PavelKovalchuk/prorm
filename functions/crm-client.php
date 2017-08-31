@@ -32,7 +32,7 @@ class CrmClient {
      * @deprecated
      * @var string
      */
-    protected $testToEmail = 'olegkriklivets@gmail.com';
+    protected $testToEmail = 'kovpavanat@gmail.com';
     //protected $testToEmail = 'twebsite@promx.net';
 
     /** @var string  */
@@ -58,16 +58,20 @@ class CrmClient {
     
     protected $status = 'none';
     
+        
     public $captcha_test = '';
-
+    
     public function __construct() {
         /** @var ProRMSettings $settings */
         $settings = Registry::get('settings');
+        
+        
+//        var_dump($this->fetcher); 
 //        if ($settings->getOption('forms_crm_is_testing_mode')) {
 //            $this->setIsTestingMode(true);
 //        }
+//        var_dump($settings);      
     }
-    
     
     public function setFetcher($fetcher){
         $this->fetcher = $fetcher;
@@ -84,7 +88,6 @@ class CrmClient {
         return false;
     }
 
-
     public function send() {
         if (!$toEmail) {
             $toEmail = $this->getToEmail();
@@ -95,7 +98,6 @@ class CrmClient {
             $values = array();
             
             parse_str($_POST['form'], $values);
-            
             
             if(!empty($values['fetcher-name'])){
                 $this->setFetcher(wp_strip_all_tags( $values['fetcher-name'], 0 ));
@@ -133,8 +135,9 @@ class CrmClient {
                 $events = $_SESSION['Events'];
             } 
             
+           
             
-             ///for captcha
+            ///for captcha
             
             $this->has_recaptcha = apply_filters( 'is_recaptcha_crm', intval($values["form_id"]) ); //functions/recaptcha.php
             
@@ -149,10 +152,9 @@ class CrmClient {
                 $resp = array(
                         'status' => $this->status, 
                         '$toEmail' => $toEmail, 
-                        '$this->has_recaptcha' => $this->has_recaptcha,
-                        '$this->is_valid_recaptcha' => $this->is_valid_recaptcha,
-                        '$this->captcha_test' => $this->captcha_test
-                        
+                        '$datas' => $datas,
+                        '$language' => $language,
+                        '$captcha_test'=> $this->captcha_test
                                               
                 );
                 
@@ -161,13 +163,10 @@ class CrmClient {
                 exit();
 
             }
-                
-            
+             
 //            $mappedData = unserialize($_SESSION['mappedData']);
-            $toEmail = $this->getToEmail();
-            if (!$toEmail) {
-                $toEmail = $this->getToEmail();
-            }
+            
+          
             $headers = $this->getHeaders();
             $attachments = $this->getAttachments();
             
@@ -190,7 +189,6 @@ class CrmClient {
                 }
             }
             
-            
             if(!empty($values['page-url'])){
                 $fields .= "PageURL:" .$values['page-url']. "\n";
             }
@@ -199,10 +197,10 @@ class CrmClient {
             }
             
             
-            
             $error = '';
             $this->status = 'success';
-            
+                        
+            //For specidfic email in the support page
             if(!empty($values["type-email"]) && $values["type-email"] == 'service-request'){
                 
                 $toEmail = $this->getToSupportEmail();
@@ -210,30 +208,31 @@ class CrmClient {
             }else{
                 
                 $toEmail = $this->getToEmail();
-                if (!$toEmail) {
-                    $toEmail = $this->getToEmail();
-                }
                 
             }
+         
         }
 //        $message = "fields - " . $fields . " subject " . $subject . " mapped Data" . $data . "language - " . $lang .' textCheckbox - ' . $textbox . "</n>" . $all . ' language -' . $lang . "\n" .$rr . 'email - ' . $toEmail . "values" . $values . $ss;
         $message = $fields;
-        
         get_currentuserinfo();
         
-         if($this->status == 'success'){
+        if($this->status == 'success'){
             
             wp_mail($toEmail, $subject, $message, $headers, $attachments);
             
         }
-        
-        $resp = array(
-            'status' => $this->status, 
-            'errmessage' => $error
-           
                 
-        );
-        
+        $resp = array(
+                        'status' => $this->status, 
+                        'errmessage' => $error, 
+                        '$toEmail' => $toEmail, 
+                        '$values: ' => $values,
+                        '$datas' => $datas,
+                        'fetcherClass'=> $this->getFetcher(),
+                        '$fieldsMap' => $fieldsMap,
+                        '$headers' => $headers
+                                              
+                );
         wp_send_json($resp);
     }
 
@@ -247,12 +246,20 @@ class CrmClient {
              * Add script and localize form
              */
             function contactform_add_script() {
-                wp_enqueue_script('contact-js', get_template_directory_uri() . '/js/contact2017.js"', array('jquery'), false, true);
+                
+                if(!is_front_page()){
+        
+                   wp_enqueue_script('contact-js', get_template_directory_uri() . '/js/contact2017.js#asyncload"', array('jquery'), '2.1.1', true);
+
+                }
+                
+                
                 wp_localize_script(
                     'contact-js', 'ajax_object', array(
                     'ajax_url' => admin_url('admin-ajax.php')
                         )
                 );
+            
             }
 
         }
@@ -260,6 +267,8 @@ class CrmClient {
         add_action('wp_enqueue_scripts', 'contactform_add_script', 99);
         $this->postForm();
     }
+    
+    
 
     /*
      * Add to wp request action contact form
@@ -273,6 +282,9 @@ class CrmClient {
     protected function getToEmail() {
         /** @var ProRMSettings $settings */
         $settings = Registry::get('settings');
+        if ($settings->getOption('forms_crm_is_testing_mode')) {
+            $this->setIsTestingMode(true);
+        }
         $optionName = $this->isTestingMode ? 'forms_crm_to_email_test' : 'forms_crm_to_email_live';
 //        echo $optionName;
 //        var_dump($settings);
@@ -293,7 +305,6 @@ class CrmClient {
 
         return $email;
     }
-
 
     protected function getFromEmail() {
         /** @var ProRMSettings $settings */
@@ -357,7 +368,8 @@ class CrmClient {
         return $this->isTestingMode;
     }
     
-     /**
+    
+    /**
      * @return boolean
      */
     public function checkRecaptcha($answer_captcha) {
@@ -378,10 +390,12 @@ class CrmClient {
         if($secret && $response){
             
             $ip=$_SERVER['REMOTE_ADDR'];
-                 
+            
+//            $verify=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
+            
             $verify = $this->getCurlData("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}&remoteip={$ip}");
             
-            $this->captcha_test = $verify;/////////////////// ini_get('allow_url_fopen'); 
+            $this->captcha_test = $verify;
         
             $captcha_success=json_decode($verify);
             
@@ -393,17 +407,26 @@ class CrmClient {
                 
             }else{
                 $this->status = 'captcha_false';
-                                                
+                
                 return false;
             }
         }
 
-   
-        return false;
+        
+
+//            $resp = array(
+//                'status' => $status, 
+//                '$captcha_success->success :' => $captcha_success->success,
+//                '$this->has_recaptcha :' => $this->has_recaptcha,
+//                ' $this->is_valid_recaptcha :' =>  $this->is_valid_recaptcha,
+//                '$response ' => $response,
+//                 
+//            );
+//            wp_send_json($resp);
+            return false;
 
        
     }
-    
     
     public function getCurlData($url){
         
@@ -417,6 +440,5 @@ class CrmClient {
         return $curlData;
         
     }
-
 }
 

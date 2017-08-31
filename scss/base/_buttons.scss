@@ -1,0 +1,542 @@
+
+
+%button-get-demo{
+    min-width: 375px;
+    margin: auto;
+  
+}
+
+@include media('<hd-screen') {
+    %button-get-demo-hd-screen{
+        min-width: 325px;
+        max-width: 400px;
+        margin: auto;
+        display: block;
+    }
+}
+
+@include media('<widescreen') {
+    %button-get-demo-hd-screen{
+        min-width: 235px;
+        max-width: 300px;
+        margin: auto;
+        display: block;
+    }
+}
+
+@include media('<tablet') {
+    %button-tablet{
+   
+        display: block;
+        margin: auto;
+        width: 80%;
+        min-width: none;
+        max-width: none;
+    }
+}
+
+
+
+.button-prorm {
+    appearance: none;
+    -webkit-appearance: none;
+    background: #026aa7;
+    color: $white;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0.3em 2em;
+    border-radius: 4px;
+    border: 1px solid $white;
+    box-shadow: -2px 8px 11px 2px #342b2b;
+
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      
+      .btn-text-outer{
+          z-index: 2;
+          position: relative;
+      }
+
+    }
+    
+    @include media('<tablet') {
+        display: block;
+        margin: auto;
+        width: 80%;
+
+    }
+    
+    &.button-prorm-mini{
+        padding: 0.25em 1em;
+        font-size: 20px;
+        @include media('<hd-screen') {
+            padding: 0.25em 0.5em;
+            font-size: 14px;
+        }
+    }
+
+    @include media('<hd-screen') {
+        padding: 0.3em 2.5em;
+    }
+    @include media('<widescreen') {
+       padding: 0.3em 2.0em;
+    }
+
+    &.button-prorm-red{
+        background: rgba(161, 17, 63, 0.6);
+        box-shadow: none;
+        @include media('<tablet') {
+            display: block;
+            margin: auto;
+            width: 100%;
+
+        }
+        @include media('<phone'){
+            text-align: center;
+        }
+
+
+    }
+
+    &.button-prorm-grey{
+        background: rgba(247, 247, 247, 0.4);
+        box-shadow: none;
+
+        @include media('<tablet') {
+            display: block;
+            margin: auto;
+            width: 100%;
+            margin-top: 10px;
+        }
+        @include media('<phone'){
+            text-align: center;
+        }
+    }
+
+    &.button-prorm-strong-red{
+        background: $vinous4;
+       @extend %button-get-demo;
+       @extend %button-get-demo-hd-screen;
+       @extend %button-tablet;
+
+    }
+
+    &.button-prorm-middle-red{
+        background: $vinous6;
+        @extend %button-tablet;
+
+    }
+
+    &.button-prorm-purple{
+        background: $purple2;
+        @extend %button-get-demo;
+        @extend %button-get-demo-hd-screen;
+        @extend %button-tablet;
+
+    }
+
+    &.button-prorm-white-red{
+        background: rgba(247, 247, 247, 0.8);
+        color: $vinous;
+        border: 1px solid $white;
+        box-shadow: none;
+        @include media('<tablet') {
+            display: block;
+            margin: auto;
+            width: 100%;
+            margin-top: 10px;
+        }
+        @include media('<phone'){
+            text-align: center;
+        }
+
+    }
+
+    &.button-prorm-vinous{
+        background: $white;
+        color: $vinous;
+        border: 1px solid $vinous;
+        font-size: 18px;
+        box-shadow: none;
+        
+         -webkit-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        
+        @include media('<tablet') {
+          width: 100%;
+          }
+
+        &:focus{
+          outline: 0;
+        }
+        
+        &:hover{
+            background: $vinous;
+            color: $white;
+             -webkit-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+
+    }
+    
+    &.button-prorm-red-white{
+        background: $vinous;
+        color: $white;
+        border: 1px solid $vinous;
+        font-size: 18px;
+        box-shadow: none;
+        @include media('<tablet') {
+          width: 100%;
+          }
+
+        &:focus{
+          outline: 0;
+        }
+
+    }
+
+    &.button-prorm-white{
+        background: $white;
+        color: $vinous;
+        border: 1px solid $vinous;
+        margin-right: 0;
+
+    }
+    
+    &.button-prorm-white-black{
+        background: $white;
+        color: $black;
+        font-weight: 600;
+        margin-right: 0;
+        box-shadow: none;
+        border: 2px solid #fff;
+        box-shadow: none;
+       
+       
+        &:hover {
+            box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            color: #621129;
+        }
+
+    }
+    
+    &.button-prorm-white-transparent{
+        background: transparent;
+        color: $white;
+        font-weight: 600;
+        margin-right: 0;
+        box-shadow: none;
+        border: 2px solid #fff;
+        
+        &:hover {
+            background-color: rgba(244, 244, 244, 0.2);
+            box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        
+        @include media('<tablet') {
+            margin-right: auto;
+        }
+
+    }
+    
+    &.btn-back{
+        float: right;
+        min-width: 200px;
+        text-align: center;
+        font-size: 23px;
+        padding: 0.25em 2em;
+    }
+    
+    &.btn-eff-1{
+        overflow: hidden;
+        position: relative;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    &.btn-eff-1:before,
+    &.btn-eff-1:after{
+        content: "";
+        z-index: -1;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        left: -50%;
+        background-color: $vinous;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    &.btn-eff-1:after{
+        left: 100%;
+    }
+    &.btn-eff-1:hover{
+        color: $white;
+        border-color: $white;
+        background-color: $white;
+    }
+    &.btn-eff-1:focus{
+        background-color: $white;
+    }
+    &.button-prorm-strong-red.btn-eff-1:hover{
+        background-color: $vinous4;
+    }
+    &.btn-eff-1:hover:before{
+        left: 0;
+        z-index: 1;
+    }
+    &.btn-eff-1:hover:after{
+        left: 50%;
+        z-index: 1;
+    }
+    
+    
+    &.btn-eff-2{
+        position: relative;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-eff-2:before{
+        content: "";
+        position: absolute;
+        top: calc(50% - 15px);
+        left: 0;
+        border-right: 15px solid $white;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        @include media('<desktop') {
+            display: none;
+        }
+    }
+
+    &.btn-eff-2:hover{
+        -webkit-transform: translateX(15px);
+        -ms-transform: translateX(15px);
+        -o-transform: translateX(15px);
+        transform: translateX(15px);
+        @include media('<desktop') {
+            -webkit-transform: none;
+            -ms-transform: none;
+            -o-transform: none;
+            transform: none;
+        }
+    }
+
+    &.btn-eff-2:hover:before{
+        left: -13px;
+    }
+    
+    
+    
+    &.btn-eff-3{
+        position: relative;
+        overflow: hidden;
+        display: block;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-eff-3:before, &.btn-eff-3:after{
+        content: "";
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        top: -50%;
+        left: 0;
+        background-color: $vinous;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-eff-3:after{
+        top: 100%;
+    }
+
+    &.btn-eff-3:hover{
+        color: $white;
+    }
+
+    &.btn-eff-3:hover:before{
+        top: 0;
+        z-index: 1;
+    }
+
+    &.btn-eff-3:hover:after{
+        top: 50%;
+        z-index: 1;
+    }
+    
+    
+    &.btn-eff-5{
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-eff-5:before{
+        content: "";
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -100%;
+        left: 0;
+        background-color: $vinous;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-eff-5:hover{
+        color: $white;
+        
+    }
+
+    &.btn-eff-5:hover:before{
+        top: 0;
+        z-index: 1;
+    }
+    
+    
+    &.btn-eff-6{
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-eff-6:before{
+        content: "";
+        /*z-index: -1;*/
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        background-color: $vinous;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-eff-6:hover{
+        color: $white;
+    }
+
+    &.btn-eff-6:hover:before{
+        left: 0;
+        /*z-index: 1;*/
+    }
+    
+    
+    ////////////////////////////
+    //New effects
+    ///////////////////////////
+    &.btn-eff-8 {
+        /*border: 0 solid;*/
+/*        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+        outline: 2px solid;
+        outline-color: rgba(255, 255, 255, 1);
+        outline-offset: 0px;*/
+        text-shadow: none;
+        transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    } 
+
+    &.btn-eff-8:hover {
+        /*border: 1px solid;*/
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+/*        outline-color: rgba(255, 255, 255, 0);
+        outline-offset: 15px;*/
+        text-shadow: 1px 1px 2px #427388; 
+    }
+    
+    
+    
+    
+    &.btn-eff-9 {
+        text-shadow: none;
+        transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    &.btn-eff-9:hover {
+        box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+        text-shadow: 1px 1px 2px #427388; 
+        background: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    
+    &.btn-eff-10 {
+        
+    }
+
+    &.btn-eff-10:hover {
+        background-color: rgba(244, 244, 244, 0.2);
+        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+   
+    }
+    
+    
+    &.btn-eff-11 {
+        box-shadow: none;
+    }
+
+    &.btn-eff-11:hover {
+        box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        color: #621129;
+    }
+    
+    &.btn-eff-bigger{
+        
+        span{
+/*            transform: scale(1);*/
+            font-weight: inherit;
+            -webkit-transition: all 1s ease;
+           -moz-transition: all 1s ease;
+             -o-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+                transition: all 1s ease;
+        }
+        
+    }
+    
+    &.btn-eff-bigger:hover {
+        
+        span{
+            font-weight: 900;
+            /*transform: scale(1.1);*/
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+              -o-transition: all 1s ease;
+             -ms-transition: all 1s ease;
+                 transition: all 1s ease;
+        }
+        
+    }
+    
+    
+  
+}
+
+
+
+
+

@@ -57,15 +57,19 @@ function get_soft_solutions_block($args, $general_alt, $section_bg){
 <?php } 
 
 
-function get_features_card_block($args, $general_alt, $section_bg){
+function get_features_card_block($args, $general_alt, $section_bg, $block_attr = false){
     extract($args);
     ?>
     
-        <section class="features-block info-block text-bigger-block <?php echo $section_bg; ?>">
+        <section class="features-block info-block text-bigger-block <?php echo $section_bg; ?>"
+                 <?php build_block_attr($block_attr); ?> >
+            
             <div class="container">
                 <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
-
-                <p class="center"><?php echo $section_text; ?></p>
+                
+                <?php if($section_text){ ?>
+                    <p class="center"><?php echo $section_text; ?></p>
+                <?php } ?>
 
                 <div class="features-outer row-12">
 
@@ -87,14 +91,35 @@ function get_features_card_block($args, $general_alt, $section_bg){
                                 </div>
 
                                 <div class="feature-text-outer">
-
-                                    <h5 class="center feature-text marsala-colour"><?php echo $app['app_name']; ?></h5>
+                                    
+                                    <?php if($app['app_name']){ ?>
+                                        <h5 class="center feature-text marsala-colour"><?php echo $app['app_name']; ?></h5>
+                                    <?php } ?>
                                     
                                     <p class="center feature-des"><?php echo $app['app_descr']; ?></p>
-                                                                        
+                                                                    
                                 </div>
                                 
                                 <div class="feature-bottom">
+                                    
+                                    <?php if($app['app_price'] && $sign && $period){ ?>
+                                    <div class="center feature-text marsala-colour">
+                                        
+                                        <?php if($lang == 'en'){ ?>
+                                        
+                                            <span class="addon-sign"><?php echo $sign; ?></span><span class="addon-price"><?php echo $app['app_price']; ?></span><span class="addon-sign"><?php echo $period; ?></span>
+                                            
+                                            
+                                        <?php }else{ ?> 
+                                            
+                                            <span class="addon-price"><?php echo $app['app_price']; ?></span> <span class="addon-sign"><?php echo $sign; ?></span><span class="addon-sign"><?php echo $period; ?></span>
+                                            
+                                            
+                                        <?php } ?>
+                                        
+                                            
+                                    </div>
+                                    <?php } ?>
                                     
                                     <div class="feature-link-outer">
                                                                            
@@ -133,12 +158,15 @@ function get_pages_card_block($args, $general_alt, $section_bg){
                 <div class="page-card-outer row-12">
 
                     <?php if($items){ 
-                        foreach ($items as $item) { ?>
+                        $i = 0; 
+                        foreach ($items as $item) { 
+                         $i++;  
+                    ?>
 
                         <div class="page-card col-6"> 
                             
                                                       
-                            <a href="<?php echo get_permalink( $item['page_item_button_link'][0] ); ?>" class="card card-2 card-link">
+                            <a href="<?php echo get_permalink( $item['page_item_button_link'][0] ); ?>" class="card card-2 card-link" id="<?php echo 'psa-' . $i; ?>">
                                 
                                 <div class="page-card-header-outer  bg-grey">
                                     <h2 class="center page-card-header bold-text marsala-colour"><?php echo $item['page_item_title']; ?></h2>
@@ -221,30 +249,40 @@ function get_expectations_block($args, $general_alt, $section_bg){
 
 function get_button_block($args, $download_bg, $btn_color){
     extract($args);
+    
+    if(!$button_id){
+        $button_id = 'nothing';
+    }
     ?>
     
-        <section class="download-block <?php echo $download_bg; ?>">
+        <div class="download-block <?php echo $download_bg; ?>">
             
                 <div class="download-btn-outer">
-                    <a href="<?php echo $button_link; ?>" target="_blank" class="button-prorm <?php echo $btn_color; ?>"><?php echo $button_label; ?></a>
+                    <a href="<?php echo $button_link; ?>" target="_blank" id="<?php echo $button_id; ?>" class="button-prorm <?php echo $btn_color; ?>"><?php echo $button_label; ?></a>
                 </div>
             
-        </section>
+        </div>
     
     
 <?php } 
 
-function get_button_form_block($args, $download_bg){
-//    extract($args);
+function get_button_form_block($args, $download_bg, $block_attr = false){
+    extract($args);
     ?>
     
-        <section class="download-block button_form_block <?php echo $download_bg; ?>">
+        <div class="download-block button_form_block <?php echo $download_bg; ?>" 
+             <?php build_block_attr($block_attr); ?> >
            
                 <div class="download-btn-outer">
+                    
+                    <?php if($headline){ ?>
+                        <h3 class="center white-style cta-button-text"><?php echo $headline ?></h3>
+                    <?php } ?>
+                    
                     <?php get_button_link($args); ?>
                 </div>
            
-        </section>
+        </div>
     
     
 <?php } 
@@ -253,16 +291,20 @@ function get_button_form_block($args, $download_bg){
 function get_button_link($args){
     extract($args);
     
+    if(!$button_id){
+        $button_id = 'nothing';
+    }
+    
     if($check_button){ ?>
 
-        <button class="<?php echo $classes; ?>"  
+        <button id="<?php echo $button_id; ?>" class="<?php echo $classes; ?>"  
                 data-form-name="<?php echo $form_name; ?>">
                     <?php echo $label; ?>
         </button>
 
     <?php }else{ ?>
 
-        <a href="<?php echo $link; ?>" target="_blank" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
+        <a href="<?php echo $link; ?>" target="_blank" id="<?php echo $button_id; ?>" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
 
     <?php }   
     
@@ -271,30 +313,34 @@ function get_button_link($args){
 function get_button_action($args){
     extract($args);
     
+    if(!$button_id){
+        $button_id = 'nothing';
+    }
+    
     if($action == 'form'){ ?>
 
-        <button class="<?php echo $classes; ?>"  
+        <button id="<?php echo $button_id; ?>" class="<?php echo $classes; ?>"  
                 data-form-name="<?php echo $form_name; ?>">
                     <?php echo $label; ?>
         </button>
 
     <?php } elseif($action == 'link'){ ?>
 
-        <a href="<?php echo $link; ?>" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
+        <a href="<?php echo $link; ?>" id="<?php echo $button_id; ?>" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
 
     <?php }elseif($action == 'targetLink'){ ?>
 
-        <a href="<?php echo $link; ?>" target="_blank" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
+        <a href="<?php echo $link; ?>" target="_blank" id="<?php echo $button_id; ?>" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
 
     <?php } elseif($action == 'video'){ ?>
 
-        <a href="<?php echo $link; ?>" data-effect="mfp-zoom-in" class="<?php echo $classes; ?> popup-youtube">
+        <a href="<?php echo $link; ?>" data-effect="mfp-zoom-in" id="<?php echo $button_id; ?>" class="<?php echo $classes; ?> popup-youtube">
             <?php echo $label; ?>
         </a>
 
     <?php }else{ ?>
 
-        <a href="<?php echo $link; ?>" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
+        <a href="<?php echo $link; ?>" id="<?php echo $button_id; ?>" class="<?php echo $classes; ?>"><?php echo $label; ?></a>
         
     <?php }
 }
@@ -327,7 +373,7 @@ function get_parent_breadcrumbs($current_title, $parent_id){
 <?php }
 
 
-function get_our_team_block($args, $general_alt, $section_bg){
+function get_our_team_block($args, $general_alt, $section_bg, $block_attr = false){
     extract($args);
     
     if(intval($meet_our_team_ID)){
@@ -341,7 +387,8 @@ function get_our_team_block($args, $general_alt, $section_bg){
     
     ?>
     
-        <section class="meet-team-block info-block text-bigger-block <?php echo $section_bg; ?>">
+        <section class="meet-team-block info-block text-bigger-block <?php echo $section_bg; ?>" 
+                <?php build_block_attr($block_attr); ?> >
             <div class="container">
                 <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
 
@@ -376,7 +423,7 @@ function get_our_team_block($args, $general_alt, $section_bg){
 <?php } 
 
 
-function get_about_us_numbers_block($args, $section_bg){
+function get_about_us_numbers_block($args, $section_bg, $block_attr = false){
     extract($args);
     wp_enqueue_script('jquery-ui-effects-js', get_template_directory_uri() . '/js/jquery-ui-effects.min.js#asyncload"', array('jquery'), false, true);
     
@@ -389,7 +436,8 @@ function get_about_us_numbers_block($args, $section_bg){
     
     ?>
     
-    <section data-status="ready" class="about-us-numbers-block info-block text-bigger-block <?php echo $section_bg; ?>"> 
+    <section data-status="ready" class="about-us-numbers-block info-block text-bigger-block <?php echo $section_bg; ?>" 
+            <?php build_block_attr($block_attr); ?> > 
         <div class="container">
             <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
 
@@ -515,73 +563,19 @@ function get_bussiness_circle_block($args, $general_alt, $section_bg){
 <?php }
 
 
-function get_bussiness_circle_block_bu($args, $general_alt, $section_bg){
+
+
+
+
+function get_service_delivery_block($args, $general_alt, $section_bg, $block_attr = false){
     extract($args);
     
     ?>
     
-    <section class="bussiness-circle-block info-block step-block text-bigger-block <?php echo $section_bg; ?>"> 
-        <div class="container">
-            <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
-
-            <div class="bussiness-circle-outer row-12">
-
-            <?php if ( $items ) : 
-
-                foreach ( $items as $key => $item) : ?>
-
-                <?php  
-                if($key%2 == 0){
-                    $img_class = 'float-img-left';
-                    $text_class = 'padding-text-right';
-                }else{
-                    $img_class = 'float-img-right';
-                    $text_class = 'padding-text-left';
-                }
-                ?>
-
-                <div class="bussiness-item bussiness-item-<?php echo $key; ?>">
-
-                    <?php  
-                    if($key%2 == 0){ 
-                       
-                        get_bussiness_circle_img($img_class, $item['bussiness_item_img'], $item['bussiness_item_alt'], $general_alt);
-
-                        get_bussiness_circle_text($text_class, $item['bussiness_item_title'], $item['bussiness_item_text']);
-                      
-
-                    }else{ 
-                       
-                        get_bussiness_circle_text($text_class, $item['bussiness_item_title'], $item['bussiness_item_text']);
-
-                        get_bussiness_circle_img($img_class, $item['bussiness_item_img'], $item['bussiness_item_alt'], $general_alt);
-                       
-                        }
-                    ?>
-
-
-
-                </div>
-
-
-                <?php endforeach; 
-
-            endif; ?>
-
-            </div>
-        </div>
-    </section>
-    
-<?php }
-
-
-
-function get_service_delivery_block($args, $general_alt, $section_bg){
-    extract($args);
-    
-    ?>
-    
-    <section class="bussiness-circle-block service-delivery-block info-block step-block text-bigger-block <?php echo $section_bg; ?>"> 
+    <section 
+        class="bussiness-circle-block service-delivery-block info-block step-block text-bigger-block <?php echo $section_bg; ?>" 
+        <?php build_block_attr($block_attr); ?> > 
+        
         <div class="container">
             <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
 
@@ -680,50 +674,7 @@ function get_bussiness_circle_text($text_class, $title, $text){
 } 
 
 
-function get_bussiness_circle_block_dev($args, $general_alt){
-    extract($args);
-    
-    ?>
-    
-    <section class="bussiness-circle-block info-block step-block text-bigger-block"> 
-        <div class="container">
-            <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
 
-            <div class="bussiness-circle-outer row-12">
-
-            <?php if ( $items ) : 
-
-                foreach ( $items as $key => $item) : ?>
-
-                        <article class="step <?php if ($key == 2 || $key == 4 ){ echo 'z-under';} ?>">
-
-                            <div class="step-img">
-                                <img src="<?php echo $item['bussiness_item_img']; ?>" 
-                                     alt="<?php echo $item['bussiness_item_alt'] ? $item['bussiness_item_alt'] : $general_alt ; ?>">
-                            </div>
-
-                            <div class="step-text">
-                                <h5 class="marsala-colour"><?php echo $item['bussiness_item_title']; ?></h5>
-                                <p><?php echo $item['bussiness_item_text']; ?></p>
-                            </div>
-
-                            <?php if ($key == 0) : ?>
-
-                            <div class="visual-step-one"></div>
-                            <?php else : ?>
-                                <div class="visual-step-top "></div>
-                                <div class="visual-step-bottom"></div>
-                            <?php endif; ?>
-                        </article>
-                <?php endforeach; 
-
-            endif; ?>
-
-            </div>
-        </div>
-    </section>
-    
-<?php }
 
 
 function get_videos_block($args, $section_bg){
@@ -759,23 +710,27 @@ function get_videos_block($args, $section_bg){
     
 <?php }
 
-function get_form_block($args, $form_name, $section_bg){
+function get_form_block($args, $form_name, $section_bg, $block_attr = false){
     extract($args);
     
     ?>
 
-    <section class="form-block info-block text-bigger-block <?php echo $section_bg; ?>">
+    <section class="form-block info-block text-bigger-block <?php echo $section_bg; ?>" 
+             <?php build_block_attr($block_attr); ?> >
+        
         <div class="container">
-            <h2 class="black-style-center center text-bigger">
-                <?php 
-                if($section_header){
-                    echo $section_header;
-                }else{
-                    echo do_shortcode('[form-header name=' .$form_name . '-' . pll_current_language() . ']');
-                }
-                 ?>
-            </h2>
-
+            <?php 
+            $section_header = trim($section_header);    
+            if(empty($section_header)){ 
+                $section_header = do_shortcode('[form-header name=' .$form_name . '-' . pll_current_language() . ']');
+            }
+           
+            if(!empty($section_header)){  ?>
+                <h2 class="black-style-center center text-bigger">
+                    <?php echo $section_header; ?>
+                </h2>
+            <?php } ?>
+           
             <div class="form-holder">
                  <?php echo do_shortcode('[form name=' .$form_name . ']'); ?>
             </div>
@@ -972,9 +927,47 @@ function get_users_report_block($args, $section_bg){
     
 <?php } 
 
+function get_users_report_list_block($args, $section_bg){
+    extract($args);
+    ?>
+    
+        <section class="users-report-list-block info-block text-bigger-block <?php echo $section_bg; ?>">
+            <div class="container">
+                <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
+
+                <div class="users-report-outer row-9">
+
+                    <?php if($items){ 
+                        foreach ($items as $item) { ?>
 
 
-function get_focus_block($args, $general_alt, $section_bg){
+                        <div class="users-report row-12 "> 
+                             
+                            <div class="users-report-header-outer">
+
+                                <h5 class="marsala-colour users-report-header"><?php echo $item['item_header']; ?></h5>
+
+                            </div>
+
+                            <div class="users-report-text-outer">
+                                <p class="users-report-text"><?php echo $item['item_text']; ?></p>
+                            </div>
+                            
+                            
+                        </div>
+
+                    <?php } ?>
+                    <?php } ?>
+
+                </div>
+            </div>
+        </section>
+    
+<?php } 
+
+
+
+function get_focus_block($args, $general_alt, $section_bg, $block_attr = false){
     extract($args);
     if(!$section_header){
         $settings = Registry::get('settings');
@@ -984,7 +977,9 @@ function get_focus_block($args, $general_alt, $section_bg){
     }
     ?>
     
-        <section class="focus-block info-block text-bigger-block <?php echo $section_bg; ?>">
+        <section class="focus-block info-block text-bigger-block <?php echo $section_bg; ?>" 
+                <?php build_block_attr($block_attr); ?> >
+            
             <div class="container">
                 <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
                 
@@ -1074,11 +1069,12 @@ function get_full_business_circle_block($args, $general_alt, $section_bg){
     
 <?php } 
 
+
 function get_graph_block($args, $general_alt, $section_bg){
     extract($args);
     ?>
     
-        <section class="graph-block info-block text-bigger-block <?php echo $section_bg; ?>">
+        <section class="graph-block info-block js-graph-es text-bigger-block <?php echo $section_bg; ?>" data-graph-status="ready">
             <div class="container">
                 <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
                 
@@ -1089,11 +1085,15 @@ function get_graph_block($args, $general_alt, $section_bg){
                         
                         <div class="graph-img-inner">
                             
-                            <img src="<?php echo $graph_1; ?>" class="graph-img"
+                            <img src="<?php echo $graph_1; ?>" class="graph-img graph_1" id="graph_1"
                             alt="<?php echo $section_header; ?>">
                         
-                            <img src="<?php echo $graph_2; ?>" class="graph-img"
+                            <img src="<?php echo $graph_2; ?>" class="graph-img graph_2" id="graph_2"
                             alt="<?php echo $section_header; ?>">
+                            
+<!--                            <img src="<?php // echo $graph_3; ?>" class="graph-part-img graph_3" id="graph_3"
+                                 
+                            alt="<?php // echo $section_header; ?>">-->
                             
                         </div>
                         
@@ -1101,8 +1101,12 @@ function get_graph_block($args, $general_alt, $section_bg){
                         <?php if($items){ 
                             $i = 0;
                             foreach ($items as $item) { 
-                                    $i++; ?>
-                                    <div class="graph-item-text-outer <?php echo 'gi-' . $i; ?>">
+                                    $i++; 
+                                    
+                                   
+                                    
+                                    ?>
+                                    <div class="graph-item-text-outer <?php echo 'gi-' . $i; ?> "  >
 
                                         <p class="graph-item-text"><?php echo $item['fbc_item_text']; ?></p>
 
@@ -1115,8 +1119,8 @@ function get_graph_block($args, $general_alt, $section_bg){
                     
                    
                     
-                    <div class="graph-text-outer">
-                        <p class="graph-text"><?php echo $block_text; ?></p>
+                    <div class="graph-text-outer" >
+                        <p class="graph-text" id="graph_text_main"><?php echo $block_text; ?></p>
                     </div>
                     
                     
@@ -1124,6 +1128,162 @@ function get_graph_block($args, $general_alt, $section_bg){
                 </div>
                 
                 
+                
+                
+            </div>
+            
+        </section>
+    
+<?php } 
+
+function get_graph_es_animated($args, $general_alt, $section_bg, $block_attr = false){
+    extract($args);
+    ?>
+    
+        <section class="graph-block-es info-block js-graph-es text-bigger-block <?php echo $section_bg; ?>" 
+                <?php build_block_attr($block_attr); ?> 
+                data-graph-status="ready">
+            <div class="container">
+                <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
+                
+                <div id="js-graph-cta-es" class="center"></div>
+                
+                <div class="graph-outer row-12">
+                    
+                    <div class="graph-img-outer">
+                        
+                        <div class="graph-img-inner">
+                            
+                            <div class="circle circle-1">
+                                <span class="circle-text-outer">
+                                    <img src="<?php echo $items[0]['fbc_image']; ?>" class="circle-img"
+                                         alt="<?php echo $items[0]['fbc_item_label']; ?>">
+                                </span>
+                            </div>
+                            
+                            <div class="circle circle-2">
+                                
+                                <span class="circle-text-outer">
+                                    <img src="<?php echo $items[1]['fbc_image']; ?>" class="circle-img"
+                                         alt="<?php echo $items[1]['fbc_item_label']; ?>">
+                                </span>
+                                
+                                <div class="half-circle"></div>
+                                    
+                            </div>
+                           
+                            
+                        </div>
+                        
+                        
+                        <?php if($items){ 
+                            $i = 0;
+                            foreach ($items as $item) { 
+                                    $i++; 
+                                 
+                                    ?>
+                                    <div class="graph-item-text-outer <?php echo 'gi-' . $i; ?> "  >
+
+                                        <p class="graph-item-text"><?php echo $item['fbc_item_text']; ?></p>
+
+                                    </div>
+                          
+                            <?php } ?>
+                        <?php } ?>
+
+                    </div>
+                    
+                    <div class="graph-text-outer" >
+                        <p class="graph-text" id="graph_text_main"><?php echo $block_text; ?></p>
+                    </div>
+                    
+                    
+                </div>
+                
+                
+            </div>
+            
+        </section>
+    
+<?php } 
+
+
+function get_graph_fs_animated($args, $general_alt, $section_bg, $block_attr = false){
+    extract($args);
+    ?>
+    
+        <section class="graph-block-fs info-block js-graph-fs text-bigger-block <?php echo $section_bg; ?>" 
+                <?php build_block_attr($block_attr); ?> 
+                data-graph-status="ready">
+            <div class="container">
+                <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
+                
+                <div id="js-graph-cta-es" class="center"></div>
+                               
+                <div class="graph-outer row-12">
+                    
+                    <div class="graph-img-outer">
+                        
+                        
+                        <div class="rect-outer">
+                            
+                            <?php if($items){     
+                                $i = 0;
+                                foreach ($items as $item) {
+                                    $i++;
+                                    ?>
+                                    <div class="rect-descr rect-descr-<?php echo $i; ?>" >
+                                            <p class="rect-descr-text" data-text-id="<?php echo $i; ?>">
+                                                <?php echo $item['item_text']; ?>
+                                            </p>
+                                    </div>
+                                    
+                                <?php }
+                                
+                             } ?>
+                          
+                        </div>
+
+                        <?php if($items){     
+                            $i = 0;
+                            foreach ($items as $item) {
+                                $i++;
+                                ?>
+                                <div class="rect rect-<?php echo $i; ?>" data-title-id="<?php echo $i; ?>">
+                                        <p class="rect-text"><?php echo $item['item_title']; ?></p>
+                                </div>
+
+                            <?php }
+                                
+                        } ?>
+                            
+                        <div class="graph-img-inner">
+                            
+                            <div class="circle circle-fsa">
+                                                          
+                                <canvas id="canvas-fsa" width="390" height="390" class="canvas-graph"></canvas>  
+                                                   
+                                <span class="circle-text-outer">
+                                    <img src="<?php echo $circle_text; ?>" class="circle-img"
+                                             alt="<?php echo $section_bg; ?>">
+                                </span>
+                                
+                              
+                            </div>
+                           
+                            
+                        </div>
+                        
+                                                
+
+                    </div>
+                    
+                    <div class="graph-text-outer" >
+                        <p class="graph-text" id="graph_text_main"><?php echo $block_text; ?></p>
+                    </div>
+                    
+                    
+                </div>
                 
                 
             </div>
@@ -1926,7 +2086,7 @@ function get_references_block($result, $label, $img_placeholder, $general_alt, $
                             <figcaption>
 
                                 <h3 class="reference-header center">
-                                    <a href="<?php echo get_permalink($p["item"][0]) ; ?>" class="header-link">
+                                    <a href="<?php echo get_permalink($p["item"][0]) ; ?>" class="header-link seo-single-reference-btn">
                                         <?php echo $p["item_header"]; ?>
                                     </a>
                                 </h3>
@@ -1936,7 +2096,7 @@ function get_references_block($result, $label, $img_placeholder, $general_alt, $
                                 </div>
                                 
                                 <div class="reference-bottom">
-                                    <a href="<?php echo get_permalink($p["item"][0]) ; ?>" class="button-prorm button-prorm-vinous"><?php echo $label; ?></a>
+                                    <a href="<?php echo get_permalink($p["item"][0]) ; ?>" class="button-prorm button-prorm-vinous seo-single-reference-btn"><?php echo $label; ?></a>
                                 </div>
                               
                               
@@ -2015,7 +2175,7 @@ function get_our_partners_block($our_partners, $section_header, $general_alt, $s
     
    
     ?>
-        <section class="our-partners-preview-block info-block text-bigger-block <?php echo $section_bg; ?>">
+        <div class="our-partners-preview-block info-block text-bigger-block <?php echo $section_bg; ?>">
             <div class="container">
                 
                 <?php if($our_partners){ ?>    
@@ -2052,7 +2212,7 @@ function get_our_partners_block($our_partners, $section_header, $general_alt, $s
                 <?php } ?> 
             </div>
             
-       </section>
+       </div>
           
           
     
@@ -2092,13 +2252,13 @@ function get_our_partners_header_block( $section_header, $description, $general_
 function get_cta_block($section_header, $section_bg){
     ?>
     
-        <section class="cta-block info-block text-bigger-block download-block <?php echo $section_bg; ?>">
+        <div class="cta-block info-block text-bigger-block download-block <?php echo $section_bg; ?>">
             <div class="container">
                 
                 <h2 class="center text-bigger white-style"><?php echo $section_header; ?></h2>
 
             </div>
-        </section>
+        </div>
     
 <?php }
 
@@ -2111,7 +2271,7 @@ function get_our_team_header_block( $args, $general_alt, $section_bg){
              <div class="container">
                  
                 <div class="title-outer">
-                        <<?php echo $h ?> class="text-bigger center"><?php echo $section_header; ?></<?php echo $h ?>>
+                        <<?php echo $h ?> class="black-style-center center text-bigger"><?php echo $section_header; ?></<?php echo $h ?>>
                 </div> 
                  
                 <div class="row-12 our-team-content">
@@ -2553,7 +2713,7 @@ function get_html_lightning(){
 <?php }
  
  
-function get_prorm_banner_block($args, $general_alt){
+function get_prorm_banner_block($args, $general_alt, $block_attr = false){
     extract($args); 
     
     if($banner_buttons){
@@ -2570,7 +2730,8 @@ function get_prorm_banner_block($args, $general_alt){
            'classes' => $banner_button_1['css_classes'],
            'form_name' => $banner_button_1['form_name']->post_name,
            'label' => $banner_button_1['banner_button_label'],
-           'link' => $banner_button_1['banner_button_link']
+           'link' => $banner_button_1['banner_button_link'],
+           'button_id' => 'banner-' . $button_id . '-1' 
         );
         
     }
@@ -2582,7 +2743,8 @@ function get_prorm_banner_block($args, $general_alt){
             'classes' => $banner_button_2['css_classes'],
             'form_name' => $banner_button_2['form_name']->post_name,
             'label' => $banner_button_2['banner_button_label'],
-            'link' => $banner_button_2['banner_button_link']
+            'link' => $banner_button_2['banner_button_link'],
+            'button_id' => 'banner-' . $button_id. '-2'     
         );
         
     }
@@ -2590,7 +2752,7 @@ function get_prorm_banner_block($args, $general_alt){
    
     ?>
     
-        <div class="banner-block plain-banner-block">
+        <div class="banner-block plain-banner-block" <?php build_block_attr($block_attr); ?> >
              
             <div class="container">
                 
@@ -2612,7 +2774,9 @@ function get_prorm_banner_block($args, $general_alt){
                                     
                             <?php } ?>
                         </div>
-
+<?php 
+    
+?>
                         <?php if($banner_text){ ?>
                             <div class="banner-text-outer">
                                 <p class="banner-text"><?php echo $banner_text; ?></p>
@@ -2744,14 +2908,16 @@ function get_meet_us_block($args, $general_alt, $section_bg){
 <?php } 
 
 
-function get_clients_page_block($args, $general_alt, $bg){
+function get_clients_page_block($args, $general_alt, $section_bg, $block_attr = false){
     extract($args);
     
    
 
     ?>
     
-    <section class="carousel-block clients-block <?php echo $bg; ?> info-block text-bigger-block">
+    <section class="carousel-block clients-block <?php echo $section_bg; ?> info-block text-bigger-block" 
+             <?php build_block_attr($block_attr); ?> >
+        
             <div class="container">
                 <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
 
@@ -2815,9 +2981,13 @@ function get_homepage_slider_block($args, $general_alt, $bg){
                     <div class="owl-carousel owl-theme" id="homepage_slider">
 
                         <?php if($items){?>
-
-                        <?php foreach ($items as $item) { ?>
-
+                                                            
+                        <?php 
+                        $i = 0;
+                        foreach ($items as $item) { 
+                        $i++;    
+                        ?>
+                        
 
                                     <div class="item homepage-item">
 
@@ -2840,7 +3010,7 @@ function get_homepage_slider_block($args, $general_alt, $bg){
 
                                                     <div class="banner-button-outer">
 
-                                                        <a href="<?php echo $item['slider_item_link']; ?>" class="button-prorm <?php echo $css_class; ?>">
+                                                        <a href="<?php echo $item['slider_item_link']; ?>" class="button-prorm <?php echo $css_class; ?>" id="<?php echo 'hp-slider-' . $i; ?>">
                                                             <?php echo $label; ?>
                                                         </a>
 
@@ -2910,8 +3080,9 @@ function get_experts_block($args, $img_placeholder, $general_alt, $section_bg ){
                                     <h3 class="experts-header">
                                         <?php echo $item["expert_name"]; ?>
                                     </h3>
-                                    
-                                    <p class="experts-text"><?php echo '&#8222;' . $item["expert_info"] . '&#8221;' ; ?></p>
+                                    <?php if($item["expert_info"]){ ?>
+                                        <p class="experts-text"><?php echo '&#8222;' . $item["expert_info"] . '&#8221;' ; ?></p>
+                                    <?php } ?>
                                 </div>
                                
                             </figcaption>
@@ -2925,6 +3096,74 @@ function get_experts_block($args, $img_placeholder, $general_alt, $section_bg ){
                 <?php } ?>
                     
                </div>
+                    
+                </div>
+                
+            </div>
+                
+                <?php } ?> 
+            </div>
+            
+       </section>
+          
+    
+<?php }
+
+
+function get_mobile_experts_block($args, $img_placeholder, $general_alt, $section_bg ){
+    extract($args);
+    
+   
+    ?>
+        <section class="experts-block info-block text-bigger-block <?php echo $section_bg; ?>">
+            <div class="container">
+                
+                <?php if($items){ ?>    
+                
+                <div class="experts-preview-container">
+                    
+                    <h2 class="black-style-center center text-bigger experts-block-title"><?php echo $section_header; ?></h2>     
+
+                    <p class="experts-block-text center"><?php echo $section_text; ?></p>
+                    
+                    <div class="experts-container ">
+
+                        <div class="row-12 experts-preview-outer owl-mobile-carousel ">
+
+
+
+                    <?php foreach( $items as $item ){ ?>
+
+                            <div class="experts-preview col-2 item"  title="<?php echo $item["expert_name"]; ?>">
+                                <figure class="imghvr-zoom-in ">
+
+                                        <img class="experts-preview-img mobile-slider-img" src="<?php echo $item["expert_photo"] ? $item["expert_photo"] : $img_placeholder; ?>" alt="<?php echo $item["expert_name"]; ?>">
+
+                                    <figcaption>
+
+                                        <div class="experts-body">
+
+                                            <h3 class="experts-header">
+                                                <?php echo $item["expert_name"]; ?>
+                                            </h3>
+                                            <?php if($item["expert_info"]){ ?>
+                                                <p class="experts-text"><?php echo '&#8222;' . $item["expert_info"] . '&#8221;' ; ?></p>
+                                            <?php } ?>
+                                        </div>
+
+                                    </figcaption>
+
+
+                                </figure>
+
+
+                            </div>
+
+                    <?php } ?>
+
+                        </div>
+                        
+                        
                     
                 </div>
                 
@@ -2953,13 +3192,13 @@ function get_awards_block($args, $general_alt, $section_bg ){
                         
                 <div class="reference-preview-container">
                     
-                <div class="row-12 reference-preview-outer box-shadow">
+                <div class="row-12 reference-preview-outer box-shadow owl-mobile-carousel">
                     
                 
                 
                 <?php foreach( $items as $item ){ ?>
                 
-                    <div class="reference-preview col-4">
+                    <div class="reference-preview col-4 item">
                         <figure class="imghvr-zoom-in box-shadow partner-block ">
                             
                                 <img class="reference-preview-img partner-img" src="<?php echo $item['awards_photo']; ?>" 
@@ -2988,12 +3227,121 @@ function get_awards_block($args, $general_alt, $section_bg ){
 <?php }
 
 
+function get_animated_users_report($args, $section_bg, $block_attr = false){
+     extract($args);
+    
+    ?>
+    
+    <section class="data-circle-graph-block js-circle-animated info-block <?php echo $section_bg; ?>" 
+            <?php build_block_attr($block_attr); ?> 
+            data-status="ready">
+        
+        <div class="container">
+        
+            <h2 class="black-style-center center text-bigger"><?php echo $section_header; ?></h2>
+        
+            <div class="data-circle-graph-outer row-12">
+                <?php if($items){ 
+                    foreach ($items as $item) { ?>
+
+                    <div class="col-3 center data-circle-graph-item">
+
+                        <figure class="chart" data-percent="<?php echo intval(str_replace(' ', '', $item['item_header'])); ?>">
+                            <figcaption class="data-circle-header"><?php echo $item['item_header']; ?></figcaption>
+
+                            <svg>
+                              <circle class="outer js-circle" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)"></circle>
+                            </svg>
+
+                        </figure>
+                        <p class="data-circle-graph-text"><?php echo $item['item_text']; ?></p>
+
+                    </div>
 
 
+                <?php } ?>
+                <?php } ?>
+            </div>
+
+        </div>
+    </section>
+    <?php
+}
 
 
+function get_animated_page_side_nav($args){
+    extract($args);
+    
+    if(!$enable){
+        return;
+    }
+    ?>
+    <div class="shadow-block js-shadow-side-nav"></div>
+    
+    <div id="pageSideNav" class="side-nav">
+       
+        <div class="hamburger js-open-side-nav" id="hamburger">
+            <span class="bars"></span>
+        </div>
+        
+        <div class="side-nav-link-outer">
+            
+            <?php 
+                foreach ($items as $item) {
+                    
+                    if($item['label'] && $item['section_id']){ ?>
+                        
+                        <a class="side-nav-link js-side-nav-link" href="#<?php echo $item['section_id'] ?>"><?php echo $item['label'] ?></a>
+                        
+                    <?php }
+                    
+                }
+            
+            ?>
+           
+           
+        </div>
+      
+    </div>
+    
+    <?php
+}
 
 
+function get_page_side_nav($args){
+    extract($args);
+    
+    if(!$enable){
+        return;
+    }
+    ?>
+    
+    
+    <nav id="pageSideNav" class="page-side-nav" role="navigation">
+       
+        <div class="side-nav-link-outer">
+            
+            <?php 
+                foreach ($items as $item) {
+                    
+                    if($item['label'] && $item['section_id']){ ?>
+                        
+                        <a class="side-nav-link js-side-nav-link <?php echo ($item['white_text']) ? 'red-bg-class' : ''; ?> " href="#<?php echo $item['section_id'] ?>">
+                            <span class="side-nav-link-text"><?php echo $item['label'] ?></span>
+                        </a>
+                        
+                    <?php }
+                    
+                }
+            
+            ?>
+        
+        </div>
+     
+    </nav>
+  
+    <?php
+}
 
 
 

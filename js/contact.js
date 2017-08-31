@@ -316,7 +316,7 @@ jQuery(document).ready(function ($) {
                 
                 $form[0].reset();
                 var $name_analitic = $form.find('.analitic_name').val();
-                dataLayer.push({'event': $name_analitic});
+//                dataLayer.push({'event': $name_analitic});
                 jQuery('body').addClass('overflow-screen');
                 
 //                var modalForm = jQuery('#register-webinar');

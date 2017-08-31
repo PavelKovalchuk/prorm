@@ -343,8 +343,15 @@ input[type="radio"]{
             position: static;
         }
         
-        p{
+        .radio-text{
             font-size: 23px;
+            display: block;
+            margin: 0 0 0 0;
+        }
+        
+        .highlight{
+            vertical-align: top;
+            line-height: 1;
         }
         
         .jcf-radio{
@@ -367,7 +374,7 @@ input[type="radio"]{
             }
         }
         
-        p{
+        .radio-text{
             @include media('<tablet') {
                 font-weight: 400;
                 font-size: 0.8em;
@@ -932,7 +939,7 @@ input[type="radio"]{
             text-align: left;
             margin-left: 0;
 
-            p{
+            .radio-text{
                 margin: 0 0 20px;
                 font-weight: 300;
                 text-align: justify;

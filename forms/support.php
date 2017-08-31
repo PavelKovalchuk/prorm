@@ -5,6 +5,7 @@ $analitic_name = 'Send_contacts';
 
 
 $form = Tpl::get('form');
+$form_name = $form->getFormName();
 
 $dynamics_version_options = $form->getDynamicsVersionOptions();
 $prorm_product_options = $form->getPrormProductOptions();
@@ -19,7 +20,7 @@ if($form){
 
 ?>
 
-<form id="<?= $id_form; ?>" action="" class="contact-form form-validation ph-move hidden-recapctha" method="post" role="form">
+<form id="<?= $id_form; ?>" class="contact-form form-validation ph-move hidden-recapctha" method="post" >
     <input type="hidden" name="support" value="support">
     <input type="hidden" name="page-url" value="<?php echo $post->post_name; ?>">
     <input type="hidden" name="page-title" value="<?php echo $post->post_title; ?>">
@@ -41,14 +42,14 @@ if($form){
     </div>
     
     <div class="field-holder radio-holder">
-        <?php ProRMForms::radioField('salutation', array(__('Mr.' , ProRMTheme::TEXTDOMAIN) => __('Mr' , ProRMTheme::TEXTDOMAIN), __('Ms.' , ProRMTheme::TEXTDOMAIN) => __('Ms' , ProRMTheme::TEXTDOMAIN)), true); ?>
+        <?php ProRMForms::radioField('salutation', array(__('Mr.' , ProRMTheme::TEXTDOMAIN) => __('Mr' , ProRMTheme::TEXTDOMAIN), __('Ms.' , ProRMTheme::TEXTDOMAIN) => __('Ms' , ProRMTheme::TEXTDOMAIN)), true, false, $form_name); ?>
     </div>
 
     
     <div class="left-f-block">
 
         <div class="field-holder">
-             <?php ProRMForms::inputField('first_name', 'text', __('First Name' , ProRMTheme::TEXTDOMAIN), false, true); ?>
+             <?php ProRMForms::inputField('first_name', 'text', __('First Name' , ProRMTheme::TEXTDOMAIN), false, true, $form_name); ?>
         </div>
 
     </div>
@@ -56,7 +57,7 @@ if($form){
     <div class="right-f-block">
 
         <div class="field-holder">
-            <?php ProRMForms::inputField('last_name', 'text', __('Last Name', ProRMTheme::TEXTDOMAIN), false, true); ?>
+            <?php ProRMForms::inputField('last_name', 'text', __('Last Name', ProRMTheme::TEXTDOMAIN), false, true, $form_name); ?>
         </div>
 
     </div>
@@ -64,19 +65,19 @@ if($form){
 
 
     <div class="field-holder">
-        <?php ProRMForms::inputField('company', 'text', __('Company Name', ProRMTheme::TEXTDOMAIN), false, true); ?>
+        <?php ProRMForms::inputField('company', 'text', __('Company Name', ProRMTheme::TEXTDOMAIN), false, true, $form_name); ?>
     </div>
 
     <div class="field-holder">
-        <?php ProRMForms::inputField('email', 'email', __('E-Mail', ProRMTheme::TEXTDOMAIN), false, true); ?>
+        <?php ProRMForms::inputField('email', 'email', __('E-Mail', ProRMTheme::TEXTDOMAIN), false, true, $form_name); ?>
     </div>
 
     <div class="field-holder">
-        <?php ProRMForms::inputField('phone', 'text', __('Phone', ProRMTheme::TEXTDOMAIN), false, false); ?>
+        <?php ProRMForms::inputField('phone', 'text', __('Phone', ProRMTheme::TEXTDOMAIN), false, false, $form_name); ?>
     </div>
 
     <div class="field-holder">
-        <?php ProRMForms::textareaField('notes', __('Message', ProRMTheme::TEXTDOMAIN), false, false); ?>
+        <?php ProRMForms::textareaField('notes', __('Message', ProRMTheme::TEXTDOMAIN), false, false, $form_name); ?>
     </div>
 
     <div class="field-holder">
@@ -97,7 +98,7 @@ if($form){
 
     
     <div class="btn-holder cf">
-            <div class="loader" id="js-loader"></div>
+            <div class="loader js-loader"></div>
             <?php ProRMForms::field('send_button_3d', '', $id_form . '-button') ?>
     </div>
         

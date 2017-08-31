@@ -12,10 +12,9 @@ $enterprise_solution_page = get_post(pll_get_post(5475));
 $lang = pll_current_language();
 
 if($lang = 'es'){
-    $fast_start_page = get_post(6716);
-    $enterprise_solution_page = get_post(6720);
+    $fast_start_page = get_post(6708);
+    $enterprise_solution_page = get_post(6713);
 }
-
 
 $settings = Registry::get('settings');
         
@@ -57,4 +56,4 @@ $enterprise_solution_page_alt = get_field( 'alt_for_images_on_psa_page', $enterp
         </div>
     </main>
 
-<?php get_footer(); ?>
+<?php get_footer('2017'); ?>

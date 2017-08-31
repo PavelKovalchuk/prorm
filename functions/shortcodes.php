@@ -87,8 +87,13 @@ class ProRMShortcodes {
     public static function formShortcodeHeader($attributes, $content = null) {
         $name = $attributes['name'];
         $id = get_post_id_by_name( $name, 'form' ); 
-        $form_header = get_field('header', $id); 
-        return $form_header;
+        $form_header = get_field('header', $id);
+        if($form_header){
+            return $form_header;
+        }else{
+            return false;
+        }
+        
     }
 
     public static function testimonialsShortcodeHandler($attributes, $content = null) {

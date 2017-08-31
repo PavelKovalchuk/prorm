@@ -17,16 +17,18 @@ $img_placeholder =  $settings->getOption('image_placeholder');
 
 $fields = get_fields();
 
+$general_page_id = 'references';
+
+//For buttons on forms
+Tpl::set('general_page_id', $general_page_id);
+
 $banner_args = array(
-    'banner_planet' => $fields['banner_planet_page']["url"],
     'banner_object' => $fields['banner_object_page']["url"],
-    'banner_clouds' => $fields['banner_clouds_page']["url"],
-    'banner_clouds_top' => $fields['banner_clouds_page_top']["url"],
     'banner_header' => $fields['banner_header_page'],
     'banner_header_tag' => $fields['banner_header_tag'],
     'banner_text' => $fields['banner_text_page'],
     'banner_buttons' => $fields['banner_buttons_page'],
-    'stars_effect' => $fields['stars_effect'],
+    
    
 );
 
@@ -40,7 +42,7 @@ $form_block_args = array(
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="references-page">
+<main id="main" class="references-page">
     <div id="content">
         
         <?php // get_prorm_banner_page($banner_args, $general_alt ); ?>

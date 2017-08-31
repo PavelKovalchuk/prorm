@@ -46,7 +46,7 @@ $banner_args = array(
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="support-page">
+<main id="main" class="support-page">
     <div id="content">
        
         <?php //get_prorm_banner_page($banner_args, $general_alt ); ?>

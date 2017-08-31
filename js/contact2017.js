@@ -174,7 +174,7 @@ jQuery(document).ready(function ($) {
         var $label, $text, $form = $(this).parents('.contact-form'),
         $radio = $form.find('.blocks'),
         $btn = $form.find('button');
-        $loader = $form.find('#js-loader');
+        $loader = $form.find('.js-loader');
         
         
         if ($radio){
@@ -308,6 +308,7 @@ jQuery(document).ready(function ($) {
 
                 $btn.attr('disabled', false);
                 doLoader($loader);
+                console.log('response ', response);
                 ///for captcha
                 if(response.status === 'captcha_false' || response.status === 'captcha_needed' || response.status === 'none'){
                    
@@ -315,8 +316,10 @@ jQuery(document).ready(function ($) {
                 }
                 
                 $form[0].reset();
-                var $name_analitic = $form.find('.analitic_name').val();
-                dataLayer.push({'event': $name_analitic});
+                var $name_analitic = $form.find('button').attr('id');
+               
+//                var $name_analitic = $form.find('.analitic_name').val();
+//                dataLayer.push({'event': $name_analitic});
                 jQuery('body').addClass('overflow-screen');
                 
 //                var modalForm = jQuery('#register-webinar');

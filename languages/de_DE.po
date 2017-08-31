@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: proRm Website\n"
-"POT-Creation-Date: 2017-05-24 16:09+0300\n"
-"PO-Revision-Date: 2017-05-26 11:21+0300\n"
+"POT-Creation-Date: 2017-05-30 15:17+0300\n"
+"PO-Revision-Date: 2017-06-13 14:53+0300\n"
 "Last-Translator: Max Gopey <Maxim.Gopey@promx.net>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -171,7 +171,7 @@ msgstr "Bitte wählen Sie aus"
 #: functions/fetchers/service-request.php:29
 #: functions/fetchers/subscribe.php:24 functions/fetchers/support.php:27
 #: functions/fetchers/testing.php:16 functions/fetchers/webinar.php:30
-#: functions/widgets.php:573 sidebar-offices-2017.php:70
+#: functions/widgets.php:696 sidebar-offices-2017.php:70
 #: sidebar-offices-2017.php:87 sidebar-offices-2017.php:103
 #: sidebar-offices-2017.php:119 sidebar-offices.php:81 sidebar-offices.php:100
 #: sidebar-offices.php:118 sidebar-offices.php:136
@@ -398,9 +398,8 @@ msgstr "Schließen"
 msgid "Mr"
 msgstr "Herr"
 
-#: forms/contact-client.php:28 forms/get-demo.php:29 forms/meeting.php:36
-#: forms/support.php:44
-msgid "Mrs"
+#: forms/contact-client.php:28
+msgid "Ms"
 msgstr "Frau"
 
 #: forms/contact-client.php:50 forms/get-demo.php:41 forms/meeting.php:58
@@ -488,7 +487,7 @@ msgstr ""
 
 #: forms/fields/register_button.php:5
 msgid "Register"
-msgstr ""
+msgstr "Anmelden"
 
 #: forms/fields/salutation.php:7 functions/fetchers/licence30days.php:64
 #: functions/fetchers/newsletter.php:23
@@ -502,7 +501,7 @@ msgstr "Kontaktieren Sie mich"
 #: forms/fields/subscribe.php:11 forms/newsletter.php:19
 #: parts/home/custom-block.php:20
 msgid "Subscribe"
-msgstr "Anmelden"
+msgstr "Abonnieren"
 
 #: forms/fields/subscription.php:4
 msgid "I would like to have more information about proRM."
@@ -520,6 +519,10 @@ msgstr "Wunschtermin"
 #: forms/fields/webinars.php:10 functions/webinars.php:57
 msgid "Webinar"
 msgstr ""
+
+#: forms/get-demo.php:29 forms/meeting.php:36 forms/support.php:44
+msgid "Mrs"
+msgstr "Frau"
 
 #: forms/licence30days.php:8
 msgid "Yes"
@@ -887,7 +890,7 @@ msgstr "Bitte geben Sie Ihren Namen an."
 
 #: functions/fetcher.php:394
 msgid "Please fill in your last name."
-msgstr ""
+msgstr "Bitte geben Sie Ihren Nachnamen an."
 
 #: functions/fetcher.php:396
 msgid "Please fill in your e-mail address."
@@ -1169,35 +1172,35 @@ msgstr ""
 #: templates/fast-start.php:149 templates/fast-start.php:163
 #: templates/fast-start.php:177
 msgid "Preview"
-msgstr ""
+msgstr "Vorschau"
 
 #: functions/html_parts.php:313
 msgid "Homepage"
 msgstr "Startseite"
 
-#: functions/html_parts.php:1279
+#: functions/html_parts.php:1286
 msgid "Share with Xing"
 msgstr ""
 
-#: functions/html_parts.php:1280
+#: functions/html_parts.php:1287
 msgid "Share with Facebook"
 msgstr ""
 
-#: functions/html_parts.php:1281
+#: functions/html_parts.php:1288
 msgid "Google plus"
 msgstr ""
 
-#: functions/html_parts.php:1282
+#: functions/html_parts.php:1289
 msgid "Share with Twitter"
 msgstr ""
 
-#: functions/html_parts.php:1283
+#: functions/html_parts.php:1290
 msgid "Share with Linkedin"
 msgstr ""
 
-#: functions/html_parts.php:1303
+#: functions/html_parts.php:1310
 msgid "Recent posts"
-msgstr "Kürzliche Posts"
+msgstr "Andere Neuigkeiten"
 
 #: functions/news.php:100
 #, php-format
@@ -1258,18 +1261,6 @@ msgstr ""
 
 #: functions/settings-references.php:29
 msgid "Parent page ES"
-msgstr ""
-
-#: functions/settings-references.php:34
-msgid "Customer profile header EN"
-msgstr ""
-
-#: functions/settings-references.php:38
-msgid "Customer profile header DE"
-msgstr ""
-
-#: functions/settings-references.php:42
-msgid "Customer profile header ES"
 msgstr ""
 
 #: functions/settings-references.php:47
@@ -1342,10 +1333,6 @@ msgstr ""
 
 #: functions/settings-references.php:115
 msgid "Software ES"
-msgstr ""
-
-#: functions/settings-references.php:123
-msgid "Customer image ID"
 msgstr ""
 
 #: functions/settings-references.php:127
@@ -1808,175 +1795,180 @@ msgstr ""
 msgid "Webinar Language"
 msgstr "Redirect nach Sprache"
 
-#: functions/widgets.php:27
+#: functions/widgets.php:29
 msgid "Contact Info"
 msgstr "Kontaktinformationen"
 
-#: functions/widgets.php:29 functions/widgets.php:39 functions/widgets.php:48
-#: functions/widgets.php:57 functions/widgets.php:67
+#: functions/widgets.php:31 functions/widgets.php:41 functions/widgets.php:50
+#: functions/widgets.php:59 functions/widgets.php:69
 msgid "Appears on contact page"
 msgstr "Erscheint auf der Kontaktseite"
 
-#: functions/widgets.php:37
+#: functions/widgets.php:39
 #, fuzzy
 msgid "Offices-Europa"
 msgstr "Büros"
 
-#: functions/widgets.php:46
+#: functions/widgets.php:48
 msgid "Offices-N.America"
 msgstr ""
 
-#: functions/widgets.php:55
+#: functions/widgets.php:57
 #, fuzzy
 msgid "Offices-Australia"
 msgstr "Australien"
 
-#: functions/widgets.php:65
+#: functions/widgets.php:67
 msgid "Offices-Africa"
 msgstr ""
 
-#: functions/widgets.php:117
+#: functions/widgets.php:129
 msgid "A widget appears in the  block  How does it work."
 msgstr ""
 
-#: functions/widgets.php:121
+#: functions/widgets.php:133 functions/widgets.php:244
 msgid "Video item"
 msgstr ""
 
-#: functions/widgets.php:176
+#: functions/widgets.php:188 functions/widgets.php:299
 msgid "post id of the image"
 msgstr ""
 
-#: functions/widgets.php:177 functions/widgets.php:328
-#: functions/widgets.php:487
+#: functions/widgets.php:189 functions/widgets.php:300
+#: functions/widgets.php:451 functions/widgets.php:610
 msgid "ProMX"
 msgstr ""
 
-#: functions/widgets.php:178
+#: functions/widgets.php:190 functions/widgets.php:301
 msgid "VIDEO ID "
 msgstr ""
 
-#: functions/widgets.php:191 functions/widgets.php:342
-#: functions/widgets.php:498 functions/widgets.php:625
+#: functions/widgets.php:203 functions/widgets.php:314
+#: functions/widgets.php:465 functions/widgets.php:621
+#: functions/widgets.php:748
 #, fuzzy
 msgid "Title:"
 msgstr "Überschrift"
 
-#: functions/widgets.php:196
+#: functions/widgets.php:208 functions/widgets.php:319
 msgid "VIDEO ID:"
 msgstr ""
 
-#: functions/widgets.php:201
+#: functions/widgets.php:213 functions/widgets.php:324
 msgid "ID for image:"
 msgstr ""
 
-#: functions/widgets.php:207 functions/widgets.php:353
-#: functions/widgets.php:519
+#: functions/widgets.php:219 functions/widgets.php:330
+#: functions/widgets.php:476 functions/widgets.php:642
 msgid "ALT for image:"
 msgstr ""
 
-#: functions/widgets.php:236
+#: functions/widgets.php:240
+msgid "A widget appears in the  block  Fast Start Video block."
+msgstr ""
+
+#: functions/widgets.php:359
 msgid "A widget appears in the  block  What our customers say."
 msgstr ""
 
-#: functions/widgets.php:240
+#: functions/widgets.php:363
 msgid "Customer item"
 msgstr ""
 
-#: functions/widgets.php:321
+#: functions/widgets.php:444
 msgid "Leonardo Dicaprio_"
 msgstr ""
 
-#: functions/widgets.php:322
+#: functions/widgets.php:445
 msgid "Leader_"
 msgstr ""
 
-#: functions/widgets.php:323
+#: functions/widgets.php:446
 msgid "What customers say_"
 msgstr ""
 
-#: functions/widgets.php:327
+#: functions/widgets.php:450
 msgid "id"
 msgstr ""
 
-#: functions/widgets.php:347
+#: functions/widgets.php:470
 msgid "ID of the image:"
 msgstr ""
 
-#: functions/widgets.php:364 functions/widgets.php:529
+#: functions/widgets.php:487 functions/widgets.php:652
 msgid ": "
 msgstr ""
 
-#: functions/widgets.php:404
+#: functions/widgets.php:527
 msgid "A widget appears in the  block  About Us In Numbers."
 msgstr ""
 
-#: functions/widgets.php:408
+#: functions/widgets.php:531
 msgid "About us item"
 msgstr ""
 
-#: functions/widgets.php:482
+#: functions/widgets.php:605
 msgid "What number means - "
 msgstr ""
 
-#: functions/widgets.php:486
+#: functions/widgets.php:609
 msgid "http://"
 msgstr ""
 
-#: functions/widgets.php:503
+#: functions/widgets.php:626
 msgid "URL for image:"
 msgstr ""
 
-#: functions/widgets.php:504
+#: functions/widgets.php:627
 msgid "Use image size 170x150 px:"
 msgstr ""
 
-#: functions/widgets.php:509
+#: functions/widgets.php:632
 msgid "Number:"
 msgstr ""
 
-#: functions/widgets.php:514
+#: functions/widgets.php:637
 msgid "Addition sign:"
 msgstr ""
 
-#: functions/widgets.php:552
+#: functions/widgets.php:675
 msgid "Contact Info Offices (text or HTML)."
 msgstr ""
 
-#: functions/widgets.php:554 sidebar-offices-2017.php:3 sidebar-offices.php:3
+#: functions/widgets.php:677 sidebar-offices-2017.php:3 sidebar-offices.php:3
 msgid "Our Offices"
 msgstr "Unsere Büros"
 
-#: functions/widgets.php:570 sidebar-offices-2017.php:69
+#: functions/widgets.php:693 sidebar-offices-2017.php:69
 #: sidebar-offices-2017.php:86 sidebar-offices-2017.php:102
 #: sidebar-offices-2017.php:118 sidebar-offices.php:80 sidebar-offices.php:99
 #: sidebar-offices.php:117 sidebar-offices.php:135
 msgid "Location"
 msgstr "Lage"
 
-#: functions/widgets.php:576 sidebar-offices-2017.php:71
+#: functions/widgets.php:699 sidebar-offices-2017.php:71
 #: sidebar-offices-2017.php:88 sidebar-offices-2017.php:104
 #: sidebar-offices-2017.php:120 sidebar-offices.php:82 sidebar-offices.php:101
 #: sidebar-offices.php:119 sidebar-offices.php:137
 msgid "Contact"
 msgstr "Kontakt"
 
-#: functions/widgets.php:627
+#: functions/widgets.php:750
 #, fuzzy
 msgid "Office Address:"
 msgstr "Büros"
 
-#: functions/widgets.php:629
+#: functions/widgets.php:752
 #, fuzzy
 msgid "Company Name:"
 msgstr "Firma"
 
-#: functions/widgets.php:631
+#: functions/widgets.php:754
 #, fuzzy
 msgid "Office Contacts:"
 msgstr "Kontakt"
 
-#: functions/widgets.php:634
+#: functions/widgets.php:757
 msgid "Automatically add paragraphs"
 msgstr ""
 

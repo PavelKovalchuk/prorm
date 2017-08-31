@@ -174,13 +174,22 @@ add_action('wp_head', 'prorm_open_graph');
 function prorm_open_graph(){
     $open_graph = '';
 
-//    if ( is_singular() ){
     if ( is_single() ){   
             global $post;
             $id = get_the_ID();
+               
+            $post_thumbnail_url = get_field('photo_item', $id)[0]["image_for_slider"]["url"]; 
             
-            $post_thumbnail_id = get_post_thumbnail_id($id);
-            $post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
+            if(!$post_thumbnail_url){
+                $post_thumbnail_id = get_post_thumbnail_id($id);
+                $post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
+            }
+            
+            $open_graph .= '<meta property="og:title" content="'. esc_html($post->post_title) . '" />'; 
+            
+            $open_graph .= '<meta property="og:type" content="article" />'; 
+            $open_graph .= '<meta property="og:url" content="' . get_permalink() .'" />'; 
+            
             if($post_thumbnail_url){
                 $open_graph .= '<meta property="og:image" content="'.$post_thumbnail_url.'" />';
             }
@@ -188,21 +197,59 @@ function prorm_open_graph(){
                 $open_graph .= '<meta property="og:image" content="http://prorm.net/wp-content/themes/prorm/images/FS.png" />'; 
             }
             
-            $open_graph .= '<meta property="og:title" content="'. $post->post_title . '" />'; 
-            
             if($post->post_excerpt){
-                $open_graph .= '<meta property="og:description" content="'. $post->post_excerpt . '" />'; 
+                $open_graph .= '<meta property="og:description" content="'. esc_html($post->post_excerpt) . '" />'; 
             }
             else{
                 $exc = substr($post->post_content, 0, 300);
                 $open_graph .= '<meta property="og:description" content="'. wp_strip_all_tags( esc_html($exc), true ) . '" />'; 
             }
-            $open_graph .= '<meta property="og:type" content="article" />'; 
-            $open_graph .= '<meta property="og:url" content="' . get_permalink() .'" />'; 
+            
           
     } 
+    elseif(is_page()){
+        global $post;
+       
+        $id = get_the_ID();
+        
+        if(!$id){
+            return;
+        }
+        
+        $title_meta = get_post_meta($id, '_aioseop_title', true);
+        $descr_meta = get_post_meta($id, '_aioseop_description', true);
+        $img_id = get_post_meta($id, 'banner_object_page', true);
+        
+        if($img_id){
+            $post_thumbnail_url = wp_get_attachment_url( $img_id );
+        }
+        
+        
+        if($title_meta){
+            $open_graph .= '<meta property="og:title" content="'. esc_html($title_meta) . '" />'; 
+        }
+        
+        $open_graph .= '<meta property="og:type" content="website" />'; 
+        $open_graph .= '<meta property="og:url" content="' . get_permalink($id) .'" />'; 
+        
+        if($post_thumbnail_url){
+            if($post_thumbnail_url){
+                $open_graph .= '<meta property="og:image" content="'.$post_thumbnail_url.'" />';
+            }
+            else{
+                $open_graph .= '<meta property="og:image" content="http://prorm.net/wp-content/themes/prorm/images/FS.png" />'; 
+            }
+        }
+                
+        if($descr_meta){
+            $open_graph .= '<meta property="og:description" content="'. esc_html($descr_meta) . '" />'; 
+        }
+        
+        
+        
+    }
     else {
-
+        return;
     }
 
     echo $open_graph;
@@ -342,7 +389,7 @@ function show_pub_date($id)
         if (function_exists('pll_current_language')) {
             if(pll_current_language('slug') == 'de'){
                 $dateFormat = 'j. M. Y';
-                $dateArr = explode('.', get_the_date($dateFormat));
+                $dateArr = explode('.', get_the_date($dateFormat, $id));
                 $dateArr[1] = __(trim($dateArr[1]), ProRMTheme::TEXTDOMAIN);
                 $dateString = $dateArr[0] . '. ' . $dateArr[1] . ' ' . $dateArr[2];
             }
@@ -435,9 +482,94 @@ function get_google_tag_anal(){
 
 function get_google_no_script(){
     ?>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND92CZ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->    
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND92CZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->    
     <?php
+}
+
+function get_yandex_script(){
+    ?>
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter32043881 = new Ya.Metrika({
+                    id:32043881,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/32043881" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    <?php
+}
+
+function get_noindex_tag(){
+    ?>
+    <meta name="robots" content="noindex, nofollow"/>
+    <?
+}
+
+function get_form_button_id($id_general, $id_form){
+    
+    if(!$id_form){
+        return false;
+    }
+    
+    if($id_general){
+        $id_button = $id_form . '-' . $id_general .'-button';
+    }else{
+        $id_button = $id_form . '-button';
+    }
+    
+    return $id_button;
+}
+
+function get_browser_name($user_agent)
+{
+    if (strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR/')){ return 'Opera';}
+    elseif (strpos($user_agent, 'Edge')){ return 'Edge';}
+    elseif (strpos($user_agent, 'Chrome')){ return 'Chrome';}
+    elseif (strpos($user_agent, 'Safari')){ return 'Safari';}
+    elseif (strpos($user_agent, 'Firefox')){ return 'Firefox';}
+    elseif (strpos($user_agent, 'MSIE') || strpos($user_agent, 'Trident/7')){ return 'Internet Explorer';}
+    
+    return 'Other';
+}
+
+function build_block_attr($data){
+    
+    if($data){
+        
+        foreach ($data as $key => $value) {
+            
+            if($key && $value){
+                                
+                echo ' ' .  $key . '="' . $value . '" ';
+                
+            }
+            
+        }
+      
+    } 
+    
 }

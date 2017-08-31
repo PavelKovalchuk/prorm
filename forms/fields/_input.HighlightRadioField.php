@@ -19,7 +19,7 @@ if ($fetcher->hasError($name)) Tpl::set('error_radio', true);
                    value="<?php echo $value; ?>"
                    id="ene<?php echo $i; ?>">
             <span class="highlight"><?php echo $value; ?></span>
-            <p><?php echo $label ?></p>
+            <span class="radio-text"><?php echo $label ?></span>
         </label>
     </div>
 

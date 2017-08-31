@@ -13,7 +13,7 @@ if(pll_current_language() == 'de'){
     Tpl::set('form_anchor', 'PSA_webcast');
 }
 
-$pr_service_page = get_post(pll_get_post(8123));
+$pr_service_page = get_post(pll_get_post(5379));
 
 $settings = Registry::get('settings');
         

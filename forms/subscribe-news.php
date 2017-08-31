@@ -16,7 +16,7 @@ if(is_home()){
 } 
 if(!$form){
     $form = Tpl::get('form');
-    
+    $form_name = $form->getFormName();
     
 }                        
 $fetcher = false;
@@ -28,7 +28,7 @@ if($form){
 
 ?>
 
-<form id="<?= $id_form; ?>" action="" class="contact-form form-validation ph-move <?php echo $add_class_field; ?> hidden-recapctha" method="post" role="form">
+<form id="<?= $id_form; ?>" class="contact-form form-validation ph-move <?php echo $add_class_field; ?> hidden-recapctha" method="post">
     <input type="hidden" name="subscribe-news" value="subscribe-news">
    
     <input type="hidden" class="analitic_name" name="<?php echo $analitic_name; ?>" value="<?php echo $analitic_name; ?>">
@@ -36,11 +36,11 @@ if($form){
     
         
         <div class="field-holder field-holder-name <?php echo $add_class_field; ?>">
-             <?php ProRMForms::inputField('first_name', 'text', __('Name', ProRMTheme::TEXTDOMAIN), false,  true); ?>
+             <?php ProRMForms::inputField('first_name', 'text', __('Name', ProRMTheme::TEXTDOMAIN), false,  true, $form_name); ?>
         </div>
               
         <div class="field-holder field-holder-email <?php echo $add_class_field; ?>">
-            <?php ProRMForms::inputField('email', 'email',  __('E-Mail', ProRMTheme::TEXTDOMAIN), false, true); ?>
+            <?php ProRMForms::inputField('email', 'email',  __('E-Mail', ProRMTheme::TEXTDOMAIN), false, true, $form_name); ?>
         </div>
     
         
@@ -58,7 +58,7 @@ if($form){
         </div>
         
         <div class="btn-holder <?php echo $add_class_field; ?>">
-             <div class="loader" id="js-loader"></div>
+             <div class="loader js-loader"></div>
             <?php ProRMForms::field('subscribe', '', $id_form . '-button') ?>
         </div>
         

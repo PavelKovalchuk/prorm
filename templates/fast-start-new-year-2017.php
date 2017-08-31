@@ -95,7 +95,8 @@ $header_image_alt = get_cfc_meta( 'fast_start')[0]["header_image_alt"];
                     <p class="text-noupper second-header-section center-text"><?php echo the_cfc_field( 'fast_start','form_1_title' ); ?></p>
                     
                     <div class="form-holder">
-                        <?php echo do_shortcode('[form name=request]'); ?>
+                        <?php //echo do_shortcode('[form name=testing]'); ?>
+                         <?php echo do_shortcode('[form name=request]'); ?>
                     </div>
                 </div>
 
@@ -239,7 +240,7 @@ $header_image_alt = get_cfc_meta( 'fast_start')[0]["header_image_alt"];
 <script>
   
     jQuery( document ).ready(function() {
-//        jQuery('div.form-success-message h4').html('<?php // echo $text_finish; ?>');
+//        jQuery('div.form-success-message h4').html('<?php echo $text_finish; ?>');
          
         jQuery('#carousel-review').owlCarousel({
             loop:true,

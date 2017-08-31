@@ -35,13 +35,14 @@ $pll_current_language = pll_current_language();
                     <li><a target="_blank" href="<?php echo $settings->getOption('social_youtube_link_es') ?>" class="icon-youtube"></a></li>
                 <?php endif; ?>
                 <li><a target="_blank" href="<?php echo $settings->getOption('social_linkedin_link') ?>" class="icon-linkedin"></a></li>
+                <li><a target="_blank" href="<?php echo $settings->getOption('social_xing_link_common') ?>" class="icon-xing"></a></li>
             </ul>
             
         </div>    
     </div>
 </footer>
 <?php wp_footer(); ?>
-<section class="session_block">
+<div class="session_block">
     <div class="container">
         <p class="text-block"><?= __('I accept that this site uses cookies for analysis, personalized content and advertisment.', ProRMTheme::TEXTDOMAIN); ?></p>
         <div class="right-block"><?php
@@ -59,7 +60,9 @@ $pll_current_language = pll_current_language();
         </div>
     </div>
 
-</section>
+</div>
+
+ <?php if(is_live_site()){ get_yandex_script(); } ?>
 
 </body>
 </html>

@@ -44,7 +44,7 @@ $psa_args = array(
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="project-service-page">
+<main id="main" class="project-service-page">
     <div id="content">
         
         <?php get_prorm_banner_block($banner_args, $general_alt ); ?>

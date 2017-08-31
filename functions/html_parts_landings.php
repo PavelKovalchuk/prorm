@@ -844,6 +844,7 @@ function get_land_feedback_block($args, $general_alt, $section_bg){
 
 }
 
+
 function get_land_hololens_block($args, $general_alt, $section_bg){
     extract($args);
     ?>

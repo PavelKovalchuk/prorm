@@ -419,6 +419,22 @@ var PathConfig = require('./grunt-settings.js');
         concurrency: 4,
         progress: true
       }
+    },
+    
+    minified : {
+        files: {
+          src: [
+//          'js/**/*.js',
+//          'js/*.js'
+            'js/custom2017.js',
+            'js/contact2017.js'
+          ],
+          dest: 'js/min/'
+        },
+        options : {
+          sourcemap: true,
+          allinone: false
+        }
     }
 
   });
@@ -449,6 +465,9 @@ var PathConfig = require('./grunt-settings.js');
 
   //final build
   grunt.registerTask('dist', ['clean:temp', 'imgmin', 'cssbeauty']);
+  
+  //https://www.npmjs.com/package/grunt-minified
+  grunt.loadNpmTasks('grunt-minified');
   
   //new sass17
 //  grunt.registerTask('sassNom', ['sassNom:dev']);

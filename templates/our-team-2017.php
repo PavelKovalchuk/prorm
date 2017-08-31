@@ -29,7 +29,7 @@ $header_block_1_args = array(
     'description' => $fields['first_block_text'],
     'img' => $fields['first_block_image']['sizes']['news-photo'],
     'img_alt' =>  $fields['first_block_image_alt'],
-    'h' => 'h1',
+    'h' => 'h2',
     'img_left_pos' => true
 );
 
@@ -67,7 +67,7 @@ $banner_args = array(
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="our-team-page">
+<main id="main" class="our-team-page">
     <div id="content">
         
         <?php // get_prorm_banner($banner_args, $general_alt); ?>
@@ -82,7 +82,9 @@ $banner_args = array(
         
         <?php get_team_slider_block($slider_args, $general_alt, 'bg-grey'); ?>
         
-        <?php get_experts_block($experts_block_args, $img_placeholder, $general_alt, 'bg-white' ) ?>
+        <?php //get_experts_block($experts_block_args, $img_placeholder, $general_alt, 'bg-white' ) ?>
+        
+        <?php get_mobile_experts_block($experts_block_args, $img_placeholder, $general_alt, 'bg-white' ) ?>
         
         <?php get_awards_block($awards_args, $general_alt, 'bg-white');?>
         

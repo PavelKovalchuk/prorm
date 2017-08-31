@@ -12,21 +12,23 @@ $name = Tpl::get('field_name');
 $type = Tpl::get('field_type');
 
 /** @var ProRMFormFetcher $fetcher */
+$form_name = Tpl::get('form_name');
 
 ?>
 
 
 <div class="input-col col <?php echo ( $is_required )  ? 'required-field' : ''; ?>">
-    <label class="floated " for="<?php echo $name; ?>"><?php echo $label; ?></label>
+    <label class="floated " for="<?php echo $form_name . '-' .$name ?>"><?php echo $label; ?></label>
     
     <input class="contact_<?php echo $name; ?> js-float-label" 
            name="pro[<?php echo $name ?>]" 
+           id="<?php echo $form_name . '-' .$name ?>"
            type="<?php echo $type; ?>" 
            <?php if($placeholder){ ?>
            placeholder="<?php echo $placeholder; ?>" 
            <?php } ?>
            >
-    <?php echo ( $is_required )  ? '<label for="before"></label>' : ''; ?>
+    <?php echo ( $is_required )  ? '<label></label>' : ''; ?>
     
     <?php ProRMForms::field('_error'); ?>
 </div>

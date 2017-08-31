@@ -140,18 +140,29 @@ class Videos_works extends WP_Widget {
 
 		//Our variables from the widget settings.
                 
-                $video_id = $instance['video_id'];
+                $video_vistia_id = $instance['video_id'];
+                $video_youtube_id = $instance['video_youtube_id'];
                 $image_id = intval($instance['image_id']);;
                 $image_url = wp_get_attachment_image_url($image_id, 'slider-video' );
                 $image_alt = $instance['image_alt'];
                
 		echo $before_widget;
                 
+                if($video_youtube_id){
+                    $video_start_data = "http://www.youtube.com/watch?v=";
+                    $video_end_data = "?autoplay=1&rel=0&wmode=transparent&showinfo=0"; 
+                    $video_id = $video_youtube_id;
+                }else{
+                    $video_start_data = "http://fast.wistia.net/embed/iframe/";
+                    $video_end_data = "?seo=false";
+                    $video_id = $video_vistia_id;
+                }
+                
                 ?>
                 <div class="item videos-item">
                    
                   
-                    <a data-effect="mfp-zoom-in" class="item icon-play popup-youtube" href="http://fast.wistia.net/embed/iframe/<?php echo $video_id; ?>?seo=false">
+                    <a data-effect="mfp-zoom-in" class="item icon-play popup-youtube" href="<?php echo $video_start_data .  $video_id . $video_end_data; ?>">
                         <img src="<?php echo $image_url; ?>" alt="<?php echo $image_alt; ?>" class="video-item-img">
                     </a>
                     
@@ -170,7 +181,7 @@ class Videos_works extends WP_Widget {
 
 		//Strip tags from title and name to remove HTML 
                 $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		              
+		$instance['video_youtube_id'] = strip_tags( $new_instance['video_youtube_id'] );                 
                 $instance['video_id'] = strip_tags( $new_instance['video_id'] );
                 $instance['image_id'] = strip_tags( $new_instance['image_id']);
                 $instance['image_alt'] = strip_tags( $new_instance['image_alt']);
@@ -205,8 +216,13 @@ class Videos_works extends WP_Widget {
 		</p>
                 
                 <p>
-			<label for="<?php echo $this->get_field_id( 'video_id' ); ?>"><?php _e( 'VIDEO ID:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'video_id' ); ?>"><?php _e( 'VIDEO VIMEO ID:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'video_id' ); ?>" name="<?php echo $this->get_field_name( 'video_id' ); ?>" type="text" value="<?php echo $instance['video_id'];?>">
+		</p>
+                
+                <p>
+			<label for="<?php echo $this->get_field_id( 'video_youtube_id' ); ?>"><?php _e( 'VIDEO YOUTUBE ID:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'video_youtube_id' ); ?>" name="<?php echo $this->get_field_name( 'video_youtube_id' ); ?>" type="text" value="<?php echo $instance['video_youtube_id'];?>">
 		</p>
                 
                 <p>
@@ -251,18 +267,29 @@ class FastStart_videos extends WP_Widget {
 
 		//Our variables from the widget settings.
                 
-                $video_id = $instance['video_id'];
-                $image_id = intval($instance['image_id']);;
+                $video_vistia_id = $instance['video_id'];
+                $video_youtube_id = $instance['video_youtube_id'];
+                $image_id = intval($instance['image_id']);
                 $image_url = wp_get_attachment_image_url($image_id, 'slider-video' );
                 $image_alt = $instance['image_alt'];
                
 		echo $before_widget;
                 
+                if($video_youtube_id){
+                    $video_start_data = "http://www.youtube.com/watch?v=";
+                    $video_end_data = "?autoplay=1&rel=0&wmode=transparent&showinfo=0"; 
+                    $video_id = $video_youtube_id;
+                }else{
+                    $video_start_data = "http://fast.wistia.net/embed/iframe/";
+                    $video_end_data = "?seo=false";
+                    $video_id = $video_vistia_id;
+                }
+
                 ?>
                 <div class="item videos-item">
                    
                   
-                    <a data-effect="mfp-zoom-in" class="item icon-play popup-youtube" href="http://fast.wistia.net/embed/iframe/<?php echo $video_id; ?>?seo=false">
+                    <a data-effect="mfp-zoom-in" class="item icon-play popup-youtube" href="<?php echo $video_start_data .  $video_id . $video_end_data; ?>">
                         <img src="<?php echo $image_url; ?>" alt="<?php echo $image_alt; ?>" class="video-item-img">
                     </a>
                     
@@ -281,7 +308,7 @@ class FastStart_videos extends WP_Widget {
 
 		//Strip tags from title and name to remove HTML 
                 $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		              
+		$instance['video_youtube_id'] = strip_tags( $new_instance['video_youtube_id'] );              
                 $instance['video_id'] = strip_tags( $new_instance['video_id'] );
                 $instance['image_id'] = strip_tags( $new_instance['image_id']);
                 $instance['image_alt'] = strip_tags( $new_instance['image_alt']);
@@ -298,7 +325,8 @@ class FastStart_videos extends WP_Widget {
 		$defaults = array(
                             'image_id' => __('post id of the image'),
                             'image_alt' => __('ProMX', ProRMTheme::TEXTDOMAIN),
-                            'video_id' => __('VIDEO ID ')
+                            'video_id' => __('VIDEO VISTIA ID ')
+                            
                 );
                 
                 
@@ -316,8 +344,13 @@ class FastStart_videos extends WP_Widget {
 		</p>
                 
                 <p>
-			<label for="<?php echo $this->get_field_id( 'video_id' ); ?>"><?php _e( 'VIDEO ID:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'video_id' ); ?>"><?php _e( 'VIDEO VIMEO ID:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'video_id' ); ?>" name="<?php echo $this->get_field_name( 'video_id' ); ?>" type="text" value="<?php echo $instance['video_id'];?>">
+		</p>
+                
+                <p>
+			<label for="<?php echo $this->get_field_id( 'video_youtube_id' ); ?>"><?php _e( 'VIDEO YOUTUBE ID:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'video_youtube_id' ); ?>" name="<?php echo $this->get_field_name( 'video_youtube_id' ); ?>" type="text" value="<?php echo $instance['video_youtube_id'];?>">
 		</p>
                 
                 <p>
@@ -396,7 +429,7 @@ class Customers_words extends WP_Widget {
                         </div>
                         <div class="customer-person">
                             <p>
-                                <span class="person-name"><?php echo $person_name . ',<br>'; ?></span>
+                                <span class="person-name"><?php echo $person_name . '<br>'; ?></span>
                                 <span class="person-position"><?php echo $person_position; ?></span>
                             </p>
                             

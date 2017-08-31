@@ -14,20 +14,22 @@ $general_alt =  $settings->getOption('general_alt_text_for_images');
 
 $fields = get_fields();
 
+$general_page_id = 'partners';
+
+//For buttons on forms
+Tpl::set('general_page_id', $general_page_id);
+
 $form_block_args = array(
     'section_header' => $fields['form_block_header']
 );
 
 $banner_args = array(
-    'banner_planet' => $fields['banner_planet_page']["url"],
     'banner_object' => $fields['banner_object_page']["url"],
-    'banner_clouds' => $fields['banner_clouds_page']["url"],
-    'banner_clouds_top' => $fields['banner_clouds_page_top']["url"],
     'banner_header' => $fields['banner_header_page'],
     'banner_header_tag' => $fields['banner_header_tag'],
     'banner_text' => $fields['banner_text_page'],
     'banner_buttons' => $fields['banner_buttons_page'],
-    'stars_effect' => $fields['stars_effect'],
+   
 );
 
 
@@ -39,7 +41,7 @@ $banner_args = array(
 <?php get_header(); ?>
 
 
-<main id="main" role="main" class="partners-page">
+<main id="main" class="partners-page">
     <div id="content">
         
         <?php // get_prorm_banner_page($banner_args, $general_alt ); ?>

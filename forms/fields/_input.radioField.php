@@ -7,19 +7,22 @@ $options = Tpl::get('field_options');
 /** @var ProRMFormFetcher $fetcher */
 $fetcher = Tpl::get('fetcher');
 $fetchedValue = $fetcher->getData($name);
+$form_name = Tpl::get('form_name');
+
+
 if ($fetcher->hasError($name)) Tpl::set('error_radio', true);
 ?>
 <div class="radio-block blocks required-field col">
-<?php $i=0; foreach ($options as $value => $label) { ?>
+<?php $i=0; foreach ($options as $value => $label) { ++$i ?>
     <div class="check-row check-variant">
-        <label for="ene<?php echo ++$i; ?>">
+        <label for="<?php echo $form_name . '-' .$name . '-' . $i ?>">
             <input type="radio" <?php if ($fetchedValue == $value) echo 'checked' ?>
                    class="contact_<?php echo $name ?>" 
                    name="pro[<?php echo $name ?>]"
                    value="<?php echo $value; ?>"
-                   id="ene<?php echo $i; ?>">
+                   id="<?php echo $form_name . '-' .$name . '-' . $i ?>">
             
-            <p><?php echo $label ?></p>
+            <span class="radio-text"><?php echo $label ?></span>
         </label>
     </div>
 
